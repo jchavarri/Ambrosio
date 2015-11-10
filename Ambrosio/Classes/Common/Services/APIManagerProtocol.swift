@@ -8,8 +8,7 @@
 
 import Foundation
 
-public protocol APIManagerProtocol {
+protocol APIManagerProtocol {
     
-    func requestJSON(url: String, parameters: [String : AnyObject]?, success: (data :AnyObject) -> (), failure: (error :NSError) -> ())
-    
+    func getAuthorizationURL() -> NSURL?   
 }

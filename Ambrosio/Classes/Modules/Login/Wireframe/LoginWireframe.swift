@@ -47,6 +47,10 @@ class LoginWireframe: NSObject
         return viewController
     }
     
+    func launchExternalUrl(url: NSURL) {
+        UIApplication.sharedApplication().openURL(url)
+    }
+    
     func mainStoryboard() -> UIStoryboard {
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         return storyboard

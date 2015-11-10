@@ -43,8 +43,8 @@ class AmbrosioAppDependencies: NSObject
     {
         // -----
         // root classes
-        // *** add datastore
-
+        let authStore = RedboothAuthStore()
+        let apiManager = RedboothAPIManager()
         // ------------------------------------------------------------------
         // begin Login module
         
@@ -65,7 +65,8 @@ class AmbrosioAppDependencies: NSObject
         loginInteractor.dataManager = loginDataManager
         
         // data_manager -> data_store
-        // *** connect datastore
+        loginDataManager.authStore = authStore
+        loginDataManager.apiManager = apiManager
         
         // connect wireframes
         // *** connect more wireframes

@@ -10,6 +10,8 @@ import Foundation
 
 protocol LoginModuleInterface
 {
+    // VIEW -> PRESENTER
+    func userDidSelectLogin()
 
 }
 
