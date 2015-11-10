@@ -7,12 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3BCB5A641BF1554C00B04516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A631BF1554C00B04516 /* AppDelegate.swift */; };
-		3BCB5A661BF1554C00B04516 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A651BF1554C00B04516 /* ViewController.swift */; };
-		3BCB5A691BF1554C00B04516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BCB5A671BF1554C00B04516 /* Main.storyboard */; };
+		3B96C9BC1BF15C5E00899BF5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */; };
+		3B96C9BD1BF15C5E00899BF5 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */; };
+		3B96C9BE1BF15C5E00899BF5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */; };
 		3BCB5A6B1BF1554C00B04516 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BCB5A6A1BF1554C00B04516 /* Assets.xcassets */; };
 		3BCB5A6E1BF1554C00B04516 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BCB5A6C1BF1554C00B04516 /* LaunchScreen.storyboard */; };
 		3BCB5A791BF1554D00B04516 /* AmbrosioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A781BF1554D00B04516 /* AmbrosioTests.swift */; };
+		3BCB5AA31BF1556F00B04516 /* AmbrosioAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A841BF1556F00B04516 /* AmbrosioAppDelegate.swift */; };
+		3BCB5AA41BF1556F00B04516 /* AmbrosioAppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A851BF1556F00B04516 /* AmbrosioAppDependencies.swift */; };
+		3BCB5AA51BF1556F00B04516 /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A8A1BF1556F00B04516 /* AuthServiceProtocol.swift */; };
+		3BCB5AA71BF1556F00B04516 /* RedboothAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A8D1BF1556F00B04516 /* RedboothAccountManager.swift */; };
+		3BCB5AA81BF1556F00B04516 /* RootModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A911BF1556F00B04516 /* RootModuleInterface.swift */; };
+		3BCB5AA91BF1556F00B04516 /* RootPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A921BF1556F00B04516 /* RootPresenter.swift */; };
+		3BCB5AAA1BF1556F00B04516 /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A931BF1556F00B04516 /* RootWireframe.swift */; };
+		3BCB5AAB1BF1556F00B04516 /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A971BF1556F00B04516 /* LoginDataManager.swift */; };
+		3BCB5AAC1BF1556F00B04516 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A991BF1556F00B04516 /* LoginInteractor.swift */; };
+		3BCB5AAD1BF1556F00B04516 /* LoginModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A9B1BF1556F00B04516 /* LoginModuleInterface.swift */; };
+		3BCB5AAE1BF1556F00B04516 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A9D1BF1556F00B04516 /* LoginPresenter.swift */; };
+		3BCB5AAF1BF1556F00B04516 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A9F1BF1556F00B04516 /* LoginViewController.swift */; };
+		3BCB5AB01BF1556F00B04516 /* LoginViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5AA01BF1556F00B04516 /* LoginViewInterface.swift */; };
+		3BCB5AB11BF1556F00B04516 /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5AA21BF1556F00B04516 /* LoginWireframe.swift */; };
+		3BCB5AB41BF1560A00B04516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BCB5AB21BF1560A00B04516 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +41,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
+		3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		3BA7C18C1BF1712000ACC744 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		3BCB5A601BF1554C00B04516 /* Ambrosio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ambrosio.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BCB5A631BF1554C00B04516 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3BCB5A651BF1554C00B04516 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3BCB5A681BF1554C00B04516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BCB5A6A1BF1554C00B04516 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BCB5A6D1BF1554C00B04516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BCB5A6F1BF1554C00B04516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BCB5A741BF1554D00B04516 /* AmbrosioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmbrosioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCB5A781BF1554D00B04516 /* AmbrosioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbrosioTests.swift; sourceTree = "<group>"; };
 		3BCB5A7A1BF1554D00B04516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BCB5A841BF1556F00B04516 /* AmbrosioAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmbrosioAppDelegate.swift; sourceTree = "<group>"; };
+		3BCB5A851BF1556F00B04516 /* AmbrosioAppDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmbrosioAppDependencies.swift; sourceTree = "<group>"; };
+		3BCB5A8A1BF1556F00B04516 /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
+		3BCB5A8D1BF1556F00B04516 /* RedboothAccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedboothAccountManager.swift; sourceTree = "<group>"; };
+		3BCB5A911BF1556F00B04516 /* RootModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootModuleInterface.swift; sourceTree = "<group>"; };
+		3BCB5A921BF1556F00B04516 /* RootPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootPresenter.swift; sourceTree = "<group>"; };
+		3BCB5A931BF1556F00B04516 /* RootWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
+		3BCB5A971BF1556F00B04516 /* LoginDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
+		3BCB5A991BF1556F00B04516 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		3BCB5A9B1BF1556F00B04516 /* LoginModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleInterface.swift; sourceTree = "<group>"; };
+		3BCB5A9D1BF1556F00B04516 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		3BCB5A9F1BF1556F00B04516 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3BCB5AA01BF1556F00B04516 /* LoginViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewInterface.swift; sourceTree = "<group>"; };
+		3BCB5AA21BF1556F00B04516 /* LoginWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireframe.swift; sourceTree = "<group>"; };
+		3BCB5AB31BF1560A00B04516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3BCB5AB51BF156AC00B04516 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +75,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B96C9BC1BF15C5E00899BF5 /* Alamofire.framework in Frameworks */,
+				3B96C9BD1BF15C5E00899BF5 /* Locksmith.framework in Frameworks */,
+				3B96C9BE1BF15C5E00899BF5 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,11 +91,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BA7C1891BF1706100ACC744 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */,
+				3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */,
+				3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3BA7C18A1BF1710700ACC744 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5AB21BF1560A00B04516 /* Main.storyboard */,
+				3BCB5A6A1BF1554C00B04516 /* Assets.xcassets */,
+				3BCB5A6C1BF1554C00B04516 /* LaunchScreen.storyboard */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		3BA7C18B1BF1711400ACC744 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				3BA7C18C1BF1712000ACC744 /* .gitignore */,
+				3BCB5AB51BF156AC00B04516 /* Cartfile */,
+				3BCB5A6F1BF1554C00B04516 /* Info.plist */,
+			);
+			name = "Supporting files";
+			sourceTree = "<group>";
+		};
 		3BCB5A571BF1554C00B04516 = {
 			isa = PBXGroup;
 			children = (
 				3BCB5A621BF1554C00B04516 /* Ambrosio */,
 				3BCB5A771BF1554D00B04516 /* AmbrosioTests */,
+				3BA7C1891BF1706100ACC744 /* Frameworks */,
 				3BCB5A611BF1554C00B04516 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,12 +143,9 @@
 		3BCB5A621BF1554C00B04516 /* Ambrosio */ = {
 			isa = PBXGroup;
 			children = (
-				3BCB5A631BF1554C00B04516 /* AppDelegate.swift */,
-				3BCB5A651BF1554C00B04516 /* ViewController.swift */,
-				3BCB5A671BF1554C00B04516 /* Main.storyboard */,
-				3BCB5A6A1BF1554C00B04516 /* Assets.xcassets */,
-				3BCB5A6C1BF1554C00B04516 /* LaunchScreen.storyboard */,
-				3BCB5A6F1BF1554C00B04516 /* Info.plist */,
+				3BCB5A831BF1556F00B04516 /* Classes */,
+				3BA7C18A1BF1710700ACC744 /* Assets */,
+				3BA7C18B1BF1711400ACC744 /* Supporting files */,
 			);
 			path = Ambrosio;
 			sourceTree = "<group>";
@@ -96,6 +159,155 @@
 			path = AmbrosioTests;
 			sourceTree = "<group>";
 		};
+		3BCB5A831BF1556F00B04516 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A841BF1556F00B04516 /* AmbrosioAppDelegate.swift */,
+				3BCB5A851BF1556F00B04516 /* AmbrosioAppDependencies.swift */,
+				3BCB5A861BF1556F00B04516 /* Common */,
+				3BCB5A941BF1556F00B04516 /* Modules */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		3BCB5A861BF1556F00B04516 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A871BF1556F00B04516 /* Categories */,
+				3BCB5A881BF1556F00B04516 /* Model */,
+				3BCB5A891BF1556F00B04516 /* Services */,
+				3BCB5A8E1BF1556F00B04516 /* Store */,
+				3BCB5A8F1BF1556F00B04516 /* Utils */,
+				3BCB5A901BF1556F00B04516 /* View */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3BCB5A871BF1556F00B04516 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		3BCB5A881BF1556F00B04516 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3BCB5A891BF1556F00B04516 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A8A1BF1556F00B04516 /* AuthServiceProtocol.swift */,
+				3BCB5A8B1BF1556F00B04516 /* Redbooth */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3BCB5A8B1BF1556F00B04516 /* Redbooth */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A8D1BF1556F00B04516 /* RedboothAccountManager.swift */,
+			);
+			path = Redbooth;
+			sourceTree = "<group>";
+		};
+		3BCB5A8E1BF1556F00B04516 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		3BCB5A8F1BF1556F00B04516 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3BCB5A901BF1556F00B04516 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A911BF1556F00B04516 /* RootModuleInterface.swift */,
+				3BCB5A921BF1556F00B04516 /* RootPresenter.swift */,
+				3BCB5A931BF1556F00B04516 /* RootWireframe.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3BCB5A941BF1556F00B04516 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A951BF1556F00B04516 /* Login */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		3BCB5A951BF1556F00B04516 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A961BF1556F00B04516 /* DataManager */,
+				3BCB5A981BF1556F00B04516 /* Interactor */,
+				3BCB5A9A1BF1556F00B04516 /* ModuleInterface */,
+				3BCB5A9C1BF1556F00B04516 /* Presenter */,
+				3BCB5A9E1BF1556F00B04516 /* View */,
+				3BCB5AA11BF1556F00B04516 /* Wireframe */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3BCB5A961BF1556F00B04516 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A971BF1556F00B04516 /* LoginDataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		3BCB5A981BF1556F00B04516 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A991BF1556F00B04516 /* LoginInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3BCB5A9A1BF1556F00B04516 /* ModuleInterface */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A9B1BF1556F00B04516 /* LoginModuleInterface.swift */,
+			);
+			path = ModuleInterface;
+			sourceTree = "<group>";
+		};
+		3BCB5A9C1BF1556F00B04516 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A9D1BF1556F00B04516 /* LoginPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3BCB5A9E1BF1556F00B04516 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5A9F1BF1556F00B04516 /* LoginViewController.swift */,
+				3BCB5AA01BF1556F00B04516 /* LoginViewInterface.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3BCB5AA11BF1556F00B04516 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB5AA21BF1556F00B04516 /* LoginWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,6 +318,7 @@
 				3BCB5A5C1BF1554C00B04516 /* Sources */,
 				3BCB5A5D1BF1554C00B04516 /* Frameworks */,
 				3BCB5A5E1BF1554C00B04516 /* Resources */,
+				3B96C9BF1BF15C7700899BF5 /* Run Script Carthage */,
 			);
 			buildRules = (
 			);
@@ -177,9 +390,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BCB5AB41BF1560A00B04516 /* Main.storyboard in Resources */,
 				3BCB5A6E1BF1554C00B04516 /* LaunchScreen.storyboard in Resources */,
 				3BCB5A6B1BF1554C00B04516 /* Assets.xcassets in Resources */,
-				3BCB5A691BF1554C00B04516 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,13 +405,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3B96C9BF1BF15C7700899BF5 /* Run Script Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Locksmith.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			name = "Run Script Carthage";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3BCB5A5C1BF1554C00B04516 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BCB5A661BF1554C00B04516 /* ViewController.swift in Sources */,
-				3BCB5A641BF1554C00B04516 /* AppDelegate.swift in Sources */,
+				3BCB5AAB1BF1556F00B04516 /* LoginDataManager.swift in Sources */,
+				3BCB5AAA1BF1556F00B04516 /* RootWireframe.swift in Sources */,
+				3BCB5AAE1BF1556F00B04516 /* LoginPresenter.swift in Sources */,
+				3BCB5AAF1BF1556F00B04516 /* LoginViewController.swift in Sources */,
+				3BCB5AA31BF1556F00B04516 /* AmbrosioAppDelegate.swift in Sources */,
+				3BCB5AAD1BF1556F00B04516 /* LoginModuleInterface.swift in Sources */,
+				3BCB5AA41BF1556F00B04516 /* AmbrosioAppDependencies.swift in Sources */,
+				3BCB5AB11BF1556F00B04516 /* LoginWireframe.swift in Sources */,
+				3BCB5AB01BF1556F00B04516 /* LoginViewInterface.swift in Sources */,
+				3BCB5AA91BF1556F00B04516 /* RootPresenter.swift in Sources */,
+				3BCB5AA51BF1556F00B04516 /* AuthServiceProtocol.swift in Sources */,
+				3BCB5AAC1BF1556F00B04516 /* LoginInteractor.swift in Sources */,
+				3BCB5AA71BF1556F00B04516 /* RedboothAccountManager.swift in Sources */,
+				3BCB5AA81BF1556F00B04516 /* RootModuleInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,20 +466,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3BCB5A671BF1554C00B04516 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3BCB5A681BF1554C00B04516 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3BCB5A6C1BF1554C00B04516 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3BCB5A6D1BF1554C00B04516 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3BCB5AB21BF1560A00B04516 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BCB5AB31BF1560A00B04516 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -325,6 +570,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Ambrosio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jch.Ambrosio;
@@ -336,6 +585,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Ambrosio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jch.Ambrosio;
@@ -386,6 +639,7 @@
 				3BCB5A7F1BF1554D00B04516 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3BCB5A801BF1554D00B04516 /* Build configuration list for PBXNativeTarget "AmbrosioTests" */ = {
 			isa = XCConfigurationList;
@@ -394,6 +648,7 @@
 				3BCB5A821BF1554D00B04516 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
