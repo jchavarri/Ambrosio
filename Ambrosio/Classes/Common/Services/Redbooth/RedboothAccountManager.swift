@@ -9,12 +9,12 @@
 import Foundation
 import Locksmith
 
-private enum RedboothAccountAttribute: String
+private enum RedboothAuthAttribute: String
 {
-    case AccessToken        = "RedboothAccountAttributeAccessToken"
-    case AccessTokenExp     = "RedboothAccountAttributeAccessTokenExp"
-    case SessionToken       = "RedboothAccountAttributeSessionToken"
-    case SessionTokenExp    = "RedboothAccountAttributeSessionExp"
+    case AccessToken        = "RedboothAuthAttributeAccessToken"
+    case AccessTokenExp     = "RedboothAuthAttributeAccessTokenExp"
+    case SessionToken       = "RedboothAuthAttributeSessionToken"
+    case SessionTokenExp    = "RedboothAuthAttributeSessionExp"
 }
 
 class RedboothAuthService: AuthServiceProtocol
@@ -29,9 +29,9 @@ class RedboothAuthService: AuthServiceProtocol
     class func hasValidAccessToken() -> String? {
         var returnValue:String? = .None
         if let authAccountDict = Locksmith.loadDataForUserAccount(UserAccount.AccessAccountKey) {
-            if let accessToken = authAccountDict[RedboothAccountAttribute.AccessToken.rawValue] as? String
+            if let accessToken = authAccountDict[RedboothAuthAttribute.AccessToken.rawValue] as? String
             {
-                if let expiration = authAccountDict[RedboothAccountAttribute.AccessTokenExp.rawValue] as? NSDate {
+                if let expiration = authAccountDict[RedboothAuthAttribute.AccessTokenExp.rawValue] as? NSDate {
                     if expiration.timeIntervalSinceNow.isSignMinus {
                         returnValue = accessToken
                     }
@@ -49,9 +49,9 @@ class RedboothAuthService: AuthServiceProtocol
     class func hasValidSessionToken() -> String? {
         var returnValue:String? = .None
         if let authAccountDict = Locksmith.loadDataForUserAccount(UserAccount.SessionAccountKey) {
-            if let sessionToken = authAccountDict[RedboothAccountAttribute.SessionToken.rawValue] as? String
+            if let sessionToken = authAccountDict[RedboothAuthAttribute.SessionToken.rawValue] as? String
             {
-                if let expiration = authAccountDict[RedboothAccountAttribute.SessionTokenExp.rawValue] as? NSDate {
+                if let expiration = authAccountDict[RedboothAuthAttribute.SessionTokenExp.rawValue] as? NSDate {
                     if expiration.timeIntervalSinceNow.isSignMinus {
                         returnValue = sessionToken
                     }
@@ -70,8 +70,8 @@ class RedboothAuthService: AuthServiceProtocol
     class func setAccessToken(accessToken: String, accessTokenExpDate: NSDate) {
         do {
             try Locksmith.saveData([
-                    RedboothAccountAttribute.AccessToken.rawValue: accessToken,
-                    RedboothAccountAttribute.AccessTokenExp.rawValue: accessTokenExpDate
+                    RedboothAuthAttribute.AccessToken.rawValue: accessToken,
+                    RedboothAuthAttribute.AccessTokenExp.rawValue: accessTokenExpDate
                 ],
                 forUserAccount: UserAccount.AccessAccountKey)
         } catch { }
@@ -85,8 +85,8 @@ class RedboothAuthService: AuthServiceProtocol
     class func setSessionToken(sessionToken: String, sessionTokenExpDate: NSDate) {
         do {
             try Locksmith.saveData([
-                RedboothAccountAttribute.SessionToken.rawValue: sessionToken,
-                RedboothAccountAttribute.SessionTokenExp.rawValue: sessionTokenExpDate
+                RedboothAuthAttribute.SessionToken.rawValue: sessionToken,
+                RedboothAuthAttribute.SessionTokenExp.rawValue: sessionTokenExpDate
                 ],
                 forUserAccount: UserAccount.SessionAccountKey)
         } catch { }
