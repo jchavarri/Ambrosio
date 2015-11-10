@@ -50,3 +50,6 @@ Carthage/Build
 
 fastlane/report.xml
 fastlane/screenshots
+
+# API config
+RedboothAPI.Config.swift
