@@ -9,9 +9,10 @@
 import Foundation
 
 protocol RootModuleInterface {
-    func allowAccessWithToken(code: String)
+    // Global events (app level) that are triggered by user actions on the device (for example, opening a link in Mobile Safari)
+    func handleOpenURL(url:NSURL) -> Bool
 }
 
 protocol RootModuleDelegate {
-    func rootModuleDidAllowAccess(code: String)
+    func userDidAllowApp()
 }

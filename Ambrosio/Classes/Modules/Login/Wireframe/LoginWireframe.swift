@@ -28,19 +28,6 @@ class LoginWireframe: NSObject
         navigationController.viewControllers = [newViewController]
     }
     
-    func presentSelfFromViewController(viewController: UIViewController)
-    {
-        // save reference
-        self.viewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
-
-        // view <-> presenter
-        self.presenter?.userInterface = self.viewController
-        self.viewController?.eventHandler = self.presenter
-
-        // present controller
-        // *** present self with RootViewController
-    }
-    
     func loginViewControllerFromStoryboard() -> LoginViewController {
         let storyboard = mainStoryboard()
         let viewController = storyboard.instantiateViewControllerWithIdentifier(LoginViewControllerIdentifier) as! LoginViewController

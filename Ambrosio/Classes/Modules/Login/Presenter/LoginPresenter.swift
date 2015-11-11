@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProtocol
+class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProtocol, RootModuleDelegate
 {
     var interactor: LoginInteractorInputProtocol?
     weak var wireframe: LoginWireframe?
@@ -37,7 +37,9 @@ class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProto
         }
     }
     
-    func didStartAuthProcess() {
+    // MARK: - RootModuleDelegate methods
+    func userDidAllowApp() {
+        interactor?.login()
     }
 
 }

@@ -13,8 +13,8 @@ protocol AuthStoreProtocol {
     func getValidAccessToken() -> String?
     func getValidSessionToken() -> String?
     
-    func cleanAccount()
+    func cleanAccount() -> Bool
     
-    func setAccessToken(accessToken: String, accessTokenExpTime: NSTimeInterval)
-    func setSessionToken(sessionToken: String, sessionTokenExpTime: NSTimeInterval)
+    func setAccessToken(accessToken: String, accessTokenExpTime: NSTimeInterval) -> Bool
+    func setSessionToken(sessionToken: String, sessionTokenExpTime: NSTimeInterval) -> Bool
 }

@@ -82,8 +82,9 @@ class RedboothAuthStore: AuthStoreProtocol
      
      :param: accessToken              The auth token string
      :param: accessTokenExpDate       The expiration time from now, in seconds
+     :returns: true if the data was saved correctly, false ioc
      */
-    func setAccessToken(accessToken: String, accessTokenExpTime: NSTimeInterval) {
+    func setAccessToken(accessToken: String, accessTokenExpTime: NSTimeInterval) -> Bool {
         do {
             let expirationDate = NSDate().dateByAddingTimeInterval(accessTokenExpTime)
             try Locksmith.saveData([
@@ -93,15 +94,19 @@ class RedboothAuthStore: AuthStoreProtocol
                 forUserAccount: UserAccount.AccessAccountKey)
             self.accessToken = accessToken
             self.accessTokenExp = expirationDate
-        } catch { }
+            return true
+        } catch {
+            return false
+        }
     }
     /**
      Persist a session token in the keychain
      
      :param: sessionToken              The session token string
      :param: sessionTokenExpTime       The expiration time from now, in seconds
+     :returns: true if the data was saved correctly, false ioc
      */
-    func setSessionToken(sessionToken: String, sessionTokenExpTime: NSTimeInterval) {
+    func setSessionToken(sessionToken: String, sessionTokenExpTime: NSTimeInterval) -> Bool {
         do {
             let expirationDate = NSDate().dateByAddingTimeInterval(sessionTokenExpTime)
             try Locksmith.saveData([
@@ -111,13 +116,17 @@ class RedboothAuthStore: AuthStoreProtocol
                 forUserAccount: UserAccount.SessionAccountKey)
             self.sessionToken = sessionToken
             self.sessionTokenExp = expirationDate
-        } catch { }
+            return true
+        } catch {
+            return false
+        }
     }
     
     /**
-     Removes the persisted account
+     Removes the persisted auth data
+     :returns: true if the data was cleaned correctly, false ioc
      */
-    func cleanAccount() {
+    func cleanAccount() -> Bool {
         do {
             accessToken = .None
             accessTokenExp = .None
@@ -125,7 +134,10 @@ class RedboothAuthStore: AuthStoreProtocol
             sessionTokenExp = .None
             try Locksmith.deleteDataForUserAccount(UserAccount.AccessAccountKey)
             try Locksmith.deleteDataForUserAccount(UserAccount.SessionAccountKey)
-        } catch { }
+            return true
+        } catch {
+            return false
+        }
     }
     
     

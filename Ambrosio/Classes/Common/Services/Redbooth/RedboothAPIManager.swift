@@ -46,7 +46,7 @@ class RedboothAPIManager: APIManagerProtocol {
         let allowedCharacters = NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy() as! NSMutableCharacterSet
         allowedCharacters.removeCharactersInString(":/")
         if let encodedRedirectUri = redirectUri.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters) {
-            let url:String = oAuthURL + "client_id=\(Config.clientId)&redirect_uri=\(encodedRedirectUri)&response_type=token"
+            let url:String = oAuthURL + "?client_id=\(Config.clientId)&redirect_uri=\(encodedRedirectUri)&response_type=token"
             return NSURL(string: url)
         }
         return .None

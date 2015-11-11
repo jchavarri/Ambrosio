@@ -12,7 +12,8 @@ class RootPresenter: NSObject, RootModuleInterface
 {
 //    var interactor: RootInteractor?
     weak var wireframe: RootWireframe?
-    var rootModuleDelegate : RootModuleDelegate?
+    var dataManager: RootDataManager?
+    var rootModuleDelegate: RootModuleDelegate?
     
     private struct UrlSchemes{
         static let redboothUrlScheme = "ambrosio"
@@ -20,8 +21,8 @@ class RootPresenter: NSObject, RootModuleInterface
     
     func handleOpenURL(url:NSURL) -> Bool {
         if(url.scheme.isEqual(UrlSchemes.redboothUrlScheme)){
-            // TODO: We should check the path as well, there could me more cases than 'redirect-uri'
-            var results = [String:String]()
+            // TODO: We should check the path as well, there could be more cases than 'redirect-uri'
+            var urlParams = [String:String]()
             let pathAndQuery = url.absoluteString.componentsSeparatedByString("#")
             if pathAndQuery.count > 1 {
                 let query = pathAndQuery[1]
@@ -30,12 +31,16 @@ class RootPresenter: NSObject, RootModuleInterface
                     for pair in keyValues {
                         let kv = pair.componentsSeparatedByString("=")
                         if kv.count > 1 {
-                            results.updateValue(kv[1], forKey: kv[0])
+                            urlParams.updateValue(kv[1], forKey: kv[0])
                         }
                     }
-                    if let access_token = results["access_token"] {
-                        allowAccessWithToken(access_token)
-                        return true
+                    if let accessToken = urlParams["access_token"] {
+                        if let expirationTimeString = urlParams["expires_in"] {
+                            if let expirationTime = NSTimeInterval(expirationTimeString) {
+                                didAllowAccessWithToken(accessToken, expirationTime: expirationTime)
+                                return true
+                            }
+                        }
                     }
                 }
             }
@@ -47,15 +52,15 @@ class RootPresenter: NSObject, RootModuleInterface
     }
     
     // MARK: - RootModuleInterface methods
-    func allowAccessWithToken(code: String) {
-        // Maybe save the code?
-        // rootInteractor?.saveCode(code)
-        
+    func didAllowAccessWithToken(accessToken: String, expirationTime: NSTimeInterval) {
         // Make sure the login controller is root
         wireframe?.presentLoginAsRoot()
         
-        // Call delegate method
-        rootModuleDelegate?.rootModuleDidAllowAccess(code)
+        if ((dataManager?.setAccessToken(accessToken, accessTokenExpTime: expirationTime)) != nil) {
+            // Notify delegate
+            rootModuleDelegate?.userDidAllowApp()
+        }
+        //TODO: Handle error
     }
 
 }

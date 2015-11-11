@@ -11,8 +11,10 @@ import UIKit
 
 class AmbrosioAppDependencies: NSObject
 {
-    let loginWireframe = LoginWireframe()
-    let rootPresenter = RootPresenter()
+    let loginWireframe      = LoginWireframe()
+    let loginPresenter      = LoginPresenter()
+    let rootPresenter       = RootPresenter()
+    let rootDataManager     = RootDataManager()
     
     class func initWithWindow(window: UIWindow) -> AmbrosioAppDependencies
     {
@@ -29,8 +31,14 @@ class AmbrosioAppDependencies: NSObject
         rootPresenter.wireframe = rootWireframe
         rootWireframe.presenter = rootPresenter
         
+        // presenter -> data_manager
+        rootPresenter.dataManager = rootDataManager
+        
         // connect wireframes
         rootWireframe.loginWireframe = loginWireframe
+        
+        // configure delegate
+        rootPresenter.rootModuleDelegate = loginPresenter
         
         rootWireframe.presentLoginAsRoot()
     }
@@ -49,7 +57,6 @@ class AmbrosioAppDependencies: NSObject
         // begin Login module
         
         // instantiate classes
-        let loginPresenter: LoginPresenter      = LoginPresenter()
         let loginDataManager: LoginDataManager  = LoginDataManager()
         let loginInteractor: LoginInteractor    = LoginInteractor()
         
