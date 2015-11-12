@@ -54,13 +54,9 @@ class RootPresenter: NSObject, RootModuleInterface
     // MARK: - RootModuleInterface methods
     func didAuthorizeWithToken(authToken: String, expirationTime: NSTimeInterval) {
         // Make sure the login controller is root
+        dataManager?.setAuthToken(authToken, authTokenExpTime: expirationTime)
         wireframe?.presentLoginAsRoot()
         
-        if ((dataManager?.setAuthToken(authToken, authTokenExpTime: expirationTime)) != nil) {
-            // Notify delegate
-            rootModuleDelegate?.userDidAllowApp()
-        }
-        //TODO: Handle error
     }
 
 }

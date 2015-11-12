@@ -52,7 +52,7 @@ class RedboothAuthStore: AuthStoreProtocol
     func getValidAuthToken() -> String? {
         if let authToken = self.authToken {
             if let expiration = self.authTokenExp {
-                if expiration.timeIntervalSinceNow.isSignMinus {
+                if !expiration.timeIntervalSinceNow.isSignMinus {
                     return authToken
                 }
             }
@@ -94,7 +94,7 @@ class RedboothAuthStore: AuthStoreProtocol
                     RedboothAuthAttribute.AuthToken.rawValue: authToken,
                     RedboothAuthAttribute.AuthTokenExp.rawValue: expirationDate
                 ],
-                forUserAccount: UserAccount.AccessAccountKey)
+                forUserAccount: UserAccount.AuthAccountKey)
             self.authToken = authToken
             self.authTokenExp = expirationDate
             return true

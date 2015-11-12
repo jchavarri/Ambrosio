@@ -65,7 +65,7 @@ class RedboothAPIManager: APIManagerProtocol {
     }
     
     func postSessionToken(success: NetworkSuccessHandler, failure: NetworkFailureHandler) {
-        if let encodedRedirectUri = RedboothAPIManager.encodedRedirectUri(), accessToken = authStore?.getValidAccessToken() {
+        if let encodedRedirectUri = RedboothAPIManager.encodedRedirectUri(), accessToken = authStore?.getValidAuthToken() {
             let parameters = [
                 "client_id": Config.clientId,
                 "client_secret": Config.clientSecret,

@@ -14,5 +14,4 @@ protocol RootModuleInterface {
 }
 
 protocol RootModuleDelegate {
-    func userDidAllowApp()
 }

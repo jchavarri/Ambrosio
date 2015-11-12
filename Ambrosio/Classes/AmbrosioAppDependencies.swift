@@ -41,9 +41,6 @@ class AmbrosioAppDependencies: NSObject
         // data_manager -> data_store
         rootDataManager.authStore = authStore
         
-        // configure delegate
-        rootPresenter.rootModuleDelegate = loginPresenter
-        
         rootWireframe.presentLoginAsRoot()
     }
     
