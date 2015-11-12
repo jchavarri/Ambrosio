@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProtocol
+class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProtocol, RootModuleDelegate
 {
     var interactor: LoginInteractorInputProtocol?
     weak var wireframe: LoginWireframe?
@@ -16,11 +16,14 @@ class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProto
 
     // MARK: - LoginModuleInterface methods
     
-    func updateView() {
-        interactor?.fetchInitialData()
-    }
     func didSelectLogin() {
-        interactor?.login()
+        interactor?.startAppAuthorization()
+    }
+    
+    // MARK: - RootModuleDelegate methods
+    
+    func didAuthorizeApp() {
+        interactor?.fetchInitialData()
     }
     
     // MARK: - LoginInteractorOutputProtocol methods
@@ -30,6 +33,8 @@ class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProto
         print("presentListInterface")
     }
     
+    // MARK: - LoginInteractorOutputProtocol methods
+    
     func startExternalAuthProcessWithUrl(url: NSURL?) {
         if let url = url {
             userInterface?.hideLoading()
@@ -38,6 +43,11 @@ class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProto
         else {
             userInterface?.showError("Error while creating authentication credentials");
         }
+    }
+    
+    // Presenter -> View
+    func showError(let errorMessage: String) {
+        userInterface?.showError(errorMessage);
     }
     
 

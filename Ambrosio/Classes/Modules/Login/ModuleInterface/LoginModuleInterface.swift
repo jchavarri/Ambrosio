@@ -12,10 +12,4 @@ protocol LoginModuleInterface
 {
     // VIEW -> PRESENTER
     func didSelectLogin()
-    func updateView()
-}
-
-protocol LoginModuleDelegate
-{
-
 }

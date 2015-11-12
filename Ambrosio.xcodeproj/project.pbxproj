@@ -7,24 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B1D40481BF5439200BA6AEB /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D40471BF5439200BA6AEB /* AccessTokenModel.swift */; };
+		3B1D40511BF546E700BA6AEB /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D404B1BF546E700BA6AEB /* APIServiceProtocol.swift */; };
+		3B1D40521BF546E700BA6AEB /* APIService.Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D404C1BF546E700BA6AEB /* APIService.Config.swift */; };
+		3B1D40531BF546E700BA6AEB /* APIDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D404D1BF546E700BA6AEB /* APIDataManager.swift */; };
+		3B1D40541BF546E700BA6AEB /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D404F1BF546E700BA6AEB /* AuthServiceProtocol.swift */; };
+		3B1D40551BF546E700BA6AEB /* AuthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D40501BF546E700BA6AEB /* AuthDataManager.swift */; };
+		3B1D40571BF547AE00BA6AEB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D40561BF547AE00BA6AEB /* AuthService.swift */; };
+		3B1D405B1BF549F000BA6AEB /* AuthDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D405A1BF549F000BA6AEB /* AuthDataManagerProtocol.swift */; };
+		3B1D405D1BF54B8100BA6AEB /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D405C1BF54B8100BA6AEB /* APIService.swift */; };
+		3B1D405F1BF54BC200BA6AEB /* APIDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D405E1BF54BC200BA6AEB /* APIDataManagerProtocol.swift */; };
+		3B1D40611BF54CFE00BA6AEB /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D40601BF54CFE00BA6AEB /* UserInfoModel.swift */; };
+		3B1D40631BF54D3F00BA6AEB /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D40621BF54D3F00BA6AEB /* TaskModel.swift */; };
+		3B1D40721BF54E0A00BA6AEB /* RootDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D406E1BF54E0A00BA6AEB /* RootDataManager.swift */; };
+		3B1D40731BF54E0A00BA6AEB /* RootModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D406F1BF54E0A00BA6AEB /* RootModuleInterface.swift */; };
+		3B1D40741BF54E0A00BA6AEB /* RootPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D40701BF54E0A00BA6AEB /* RootPresenter.swift */; };
+		3B1D40751BF54E0A00BA6AEB /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D40711BF54E0A00BA6AEB /* RootWireframe.swift */; };
 		3B96C9BC1BF15C5E00899BF5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */; };
 		3B96C9BD1BF15C5E00899BF5 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */; };
 		3B96C9BE1BF15C5E00899BF5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */; };
-		3BBB71741BF3F379007E3948 /* RootDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB71731BF3F379007E3948 /* RootDataManager.swift */; };
-		3BC628FC1BF2918B000320D0 /* RedboothAPI.Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC628FB1BF2918B000320D0 /* RedboothAPI.Config.swift */; };
-		3BC628FE1BF291D5000320D0 /* RedboothAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC628FD1BF291D5000320D0 /* RedboothAPIManager.swift */; };
-		3BC629021BF2950E000320D0 /* APIManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC629011BF2950E000320D0 /* APIManagerProtocol.swift */; };
 		3BC629041BF29B13000320D0 /* LoginInteractorIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC629031BF29B13000320D0 /* LoginInteractorIO.swift */; };
 		3BCB5A6B1BF1554C00B04516 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BCB5A6A1BF1554C00B04516 /* Assets.xcassets */; };
 		3BCB5A6E1BF1554C00B04516 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BCB5A6C1BF1554C00B04516 /* LaunchScreen.storyboard */; };
 		3BCB5A791BF1554D00B04516 /* AmbrosioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A781BF1554D00B04516 /* AmbrosioTests.swift */; };
 		3BCB5AA31BF1556F00B04516 /* AmbrosioAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A841BF1556F00B04516 /* AmbrosioAppDelegate.swift */; };
 		3BCB5AA41BF1556F00B04516 /* AmbrosioAppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A851BF1556F00B04516 /* AmbrosioAppDependencies.swift */; };
-		3BCB5AA51BF1556F00B04516 /* AuthStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A8A1BF1556F00B04516 /* AuthStoreProtocol.swift */; };
-		3BCB5AA71BF1556F00B04516 /* RedboothAuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A8D1BF1556F00B04516 /* RedboothAuthStore.swift */; };
-		3BCB5AA81BF1556F00B04516 /* RootModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A911BF1556F00B04516 /* RootModuleInterface.swift */; };
-		3BCB5AA91BF1556F00B04516 /* RootPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A921BF1556F00B04516 /* RootPresenter.swift */; };
-		3BCB5AAA1BF1556F00B04516 /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A931BF1556F00B04516 /* RootWireframe.swift */; };
 		3BCB5AAB1BF1556F00B04516 /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A971BF1556F00B04516 /* LoginDataManager.swift */; };
 		3BCB5AAC1BF1556F00B04516 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A991BF1556F00B04516 /* LoginInteractor.swift */; };
 		3BCB5AAD1BF1556F00B04516 /* LoginModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB5A9B1BF1556F00B04516 /* LoginModuleInterface.swift */; };
@@ -46,15 +53,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B1D40471BF5439200BA6AEB /* AccessTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenModel.swift; sourceTree = "<group>"; };
+		3B1D404B1BF546E700BA6AEB /* APIServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
+		3B1D404C1BF546E700BA6AEB /* APIService.Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.Config.swift; sourceTree = "<group>"; };
+		3B1D404D1BF546E700BA6AEB /* APIDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDataManager.swift; sourceTree = "<group>"; };
+		3B1D404F1BF546E700BA6AEB /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
+		3B1D40501BF546E700BA6AEB /* AuthDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthDataManager.swift; sourceTree = "<group>"; };
+		3B1D40561BF547AE00BA6AEB /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		3B1D405A1BF549F000BA6AEB /* AuthDataManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthDataManagerProtocol.swift; sourceTree = "<group>"; };
+		3B1D405C1BF54B8100BA6AEB /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		3B1D405E1BF54BC200BA6AEB /* APIDataManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDataManagerProtocol.swift; sourceTree = "<group>"; };
+		3B1D40601BF54CFE00BA6AEB /* UserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		3B1D40621BF54D3F00BA6AEB /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		3B1D406E1BF54E0A00BA6AEB /* RootDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDataManager.swift; sourceTree = "<group>"; };
+		3B1D406F1BF54E0A00BA6AEB /* RootModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootModuleInterface.swift; sourceTree = "<group>"; };
+		3B1D40701BF54E0A00BA6AEB /* RootPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootPresenter.swift; sourceTree = "<group>"; };
+		3B1D40711BF54E0A00BA6AEB /* RootWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
 		3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
 		3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		3BA7C18C1BF1712000ACC744 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
-		3BBB71731BF3F379007E3948 /* RootDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDataManager.swift; sourceTree = "<group>"; };
 		3BBB71751BF40E72007E3948 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		3BC628FB1BF2918B000320D0 /* RedboothAPI.Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedboothAPI.Config.swift; sourceTree = "<group>"; };
-		3BC628FD1BF291D5000320D0 /* RedboothAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedboothAPIManager.swift; sourceTree = "<group>"; };
-		3BC629011BF2950E000320D0 /* APIManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManagerProtocol.swift; sourceTree = "<group>"; };
 		3BC629031BF29B13000320D0 /* LoginInteractorIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorIO.swift; sourceTree = "<group>"; };
 		3BCB5A601BF1554C00B04516 /* Ambrosio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ambrosio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCB5A6A1BF1554C00B04516 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,11 +84,6 @@
 		3BCB5A7A1BF1554D00B04516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BCB5A841BF1556F00B04516 /* AmbrosioAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmbrosioAppDelegate.swift; sourceTree = "<group>"; };
 		3BCB5A851BF1556F00B04516 /* AmbrosioAppDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmbrosioAppDependencies.swift; sourceTree = "<group>"; };
-		3BCB5A8A1BF1556F00B04516 /* AuthStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStoreProtocol.swift; sourceTree = "<group>"; };
-		3BCB5A8D1BF1556F00B04516 /* RedboothAuthStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedboothAuthStore.swift; sourceTree = "<group>"; };
-		3BCB5A911BF1556F00B04516 /* RootModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootModuleInterface.swift; sourceTree = "<group>"; };
-		3BCB5A921BF1556F00B04516 /* RootPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootPresenter.swift; sourceTree = "<group>"; };
-		3BCB5A931BF1556F00B04516 /* RootWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
 		3BCB5A971BF1556F00B04516 /* LoginDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
 		3BCB5A991BF1556F00B04516 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		3BCB5A9B1BF1556F00B04516 /* LoginModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleInterface.swift; sourceTree = "<group>"; };
@@ -102,6 +116,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B1D40491BF546E700BA6AEB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D404A1BF546E700BA6AEB /* API */,
+				3B1D404E1BF546E700BA6AEB /* Auth */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3B1D404A1BF546E700BA6AEB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D404B1BF546E700BA6AEB /* APIServiceProtocol.swift */,
+				3B1D405C1BF54B8100BA6AEB /* APIService.swift */,
+				3B1D405E1BF54BC200BA6AEB /* APIDataManagerProtocol.swift */,
+				3B1D404D1BF546E700BA6AEB /* APIDataManager.swift */,
+				3B1D404C1BF546E700BA6AEB /* APIService.Config.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		3B1D404E1BF546E700BA6AEB /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D404F1BF546E700BA6AEB /* AuthServiceProtocol.swift */,
+				3B1D40561BF547AE00BA6AEB /* AuthService.swift */,
+				3B1D405A1BF549F000BA6AEB /* AuthDataManagerProtocol.swift */,
+				3B1D40501BF546E700BA6AEB /* AuthDataManager.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		3B1D406D1BF54E0A00BA6AEB /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				3B1D406E1BF54E0A00BA6AEB /* RootDataManager.swift */,
+				3B1D406F1BF54E0A00BA6AEB /* RootModuleInterface.swift */,
+				3B1D40701BF54E0A00BA6AEB /* RootPresenter.swift */,
+				3B1D40711BF54E0A00BA6AEB /* RootWireframe.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		3BA7C1891BF1706100ACC744 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,10 +244,9 @@
 			children = (
 				3BCB5A871BF1556F00B04516 /* Categories */,
 				3BCB5A881BF1556F00B04516 /* Model */,
-				3BCB5A891BF1556F00B04516 /* Services */,
+				3B1D40491BF546E700BA6AEB /* Services */,
 				3BCB5A8E1BF1556F00B04516 /* Store */,
 				3BCB5A8F1BF1556F00B04516 /* Utils */,
-				3BCB5A901BF1556F00B04516 /* View */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -205,28 +261,11 @@
 		3BCB5A881BF1556F00B04516 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3B1D40471BF5439200BA6AEB /* AccessTokenModel.swift */,
+				3B1D40601BF54CFE00BA6AEB /* UserInfoModel.swift */,
+				3B1D40621BF54D3F00BA6AEB /* TaskModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		3BCB5A891BF1556F00B04516 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				3BCB5A8A1BF1556F00B04516 /* AuthStoreProtocol.swift */,
-				3BC629011BF2950E000320D0 /* APIManagerProtocol.swift */,
-				3BCB5A8B1BF1556F00B04516 /* Redbooth */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		3BCB5A8B1BF1556F00B04516 /* Redbooth */ = {
-			isa = PBXGroup;
-			children = (
-				3BCB5A8D1BF1556F00B04516 /* RedboothAuthStore.swift */,
-				3BC628FD1BF291D5000320D0 /* RedboothAPIManager.swift */,
-				3BC628FB1BF2918B000320D0 /* RedboothAPI.Config.swift */,
-			);
-			path = Redbooth;
 			sourceTree = "<group>";
 		};
 		3BCB5A8E1BF1556F00B04516 /* Store */ = {
@@ -243,20 +282,10 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		3BCB5A901BF1556F00B04516 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3BBB71731BF3F379007E3948 /* RootDataManager.swift */,
-				3BCB5A911BF1556F00B04516 /* RootModuleInterface.swift */,
-				3BCB5A921BF1556F00B04516 /* RootPresenter.swift */,
-				3BCB5A931BF1556F00B04516 /* RootWireframe.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		3BCB5A941BF1556F00B04516 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3B1D406D1BF54E0A00BA6AEB /* Root */,
 				3BCB5A951BF1556F00B04516 /* Login */,
 			);
 			path = Modules;
@@ -447,25 +476,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B1D40511BF546E700BA6AEB /* APIServiceProtocol.swift in Sources */,
+				3B1D405B1BF549F000BA6AEB /* AuthDataManagerProtocol.swift in Sources */,
+				3B1D40521BF546E700BA6AEB /* APIService.Config.swift in Sources */,
 				3BCB5AAB1BF1556F00B04516 /* LoginDataManager.swift in Sources */,
-				3BCB5AAA1BF1556F00B04516 /* RootWireframe.swift in Sources */,
+				3B1D40611BF54CFE00BA6AEB /* UserInfoModel.swift in Sources */,
+				3B1D40481BF5439200BA6AEB /* AccessTokenModel.swift in Sources */,
 				3BCB5AAE1BF1556F00B04516 /* LoginPresenter.swift in Sources */,
+				3B1D40571BF547AE00BA6AEB /* AuthService.swift in Sources */,
 				3BCB5AAF1BF1556F00B04516 /* LoginViewController.swift in Sources */,
+				3B1D40741BF54E0A00BA6AEB /* RootPresenter.swift in Sources */,
+				3B1D40631BF54D3F00BA6AEB /* TaskModel.swift in Sources */,
 				3BCB5AA31BF1556F00B04516 /* AmbrosioAppDelegate.swift in Sources */,
 				3BCB5AAD1BF1556F00B04516 /* LoginModuleInterface.swift in Sources */,
+				3B1D40531BF546E700BA6AEB /* APIDataManager.swift in Sources */,
 				3BCB5AA41BF1556F00B04516 /* AmbrosioAppDependencies.swift in Sources */,
+				3B1D40731BF54E0A00BA6AEB /* RootModuleInterface.swift in Sources */,
 				3BCB5AB11BF1556F00B04516 /* LoginWireframe.swift in Sources */,
+				3B1D40551BF546E700BA6AEB /* AuthDataManager.swift in Sources */,
+				3B1D40751BF54E0A00BA6AEB /* RootWireframe.swift in Sources */,
 				3BCB5AB01BF1556F00B04516 /* LoginViewInterface.swift in Sources */,
-				3BCB5AA91BF1556F00B04516 /* RootPresenter.swift in Sources */,
-				3BC629021BF2950E000320D0 /* APIManagerProtocol.swift in Sources */,
-				3BC628FC1BF2918B000320D0 /* RedboothAPI.Config.swift in Sources */,
-				3BCB5AA51BF1556F00B04516 /* AuthStoreProtocol.swift in Sources */,
+				3B1D405F1BF54BC200BA6AEB /* APIDataManagerProtocol.swift in Sources */,
+				3B1D40541BF546E700BA6AEB /* AuthServiceProtocol.swift in Sources */,
+				3B1D405D1BF54B8100BA6AEB /* APIService.swift in Sources */,
 				3BCB5AAC1BF1556F00B04516 /* LoginInteractor.swift in Sources */,
-				3BCB5AA71BF1556F00B04516 /* RedboothAuthStore.swift in Sources */,
-				3BCB5AA81BF1556F00B04516 /* RootModuleInterface.swift in Sources */,
+				3B1D40721BF54E0A00BA6AEB /* RootDataManager.swift in Sources */,
 				3BC629041BF29B13000320D0 /* LoginInteractorIO.swift in Sources */,
-				3BBB71741BF3F379007E3948 /* RootDataManager.swift in Sources */,
-				3BC628FE1BF291D5000320D0 /* RedboothAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

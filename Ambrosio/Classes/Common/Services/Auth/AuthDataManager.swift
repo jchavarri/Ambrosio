@@ -9,15 +9,22 @@
 import Foundation
 import Locksmith
 
-private enum RedboothAuthAttribute: String
+enum AuthPath: String
 {
-    case AuthToken        = "RedboothAuthAttributeAuthToken"
-    case AuthTokenExp     = "RedboothAuthAttributeAuthTokenExp"
-    case AccessToken       = "RedboothAuthAttributeAccessToken"
-    case AccessTokenExp    = "RedboothAuthAttributeAccessTokenExp"
+    case Authorize      = "authorize"
+    case Token          = "token"
 }
 
-class RedboothAuthStore: AuthStoreProtocol
+private enum AuthAttribute: String
+{
+    case AuthToken          = "AuthAttributeAuthToken"
+    case AuthTokenExp       = "AuthAttributeAuthTokenExp"
+    case AccessToken        = "AuthAttributeAccessToken"
+    case AccessTokenExp     = "AuthAttributeAccessTokenExp"
+    case RenewToken         = "AuthAttributeRenewToken"
+}
+
+class AuthDataManager: AuthDataManagerProtocol
 {
     //MARK: - Private
     private var authToken: String?
@@ -33,12 +40,12 @@ class RedboothAuthStore: AuthStoreProtocol
 
     init() {
         if let authAccountDict = Locksmith.loadDataForUserAccount(UserAccount.AuthAccountKey) {
-            authToken = authAccountDict[RedboothAuthAttribute.AuthToken.rawValue] as? String
-            authTokenExp = authAccountDict[RedboothAuthAttribute.AuthTokenExp.rawValue] as? NSDate
+            authToken = authAccountDict[AuthAttribute.AuthToken.rawValue] as? String
+            authTokenExp = authAccountDict[AuthAttribute.AuthTokenExp.rawValue] as? NSDate
         }
         if let authAccountDict = Locksmith.loadDataForUserAccount(UserAccount.AccessAccountKey) {
-            accessToken = authAccountDict[RedboothAuthAttribute.AccessToken.rawValue] as? String
-            accessTokenExp = authAccountDict[RedboothAuthAttribute.AccessTokenExp.rawValue] as? NSDate
+            accessToken = authAccountDict[AuthAttribute.AccessToken.rawValue] as? String
+            accessTokenExp = authAccountDict[AuthAttribute.AccessTokenExp.rawValue] as? NSDate
         }
     }
     
@@ -68,9 +75,9 @@ class RedboothAuthStore: AuthStoreProtocol
     func getValidAccessToken() -> String? {
         var returnValue:String? = .None
         if let authAccountDict = Locksmith.loadDataForUserAccount(UserAccount.AccessAccountKey) {
-            if let accessToken = authAccountDict[RedboothAuthAttribute.AccessToken.rawValue] as? String
+            if let accessToken = authAccountDict[AuthAttribute.AccessToken.rawValue] as? String
             {
-                if let expiration = authAccountDict[RedboothAuthAttribute.AccessTokenExp.rawValue] as? NSDate {
+                if let expiration = authAccountDict[AuthAttribute.AccessTokenExp.rawValue] as? NSDate {
                     if expiration.timeIntervalSinceNow.isSignMinus {
                         returnValue = accessToken
                     }
@@ -96,8 +103,8 @@ class RedboothAuthStore: AuthStoreProtocol
                 self.authTokenExp = nil
             }
             try Locksmith.saveData([
-                    RedboothAuthAttribute.AuthToken.rawValue: authToken,
-                    RedboothAuthAttribute.AuthTokenExp.rawValue: expirationDate
+                    AuthAttribute.AuthToken.rawValue: authToken,
+                    AuthAttribute.AuthTokenExp.rawValue: expirationDate
                 ],
                 forUserAccount: UserAccount.AuthAccountKey)
             self.authToken = authToken
@@ -123,8 +130,8 @@ class RedboothAuthStore: AuthStoreProtocol
                 self.accessTokenExp = nil
             }
             try Locksmith.saveData([
-                RedboothAuthAttribute.AccessToken.rawValue: accessToken,
-                RedboothAuthAttribute.AccessTokenExp.rawValue: expirationDate
+                AuthAttribute.AccessToken.rawValue: accessToken,
+                AuthAttribute.AccessTokenExp.rawValue: expirationDate
                 ],
                 forUserAccount: UserAccount.AccessAccountKey)
             self.accessToken = accessToken

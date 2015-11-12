@@ -8,25 +8,20 @@
 
 import Foundation
 import Alamofire
-
-enum AuthPath: String
-{
-    case Authorize      = "authorize"
-    case Token          = "token"
-}
+import SwiftyJSON
 
 enum Path: String
 {
     case Me             = "me"
+    case Tasks          = "tasks"
 }
 
-class RedboothAPIManager: APIManagerProtocol {
+class APIDataManager {
     
-    typealias NetworkSuccessHandler = (data: AnyObject?) -> Void
+    typealias NetworkSuccessHandler = (data: JSON) -> Void
     typealias NetworkFailureHandler = (error: NSError) -> Void
     
     let apiURL = "https://redbooth.com/api/3/"
-    let oAuthURL = "https://redbooth.com/oauth2/"
     
     var authStore: RedboothAuthStore?
     
@@ -48,21 +43,31 @@ class RedboothAPIManager: APIManagerProtocol {
         return .None
     }
     
-    func requestJSON(path: String, parameters: [String : AnyObject]?, success: NetworkSuccessHandler, failure: NetworkFailureHandler) {
+    //Generic API Helpers
+    
+    func requestJSON(method: Alamofire.Method, path: String, parameters: [String : AnyObject]?, success: NetworkSuccessHandler, failure: NetworkFailureHandler) {
         let url = apiURL + path
-        Alamofire.request(.GET, url, parameters: parameters)
+        Alamofire.request(method, url, parameters: parameters)
             .responseJSON { response in
                 guard response.result.error == nil else {
                     print(response.result.error!)
                     failure (error: response.result.error!)
                     return
                 }
-                
-                if let value: AnyObject = response.result.value {
-                    success(data: value)
-                }
+                // If there's no error, value is not nil
+                success(data: JSON(response.result.value!))
         }
     }
+    
+    func getJSON(path: String, parameters: [String : AnyObject]?, success: NetworkSuccessHandler, failure: NetworkFailureHandler) {
+        requestJSON(.GET, path: path, parameters: parameters, success: success, failure: failure)
+    }
+    
+    func postJSON(path: String, parameters: [String : AnyObject]?, success: NetworkSuccessHandler, failure: NetworkFailureHandler) {
+        requestJSON(.GET, path: path, parameters: parameters, success: success, failure: failure)
+    }
+    
+    // Auth
     
     func postSessionToken(success: NetworkSuccessHandler, failure: NetworkFailureHandler) {
         if let encodedRedirectUri = RedboothAPIManager.encodedRedirectUri(), accessToken = authStore?.getValidAuthToken() {
@@ -77,32 +82,23 @@ class RedboothAPIManager: APIManagerProtocol {
             for (parameter, value) in parameters {
                 url += parameter + "=" + value + "&"
             }
-            Alamofire.request(.POST, url, parameters: [:])
-                .responseJSON { response in
-                    guard response.result.error == nil else {
-                        print(response.result.error!)
-                        failure (error: response.result.error!)
-                        return
-                    }
-                    
-                    if let value: AnyObject = response.result.value {
-                        success(data: value)
-                    }
-            }
+            postJSON(url, parameters: parameters, success: success, failure: failure)
         }
         else {
             failure(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: .None))
         }
     }
     
-    func getUserInfo(success: NetworkSuccessHandler, failure: NetworkFailureHandler) {
-        requestJSON(Path.Me.rawValue, parameters: [String: String](), success: { (data) -> () in
-            print(data)
-            success(data: data)
-        }) { (error) -> () in
-            print(error)
-            failure(error: error)
-        }
+    // User
+    
+    func getUserInfo(success: NetworkSuccessHandler, failure: NetworkFailureHandler) -> Void {
+        getJSON(Path.Me.rawValue, parameters: [String: String](), success: success, failure: failure)
+    }
+    
+    // Tasks
+    
+    func getTasks(success: NetworkSuccessHandler, failure: NetworkFailureHandler) {
+        getJSON(Path.Tasks.rawValue, parameters: [String: String](), success: success, failure: failure)
     }
     
 }

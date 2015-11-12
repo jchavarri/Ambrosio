@@ -14,4 +14,6 @@ protocol RootModuleInterface {
 }
 
 protocol RootModuleDelegate {
+    //The delegate will be listening to app level events
+    func didAuthorizeApp()
 }

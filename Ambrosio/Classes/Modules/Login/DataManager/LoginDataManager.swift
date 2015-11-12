@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class LoginDataManager: NSObject
 {
@@ -34,11 +35,20 @@ class LoginDataManager: NSObject
     }
     func getAccessToken(completion: (error: NSError?) -> ()) {
         apiManager?.postSessionToken({ (data) -> Void in
-            print(data)
+            data["access_token"]
             completion(error: nil)
             },
             failure: { (error) -> Void in
                 completion(error: error)
         })
     }
+    func setAccessToken(accessToken: String, accessTokenExpTime: NSTimeInterval) -> Bool {
+        if let authStore = self.authStore {
+            return authStore.setAccessToken(accessToken, accessTokenExpTime: accessTokenExpTime)
+        }
+        else {
+            return false
+        }
+    }
+
 }

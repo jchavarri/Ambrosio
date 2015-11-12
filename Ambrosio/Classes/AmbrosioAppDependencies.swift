@@ -41,6 +41,9 @@ class AmbrosioAppDependencies: NSObject
         // data_manager -> data_store
         rootDataManager.authStore = authStore
         
+        // delegate
+        rootPresenter.rootModuleDelegate = loginPresenter
+        
         rootWireframe.presentLoginAsRoot()
     }
     
@@ -52,8 +55,9 @@ class AmbrosioAppDependencies: NSObject
     {
         // -----
         // root classes
-        let apiManager = RedboothAPIManager()
-        apiManager.authStore = authStore
+        let apiDataManager = APIDataManager()
+        let apiService = APIService()
+        apiService.dataManager = apiDataManager
         // ------------------------------------------------------------------
         // begin Login module
         

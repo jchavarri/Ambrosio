@@ -20,12 +20,14 @@ class LoginInteractor: LoginInteractorInputProtocol
                 //Fetch task list
             }
             else if dataManager.hasAuthToken() {
-                dataManager.getAccessToken({ (error) -> () in
+                dataManager.getAccessToken({ (error: NSError?) -> () in
                     if (error == nil) {
                         print("error")
                     }
                     else {
-                        print("ok")
+                        dataManager.setAccessToken(<#T##accessToken: String##String#>, accessTokenExpTime: <#T##NSTimeInterval#>)
+                        (authToken, authTokenExpTime: expirationTime)
+                        wireframe?.presentLoginAsRoot()
                     }
                 })
                 //        self.APIDataManager?.login({ [weak self] (error: NSError?, credentials: TwitterLoginItem?) -> () in
@@ -42,7 +44,7 @@ class LoginInteractor: LoginInteractorInputProtocol
             }
         }
     }
-    func login() {
+    func startAppAuthorization() {
         presenter?.startExternalAuthProcessWithUrl(dataManager?.getAuthorizationURL())
     }
 }
