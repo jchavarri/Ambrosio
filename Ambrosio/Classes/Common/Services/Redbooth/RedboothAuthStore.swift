@@ -90,6 +90,11 @@ class RedboothAuthStore: AuthStoreProtocol
     func setAuthToken(authToken: String, authTokenExpTime: NSTimeInterval) -> Bool {
         do {
             let expirationDate = NSDate().dateByAddingTimeInterval(authTokenExpTime)
+            if let _ = self.authToken {
+                try Locksmith.deleteDataForUserAccount(UserAccount.AuthAccountKey)
+                self.authToken = nil
+                self.authTokenExp = nil
+            }
             try Locksmith.saveData([
                     RedboothAuthAttribute.AuthToken.rawValue: authToken,
                     RedboothAuthAttribute.AuthTokenExp.rawValue: expirationDate
@@ -112,6 +117,11 @@ class RedboothAuthStore: AuthStoreProtocol
     func setAccessToken(accessToken: String, accessTokenExpTime: NSTimeInterval) -> Bool {
         do {
             let expirationDate = NSDate().dateByAddingTimeInterval(accessTokenExpTime)
+            if let _ = self.accessToken {
+                try Locksmith.deleteDataForUserAccount(UserAccount.AuthAccountKey)
+                self.accessToken = nil
+                self.accessTokenExp = nil
+            }
             try Locksmith.saveData([
                 RedboothAuthAttribute.AccessToken.rawValue: accessToken,
                 RedboothAuthAttribute.AccessTokenExp.rawValue: expirationDate

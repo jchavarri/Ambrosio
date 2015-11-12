@@ -23,7 +23,8 @@ class RootPresenter: NSObject, RootModuleInterface
         if(url.scheme.isEqual(UrlSchemes.redboothUrlScheme)){
             // TODO: We should check the path as well, there could be more cases than 'redirect-uri'
             var urlParams = [String:String]()
-            let pathAndQuery = url.absoluteString.componentsSeparatedByString("#")
+            // 'response_type=token' doesn't allow to refresh later, so using '?' instead of '#'
+            let pathAndQuery = url.absoluteString.componentsSeparatedByString("?")
             if pathAndQuery.count > 1 {
                 let query = pathAndQuery[1]
                 let keyValues = query.componentsSeparatedByString("&")
@@ -34,13 +35,17 @@ class RootPresenter: NSObject, RootModuleInterface
                             urlParams.updateValue(kv[1], forKey: kv[0])
                         }
                     }
-                    if let accessToken = urlParams["access_token"] {
-                        if let expirationTimeString = urlParams["expires_in"] {
-                            if let expirationTime = NSTimeInterval(expirationTimeString) {
-                                didAuthorizeWithToken(accessToken, expirationTime: expirationTime)
-                                return true
-                            }
-                        }
+// 'response_type=token' doesn't allow to refresh later, so using 'code' instead
+//                    if let accessCode = urlParams["access_token"] {
+//                        if let expirationTimeString = urlParams["expires_in"] {
+//                            if let expirationTime = NSTimeInterval(expirationTimeString) {
+//                                didAuthorizeWithToken(accessToken, expirationTime: expirationTime)
+//                                return true
+//                            }
+//                        }
+                    if let accessCode = urlParams["code"] {
+                        didAuthorizeWithToken(accessCode, expirationTime: 7200)
+                        return true
                     }
                 }
             }

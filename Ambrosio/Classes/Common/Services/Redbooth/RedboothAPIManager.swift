@@ -41,7 +41,8 @@ class RedboothAPIManager: APIManagerProtocol {
     
     func getAuthorizationURL() -> NSURL? {
         if let encodedRedirectUri = RedboothAPIManager.encodedRedirectUri() {
-            let url:String = oAuthURL + AuthPath.Authorize.rawValue + "?client_id=\(Config.clientId)&redirect_uri=\(encodedRedirectUri)&response_type=token"
+            // 'response_type=token' doesn't allow to refresh later, so using code
+            let url:String = oAuthURL + AuthPath.Authorize.rawValue + "?client_id=\(Config.clientId)&redirect_uri=\(encodedRedirectUri)&response_type=code"
             return NSURL(string: url)
         }
         return .None
@@ -52,7 +53,6 @@ class RedboothAPIManager: APIManagerProtocol {
         Alamofire.request(.GET, url, parameters: parameters)
             .responseJSON { response in
                 guard response.result.error == nil else {
-                    // got an error in getting the data, need to handle it
                     print(response.result.error!)
                     failure (error: response.result.error!)
                     return
@@ -73,11 +73,13 @@ class RedboothAPIManager: APIManagerProtocol {
                 "grant_type": "authorization_code",
                 "redirect_uri": encodedRedirectUri
             ]
-            let url = oAuthURL + AuthPath.Token.rawValue
-            Alamofire.request(.POST, url, parameters: parameters)
+            var url = oAuthURL + AuthPath.Token.rawValue + "?"
+            for (parameter, value) in parameters {
+                url += parameter + "=" + value + "&"
+            }
+            Alamofire.request(.POST, url, parameters: [:])
                 .responseJSON { response in
                     guard response.result.error == nil else {
-                        // got an error in getting the data, need to handle it
                         print(response.result.error!)
                         failure (error: response.result.error!)
                         return
