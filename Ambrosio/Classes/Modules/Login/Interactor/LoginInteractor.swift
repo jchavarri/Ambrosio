@@ -13,13 +13,21 @@ class LoginInteractor: LoginInteractorInputProtocol
     weak var presenter: LoginInteractorOutputProtocol?
     var dataManager: LoginDataManager?
     
-    func login() {
+    func fetchInitialData() {
         if let dataManager = dataManager {
             if dataManager.isLogged() {
-                //dataManager.requestTaskList()
                 print("islogged");
+                //Fetch task list
             }
-            else if dataManager.hasAccessToken() {
+            else if dataManager.hasAuthToken() {
+                dataManager.getAccessToken({ (error) -> () in
+                    if (error == nil) {
+                        print("error")
+                    }
+                    else {
+                        print("ok")
+                    }
+                })
                 //        self.APIDataManager?.login({ [weak self] (error: NSError?, credentials: TwitterLoginItem?) -> () in
                 //            if (credentials != nil) {
                 //                self?.localDatamanager?.persistUserCredentials(credentials: credentials!)
@@ -32,9 +40,9 @@ class LoginInteractor: LoginInteractorInputProtocol
                 //        })
                 
             }
-            else {
-                presenter?.startExternalAuthProcessWithUrl(dataManager.getAccessURL())
-            }
         }
+    }
+    func login() {
+        presenter?.startExternalAuthProcessWithUrl(dataManager?.getAuthorizationURL())
     }
 }

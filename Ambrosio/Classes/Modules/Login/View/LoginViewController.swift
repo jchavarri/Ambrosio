@@ -14,16 +14,22 @@ class LoginViewController: UIViewController, LoginViewInterface
 
     // MARK: - View lifecycle
 
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureView()
     }
-
-    override func viewWillAppear(animated: Bool)
-    {
+    
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        eventHandler?.updateView()
     }
-
+    
+    func configureView() {
+        // Animate logo elements to go up and down
+    }
+    
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
@@ -46,7 +52,7 @@ class LoginViewController: UIViewController, LoginViewInterface
     // MARK: - Button event handlers
 
     @IBAction func login(sender: UIButton) {
-        eventHandler?.userDidSelectLogin()
+        eventHandler?.didSelectLogin()
     }
 
 }

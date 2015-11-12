@@ -9,6 +9,12 @@
 import Foundation
 import Alamofire
 
+enum AuthPath: String
+{
+    case Authorize      = "authorize"
+    case Token          = "token"
+}
+
 enum Path: String
 {
     case Me             = "me"
@@ -20,9 +26,26 @@ class RedboothAPIManager: APIManagerProtocol {
     typealias NetworkFailureHandler = (error: NSError) -> Void
     
     let apiURL = "https://redbooth.com/api/3/"
-    let oAuthURL = "https://redbooth.com/oauth2/authorize/"
+    let oAuthURL = "https://redbooth.com/oauth2/"
+    
+    var authStore: RedboothAuthStore?
     
     init() { }
+    
+    private static func encodedRedirectUri() -> String? {
+        let redirectUri = Config.redirectUri
+        let allowedCharacters = NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy() as! NSMutableCharacterSet
+        allowedCharacters.removeCharactersInString(":/")
+        return redirectUri.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters)
+    }
+    
+    func getAuthorizationURL() -> NSURL? {
+        if let encodedRedirectUri = RedboothAPIManager.encodedRedirectUri() {
+            let url:String = oAuthURL + AuthPath.Authorize.rawValue + "?client_id=\(Config.clientId)&redirect_uri=\(encodedRedirectUri)&response_type=token"
+            return NSURL(string: url)
+        }
+        return .None
+    }
     
     func requestJSON(path: String, parameters: [String : AnyObject]?, success: NetworkSuccessHandler, failure: NetworkFailureHandler) {
         let url = apiURL + path
@@ -40,23 +63,43 @@ class RedboothAPIManager: APIManagerProtocol {
                 }
         }
     }
-
-    func getAuthorizationURL() -> NSURL? {
-        let redirectUri = Config.redirectUri
-        let allowedCharacters = NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy() as! NSMutableCharacterSet
-        allowedCharacters.removeCharactersInString(":/")
-        if let encodedRedirectUri = redirectUri.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters) {
-            let url:String = oAuthURL + "?client_id=\(Config.clientId)&redirect_uri=\(encodedRedirectUri)&response_type=token"
-            return NSURL(string: url)
+    
+    func postSessionToken(success: NetworkSuccessHandler, failure: NetworkFailureHandler) {
+        if let encodedRedirectUri = RedboothAPIManager.encodedRedirectUri(), accessToken = authStore?.getValidAccessToken() {
+            let parameters = [
+                "client_id": Config.clientId,
+                "client_secret": Config.clientSecret,
+                "code": accessToken,
+                "grant_type": "authorization_code",
+                "redirect_uri": encodedRedirectUri
+            ]
+            let url = oAuthURL + AuthPath.Token.rawValue
+            Alamofire.request(.POST, url, parameters: parameters)
+                .responseJSON { response in
+                    guard response.result.error == nil else {
+                        // got an error in getting the data, need to handle it
+                        print(response.result.error!)
+                        failure (error: response.result.error!)
+                        return
+                    }
+                    
+                    if let value: AnyObject = response.result.value {
+                        success(data: value)
+                    }
+            }
         }
-        return .None
+        else {
+            failure(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: .None))
+        }
     }
     
-    func getUserInfo() {
+    func getUserInfo(success: NetworkSuccessHandler, failure: NetworkFailureHandler) {
         requestJSON(Path.Me.rawValue, parameters: [String: String](), success: { (data) -> () in
-                print(data)
-            }) { (error) -> () in
-                print(error)
+            print(data)
+            success(data: data)
+        }) { (error) -> () in
+            print(error)
+            failure(error: error)
         }
     }
     

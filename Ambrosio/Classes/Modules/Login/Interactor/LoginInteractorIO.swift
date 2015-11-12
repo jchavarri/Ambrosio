@@ -11,6 +11,7 @@ import Foundation
 protocol LoginInteractorInputProtocol {
     // PRESENTER->INTERACTOR
     func login()
+    func fetchInitialData()
 }
 
 protocol LoginInteractorOutputProtocol: class {

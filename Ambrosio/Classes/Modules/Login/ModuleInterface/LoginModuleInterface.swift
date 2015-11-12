@@ -11,8 +11,8 @@ import Foundation
 protocol LoginModuleInterface
 {
     // VIEW -> PRESENTER
-    func userDidSelectLogin()
-
+    func didSelectLogin()
+    func updateView()
 }
 
 protocol LoginModuleDelegate

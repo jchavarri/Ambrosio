@@ -11,6 +11,7 @@ extension RedboothAPIManager {
     internal struct Config {
         internal static let redirectUri = "ambrosio://return-uri"
         internal static let clientId = "<your_redbooth_client_id>"
+        internal static let clientSecret = "<your_redbooth_client_secret>"
     }
 }
 ```

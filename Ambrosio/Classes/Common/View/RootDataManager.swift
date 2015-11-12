@@ -12,7 +12,7 @@ class RootDataManager: NSObject
 {
     var authStore : AuthStoreProtocol?
     
-    func setAccessToken(accessToken: String, accessTokenExpTime: NSTimeInterval) {
-        authStore?.setAccessToken(accessToken, accessTokenExpTime: accessTokenExpTime)
+    func setAuthToken(authToken: String, authTokenExpTime: NSTimeInterval) {
+        authStore?.setAuthToken(authToken, authTokenExpTime: authTokenExpTime)
     }
 }

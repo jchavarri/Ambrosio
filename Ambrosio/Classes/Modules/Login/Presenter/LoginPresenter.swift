@@ -16,7 +16,10 @@ class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProto
 
     // MARK: - LoginModuleInterface methods
     
-    func userDidSelectLogin() {
+    func updateView() {
+        interactor?.fetchInitialData()
+    }
+    func didSelectLogin() {
         interactor?.login()
     }
     

@@ -10,11 +10,11 @@ import Foundation
 
 protocol AuthStoreProtocol {
     
+    func getValidAuthToken() -> String?
     func getValidAccessToken() -> String?
-    func getValidSessionToken() -> String?
     
     func cleanAccount() -> Bool
     
+    func setAuthToken(authToken: String, authTokenExpTime: NSTimeInterval) -> Bool
     func setAccessToken(accessToken: String, accessTokenExpTime: NSTimeInterval) -> Bool
-    func setSessionToken(sessionToken: String, sessionTokenExpTime: NSTimeInterval) -> Bool
 }

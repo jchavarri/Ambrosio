@@ -14,14 +14,6 @@ class LoginDataManager: NSObject
     var apiManager : APIManagerProtocol?
 
     func isLogged() -> Bool {
-        if let _ = authStore?.getValidSessionToken() {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    func hasAccessToken() -> Bool {
         if let _ = authStore?.getValidAccessToken() {
             return true
         }
@@ -29,7 +21,24 @@ class LoginDataManager: NSObject
             return false
         }
     }
-    func getAccessURL() -> NSURL? {
+    func hasAuthToken() -> Bool {
+        if let _ = authStore?.getValidAuthToken() {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    func getAuthorizationURL() -> NSURL? {
         return apiManager?.getAuthorizationURL()
+    }
+    func getAccessToken(completion: (error: NSError?) -> ()) {
+        apiManager?.postSessionToken({ (data) -> Void in
+            print(data)
+            completion(error: nil)
+            },
+            failure: { (error) -> Void in
+                completion(error: error)
+        })
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 
 class AmbrosioAppDependencies: NSObject
 {
+    let authStore           = RedboothAuthStore()
     let loginWireframe      = LoginWireframe()
     let loginPresenter      = LoginPresenter()
     let rootPresenter       = RootPresenter()
@@ -37,6 +38,9 @@ class AmbrosioAppDependencies: NSObject
         // connect wireframes
         rootWireframe.loginWireframe = loginWireframe
         
+        // data_manager -> data_store
+        rootDataManager.authStore = authStore
+        
         // configure delegate
         rootPresenter.rootModuleDelegate = loginPresenter
         
@@ -51,8 +55,8 @@ class AmbrosioAppDependencies: NSObject
     {
         // -----
         // root classes
-        let authStore = RedboothAuthStore()
         let apiManager = RedboothAPIManager()
+        apiManager.authStore = authStore
         // ------------------------------------------------------------------
         // begin Login module
         

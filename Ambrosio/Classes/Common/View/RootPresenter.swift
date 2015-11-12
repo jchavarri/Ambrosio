@@ -37,7 +37,7 @@ class RootPresenter: NSObject, RootModuleInterface
                     if let accessToken = urlParams["access_token"] {
                         if let expirationTimeString = urlParams["expires_in"] {
                             if let expirationTime = NSTimeInterval(expirationTimeString) {
-                                didAllowAccessWithToken(accessToken, expirationTime: expirationTime)
+                                didAuthorizeWithToken(accessToken, expirationTime: expirationTime)
                                 return true
                             }
                         }
@@ -52,11 +52,11 @@ class RootPresenter: NSObject, RootModuleInterface
     }
     
     // MARK: - RootModuleInterface methods
-    func didAllowAccessWithToken(accessToken: String, expirationTime: NSTimeInterval) {
+    func didAuthorizeWithToken(authToken: String, expirationTime: NSTimeInterval) {
         // Make sure the login controller is root
         wireframe?.presentLoginAsRoot()
         
-        if ((dataManager?.setAccessToken(accessToken, accessTokenExpTime: expirationTime)) != nil) {
+        if ((dataManager?.setAuthToken(authToken, authTokenExpTime: expirationTime)) != nil) {
             // Notify delegate
             rootModuleDelegate?.userDidAllowApp()
         }
