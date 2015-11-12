@@ -52,4 +52,4 @@ fastlane/report.xml
 fastlane/screenshots
 
 # API config
-RedboothAPI.Config.swift
+APIService.Config.swift
