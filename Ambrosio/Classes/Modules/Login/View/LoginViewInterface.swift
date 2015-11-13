@@ -10,7 +10,7 @@ import Foundation
 
 protocol LoginViewInterface: class
 {
-    // PRESENTER -> VIEW
+    // presenter -> view
     func showError(let errorMessage: String)
     func showLoading()
     func hideLoading()

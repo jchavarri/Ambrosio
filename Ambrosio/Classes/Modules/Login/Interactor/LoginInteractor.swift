@@ -14,20 +14,23 @@ class LoginInteractor: LoginInteractorInputProtocol
     var apiService: APIService?
     var authService: AuthService?
     
+    private func getTasks() {
+        self.apiService?.getTasks({ (data) -> Void in
+            print(data)
+            self.presenter?.didFinishLogin()
+            }, failure: { (error) -> Void in
+                self.presenter?.showError(error.description)
+        })
+    }
+    
     func fetchInitialData() {
         if let authService = authService {
             if authService.hasAccessToken() {
-                print("islogged");
-                //TODO: Fetch task list
+                getTasks()
             }
             else if authService.hasAuthToken() {
                 authService.postAuthToken({ () -> Void in
-                    self.apiService?.getTasks({ (data) -> Void in
-                        print(data)
-                        self.presenter?.showTaskList()
-                        }, failure: { (error) -> Void in
-                            self.presenter?.showError(error.description)
-                    })
+                    self.getTasks()
                     }, failure: { (error) -> Void in
                         self.presenter?.showError(error.description)
                 })

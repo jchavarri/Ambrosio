@@ -30,16 +30,11 @@ class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProto
     // MARK: - LoginInteractorOutputProtocol methods
     
     func didFinishLogin() {
-        //wireframe.presentListInterface()
-        print("presentListInterface")
+        delegate?.didFinishLogin()
     }
     
     func showError(error:String) {
         userInterface?.showError(error)
-    }
-    
-    func showTaskList() {
-        delegate?.didLoadTaskList()
     }
     
     // MARK: - LoginInteractorOutputProtocol methods

@@ -78,7 +78,7 @@ class RootPresenter: NSObject, RootModuleInterface, LoginModuleDelegate
     }
     
     // MARK: - LoginModuleDelegate methods
-    func didLoadTaskList() {
+    func didFinishLogin() {
         wireframe?.presentTaskListAsRoot()
     }
 }

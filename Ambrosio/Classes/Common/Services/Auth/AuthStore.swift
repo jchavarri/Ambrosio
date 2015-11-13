@@ -122,7 +122,7 @@ class AuthStore: AuthStoreProtocol
         do {
             let expirationDate = NSDate().dateByAddingTimeInterval(accessTokenExpTime)
             if let _ = self.accessToken {
-                try Locksmith.deleteDataForUserAccount(UserAccount.AuthAccountKey)
+                try Locksmith.deleteDataForUserAccount(UserAccount.AccessAccountKey)
                 self.accessToken = nil
                 self.accessTokenExp = nil
                 self.refreshToken = nil

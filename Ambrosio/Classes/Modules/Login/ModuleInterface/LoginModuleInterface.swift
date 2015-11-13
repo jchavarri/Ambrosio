@@ -10,12 +10,7 @@ import Foundation
 
 protocol LoginModuleInterface
 {
-    // VIEW -> PRESENTER
+    // view -> presenter
     func didSelectLogin()
 }
 
-protocol LoginModuleDelegate
-{
-    // MODULE -> OTHER MODULES
-    func didLoadTaskList()
-}

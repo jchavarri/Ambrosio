@@ -9,15 +9,14 @@
 import Foundation
 
 protocol LoginInteractorInputProtocol {
-    // PRESENTER->INTERACTOR
+    // presenter -> interactor
     func startAppAuthorization()
     func fetchInitialData()
 }
 
 protocol LoginInteractorOutputProtocol: class {
-    // INTERACTOR->PRESENTER
+    // interactor -> presenter
     func didFinishLogin()
     func startExternalAuthProcessWithUrl(url:NSURL?)
     func showError(error:String)
-    func showTaskList()
 }
