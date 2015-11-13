@@ -8,10 +8,17 @@
 
 import Foundation
 
+//AuthService is a facade for AuthStore and AuthDataManager
+
 protocol AuthServiceProtocol {
     
-    func getAuthorizationURL() -> NSURL?
+    // Store
+    func hasAccessToken() -> Bool
+    func hasAuthToken() -> Bool
+    func setAuthToken(authToken: String, authTokenExpTime: NSTimeInterval) -> Bool;
 
-    func postAuthToken(success: (data: AccessTokenModel) -> Void, failure: (error: NSError) -> Void)
+    // Data manager
+    func postAuthToken(success: () -> Void, failure: (error: NSError) -> Void)
+    func getAuthorizationURL() -> NSURL?
     
 }

@@ -10,27 +10,56 @@ import Foundation
 
 class AuthService: AuthServiceProtocol {
 
-    let oAuthURL = "https://redbooth.com/oauth2/"
-    var dataManager: AuthDataManager?
-
-    func isLogged() -> Bool {
-        if let _ = dataManager?.getValidAccessToken() {
+    var dataManager: AuthDataManagerProtocol?
+    var store: AuthStoreProtocol?
+    
+    // Store
+    func hasAccessToken() -> Bool {
+        if let _ = store?.getValidAccessToken() {
             return true
         }
         else {
             return false
         }
     }
+    
     func hasAuthToken() -> Bool {
-        if let _ = dataManager?.getValidAuthToken() {
+        if let _ = store?.getValidAuthToken() {
             return true
         }
         else {
             return false
         }
     }
-    func getAuthorizationURL() -> NSURL? {
-        return apiManager?.getAuthorizationURL()
+    
+    func setAuthToken(authToken: String, authTokenExpTime: NSTimeInterval) -> Bool {
+        if let store = store {
+            return store.setAuthToken(authToken, authTokenExpTime: authTokenExpTime)
+        }
+        else {
+            return false
+        }
     }
 
+    
+    // Data manager
+    
+    func getAuthorizationURL() -> NSURL? {
+        return dataManager?.getAuthorizationURL()
+    }
+
+    func postAuthToken(success: () -> Void, failure: (error: NSError) -> Void) {
+        dataManager?.postAuthToken( {(data) -> Void in
+            if let accessToken = data["access_token"].string, refreshToken = data["refresh_token"].string {
+                let expirationDate = data["expires_in"].double ?? 7200
+                // Save to keychain
+                self.store?.setAccessToken(accessToken, accessTokenExpTime: expirationDate, refreshToken: refreshToken)
+                success()
+            }
+            else {
+                failure(error: NSError(domain: NSURLErrorDomain, code: 0, userInfo: [:]))
+            }
+            }, failure: failure)
+    }
+    
 }

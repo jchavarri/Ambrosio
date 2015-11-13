@@ -12,7 +12,7 @@ class RootPresenter: NSObject, RootModuleInterface
 {
 //    var interactor: RootInteractor?
     weak var wireframe: RootWireframe?
-    var dataManager: RootDataManager?
+    var authService: AuthServiceProtocol?
     var rootModuleDelegate: RootModuleDelegate?
     
     private struct UrlSchemes{
@@ -35,7 +35,7 @@ class RootPresenter: NSObject, RootModuleInterface
                             urlParams.updateValue(kv[1], forKey: kv[0])
                         }
                     }
-// 'response_type=token' doesn't allow to refresh later, so using 'code' instead
+// Warning: 'response_type=token' does not allow to refresh later, so using 'code' instead
 //                    if let accessCode = urlParams["access_token"] {
 //                        if let expirationTimeString = urlParams["expires_in"] {
 //                            if let expirationTime = NSTimeInterval(expirationTimeString) {
@@ -59,7 +59,7 @@ class RootPresenter: NSObject, RootModuleInterface
     // MARK: - RootModuleInterface methods
     func didAuthorizeWithToken(authToken: String, expirationTime: NSTimeInterval) {
         // Make sure the login controller is root
-        dataManager?.setAuthToken(authToken, authTokenExpTime: expirationTime)
+        authService?.setAuthToken(authToken, authTokenExpTime: expirationTime)
         wireframe?.presentLoginAsRoot()
         
     }

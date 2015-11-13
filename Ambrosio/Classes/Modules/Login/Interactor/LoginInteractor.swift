@@ -11,22 +11,21 @@ import Foundation
 class LoginInteractor: LoginInteractorInputProtocol
 {
     weak var presenter: LoginInteractorOutputProtocol?
-    var dataManager: LoginDataManager?
+    var apiService: APIService?
+    var authService: AuthService?
     
     func fetchInitialData() {
-        if let dataManager = dataManager {
-            if dataManager.isLogged() {
+        if let authService = authService {
+            if authService.hasAccessToken() {
                 print("islogged");
-                //Fetch task list
+                //TODO: Fetch task list
             }
-            else if dataManager.hasAuthToken() {
+            else if authService.hasAuthToken() {
                 dataManager.getAccessToken({ (error: NSError?) -> () in
                     if (error == nil) {
-                        print("error")
+                        presenter?.showError(error)
                     }
                     else {
-                        dataManager.setAccessToken(<#T##accessToken: String##String#>, accessTokenExpTime: <#T##NSTimeInterval#>)
-                        (authToken, authTokenExpTime: expirationTime)
                         wireframe?.presentLoginAsRoot()
                     }
                 })

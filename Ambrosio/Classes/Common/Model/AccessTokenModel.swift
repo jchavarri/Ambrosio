@@ -14,4 +14,10 @@ public struct AccessTokenModel {
     public var refreshToken: String
     public var expirationDate: NSDate
 
+    init(accessToken: String, refreshToken: String, expirationDate: String) {
+        self.accessToken = accessToken
+        self.refreshToken = refreshToken
+        self.expirationDate = expirationDate
+    }
+
 }

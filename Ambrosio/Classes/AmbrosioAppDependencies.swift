@@ -11,11 +11,10 @@ import UIKit
 
 class AmbrosioAppDependencies: NSObject
 {
-    let authStore           = RedboothAuthStore()
     let loginWireframe      = LoginWireframe()
     let loginPresenter      = LoginPresenter()
     let rootPresenter       = RootPresenter()
-    let rootDataManager     = RootDataManager()
+    let authService = AuthService()
     
     class func initWithWindow(window: UIWindow) -> AmbrosioAppDependencies
     {
@@ -32,17 +31,14 @@ class AmbrosioAppDependencies: NSObject
         rootPresenter.wireframe = rootWireframe
         rootWireframe.presenter = rootPresenter
         
-        // presenter -> data_manager
-        rootPresenter.dataManager = rootDataManager
-        
         // connect wireframes
         rootWireframe.loginWireframe = loginWireframe
         
-        // data_manager -> data_store
-        rootDataManager.authStore = authStore
-        
         // delegate
         rootPresenter.rootModuleDelegate = loginPresenter
+        
+        // services
+        rootPresenter.authService = authService
         
         rootWireframe.presentLoginAsRoot()
     }
@@ -54,15 +50,20 @@ class AmbrosioAppDependencies: NSObject
     func configureDependencies(window: UIWindow)
     {
         // -----
-        // root classes
-        let apiDataManager = APIDataManager()
+        // services
         let apiService = APIService()
+        let apiDataManager = APIDataManager()
         apiService.dataManager = apiDataManager
+        
+        let authDataManager = AuthDataManager()
+        let authStore = AuthStore()
+        authService.dataManager = authDataManager
+        authService.store = authStore
+        authDataManager.store = authStore
         // ------------------------------------------------------------------
         // begin Login module
         
         // instantiate classes
-        let loginDataManager: LoginDataManager  = LoginDataManager()
         let loginInteractor: LoginInteractor    = LoginInteractor()
         
         // presenter <-> wireframe
@@ -73,12 +74,9 @@ class AmbrosioAppDependencies: NSObject
         loginPresenter.interactor = loginInteractor
         loginInteractor.presenter = loginPresenter
         
-        // interactor -> data_manager
-        loginInteractor.dataManager = loginDataManager
-        
-        // data_manager -> data_store
-        loginDataManager.authStore = authStore
-        loginDataManager.apiManager = apiManager
+        // interactor -> services
+        loginInteractor.apiService = apiService
+        loginInteractor.authService = authService
         
         // connect wireframes
         // *** connect more wireframes

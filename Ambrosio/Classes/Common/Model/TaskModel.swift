@@ -12,5 +12,10 @@ public struct TaskModel {
     
     public var id: String
     public var name: String
-    
+
+    init(id: String, name: String) {
+        self.id = id
+        self.name = name
+    }
+
 }

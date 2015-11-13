@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 
 protocol APIDataManagerProtocol {
+ 
     func getUserInfo(success: (data: JSON) -> Void, failure: (error: NSError) -> Void)
     func getTasks(success: (data: JSON) -> Void, failure: (error: NSError) -> Void)
 
