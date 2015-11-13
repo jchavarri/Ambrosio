@@ -8,9 +8,10 @@
 
 import Foundation
 
-class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProtocol, RootModuleDelegate
+class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProtocol
 {
     var interactor: LoginInteractorInputProtocol?
+    var delegate: LoginModuleDelegate?
     weak var wireframe: LoginWireframe?
     weak var userInterface: LoginViewInterface?
 
@@ -33,6 +34,14 @@ class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProto
         print("presentListInterface")
     }
     
+    func showError(error:String) {
+        userInterface?.showError(error)
+    }
+    
+    func showTaskList() {
+        delegate?.didLoadTaskList()
+    }
+    
     // MARK: - LoginInteractorOutputProtocol methods
     
     func startExternalAuthProcessWithUrl(url: NSURL?) {
@@ -45,10 +54,4 @@ class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProto
         }
     }
     
-    // Presenter -> View
-    func showError(let errorMessage: String) {
-        userInterface?.showError(errorMessage);
-    }
-    
-
 }

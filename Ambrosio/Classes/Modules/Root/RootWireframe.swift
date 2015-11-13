@@ -13,6 +13,7 @@ class RootWireframe: NSObject
 {
     var window: UIWindow?
     var loginWireframe:LoginWireframe?
+    var taskListWireframe:TaskListWireframe?
     var presenter: RootPresenter?
     
     init(window: UIWindow)
@@ -21,9 +22,22 @@ class RootWireframe: NSObject
         self.window = window
     }
     
+    func loadLaunchWireframe() {
+        presenter?.loadLaunchWireframe()
+    }
+    
     func presentLoginAsRoot() {
         let navigationController = navigationControllerFromWindow(window!)
         loginWireframe?.presentSelfAsRootForNavigationController(navigationController)
+    }
+    
+    func presentTaskListAsRoot() {
+        let navigationController = navigationControllerFromWindow(window!)
+        taskListWireframe?.presentSelfAsRootForNavigationController(navigationController)
+    }
+    
+    func didAuthorizeApp() {
+        loginWireframe?.didAuthorizeApp()
     }
     
     func showRootViewController(viewController: UIViewController, inWindow: UIWindow) {

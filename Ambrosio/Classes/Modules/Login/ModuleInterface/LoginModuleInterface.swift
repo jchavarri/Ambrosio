@@ -13,3 +13,9 @@ protocol LoginModuleInterface
     // VIEW -> PRESENTER
     func didSelectLogin()
 }
+
+protocol LoginModuleDelegate
+{
+    // MODULE -> OTHER MODULES
+    func didLoadTaskList()
+}

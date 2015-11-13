@@ -20,12 +20,6 @@ class LoginViewController: UIViewController, LoginViewInterface
         configureView()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        eventHandler?.updateView()
-    }
-    
     func configureView() {
         // Animate logo elements to go up and down
     }

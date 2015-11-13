@@ -21,29 +21,20 @@ class LoginInteractor: LoginInteractorInputProtocol
                 //TODO: Fetch task list
             }
             else if authService.hasAuthToken() {
-                dataManager.getAccessToken({ (error: NSError?) -> () in
-                    if (error == nil) {
-                        presenter?.showError(error)
-                    }
-                    else {
-                        wireframe?.presentLoginAsRoot()
-                    }
+                authService.postAuthToken({ () -> Void in
+                    self.apiService?.getTasks({ (data) -> Void in
+                        print(data)
+                        self.presenter?.showTaskList()
+                        }, failure: { (error) -> Void in
+                            self.presenter?.showError(error.description)
+                    })
+                    }, failure: { (error) -> Void in
+                        self.presenter?.showError(error.description)
                 })
-                //        self.APIDataManager?.login({ [weak self] (error: NSError?, credentials: TwitterLoginItem?) -> () in
-                //            if (credentials != nil) {
-                //                self?.localDatamanager?.persistUserCredentials(credentials: credentials!)
-                //                self?.localDatamanager?.setupLocalStorage()
-                //                completion(error: nil)
-                //            }
-                //            else {
-                //                completion(error: error)
-                //            }
-                //        })
-                
             }
         }
     }
     func startAppAuthorization() {
-        presenter?.startExternalAuthProcessWithUrl(dataManager?.getAuthorizationURL())
+        presenter?.startExternalAuthProcessWithUrl(authService?.getAuthorizationURL())
     }
 }

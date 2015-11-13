@@ -1,5 +1,5 @@
 //
-//  LoginWireframe.swift
+//  TaskListWireframe.swift
 //  Ambrosio
 //
 //  Created by Javier Chvarri on 09/11/15.
@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-let LoginViewControllerIdentifier = "LoginViewController"
+let TaskListViewControllerIdentifier = "TaskListViewController"
 
-class LoginWireframe: NSObject
+class TaskListWireframe: NSObject
 {
-    var presenter: LoginPresenter?
-    var viewController: LoginViewController?
+    var presenter: TaskListPresenter?
+    var viewController: TaskListViewController?
 
     func presentSelfAsRootForNavigationController(navigationController: UINavigationController) {
-        let newViewController = loginViewControllerFromStoryboard()
+        let newViewController = taskListViewControllerFromStoryboard()
         newViewController.eventHandler = presenter
         self.viewController = newViewController
         
@@ -28,14 +28,10 @@ class LoginWireframe: NSObject
         navigationController.viewControllers = [newViewController]
     }
     
-    func loginViewControllerFromStoryboard() -> LoginViewController {
+    func taskListViewControllerFromStoryboard() -> TaskListViewController {
         let storyboard = mainStoryboard()
-        let viewController = storyboard.instantiateViewControllerWithIdentifier(LoginViewControllerIdentifier) as! LoginViewController
+        let viewController = storyboard.instantiateViewControllerWithIdentifier(TaskListViewControllerIdentifier) as! TaskListViewController
         return viewController
-    }
-    
-    func launchExternalUrl(url: NSURL) {
-        UIApplication.sharedApplication().openURL(url)
     }
     
     func mainStoryboard() -> UIStoryboard {
@@ -43,8 +39,5 @@ class LoginWireframe: NSObject
         return storyboard
     }
     
-    func didAuthorizeApp() {
-        self.presenter?.didAuthorizeApp()
-    }
 
 }

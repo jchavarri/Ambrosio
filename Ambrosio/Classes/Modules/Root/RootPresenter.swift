@@ -8,12 +8,11 @@
 
 import Foundation
 
-class RootPresenter: NSObject, RootModuleInterface
+class RootPresenter: NSObject, RootModuleInterface, LoginModuleDelegate
 {
 //    var interactor: RootInteractor?
     weak var wireframe: RootWireframe?
     var authService: AuthServiceProtocol?
-    var rootModuleDelegate: RootModuleDelegate?
     
     private struct UrlSchemes{
         static let redboothUrlScheme = "ambrosio"
@@ -56,6 +55,20 @@ class RootPresenter: NSObject, RootModuleInterface
         }
     }
     
+    func loadLaunchWireframe() {
+        if let authService = authService {
+            if authService.hasAccessToken() {
+                wireframe?.presentTaskListAsRoot()
+            }
+            else {
+                wireframe?.presentLoginAsRoot()
+            }
+        }
+        else {
+            wireframe?.presentLoginAsRoot()
+        }
+    }
+    
     // MARK: - RootModuleInterface methods
     func didAuthorizeWithToken(authToken: String, expirationTime: NSTimeInterval) {
         // Make sure the login controller is root
@@ -63,5 +76,9 @@ class RootPresenter: NSObject, RootModuleInterface
         wireframe?.presentLoginAsRoot()
         
     }
-
+    
+    // MARK: - LoginModuleDelegate methods
+    func didLoadTaskList() {
+        wireframe?.presentTaskListAsRoot()
+    }
 }

@@ -11,10 +11,13 @@ import UIKit
 
 class AmbrosioAppDependencies: NSObject
 {
+    let rootPresenter       = RootPresenter()
+    let authService         = AuthService()
+
     let loginWireframe      = LoginWireframe()
     let loginPresenter      = LoginPresenter()
-    let rootPresenter       = RootPresenter()
-    let authService = AuthService()
+    
+    let taskListWireframe   = TaskListWireframe()
     
     class func initWithWindow(window: UIWindow) -> AmbrosioAppDependencies
     {
@@ -33,14 +36,15 @@ class AmbrosioAppDependencies: NSObject
         
         // connect wireframes
         rootWireframe.loginWireframe = loginWireframe
-        
-        // delegate
-        rootPresenter.rootModuleDelegate = loginPresenter
+        rootWireframe.taskListWireframe = taskListWireframe
         
         // services
         rootPresenter.authService = authService
         
-        rootWireframe.presentLoginAsRoot()
+        // login delegate
+        loginPresenter.delegate = rootPresenter
+        
+        rootWireframe.loadLaunchWireframe()
     }
     
     func handleOpenURL(url: NSURL) -> Bool {
@@ -60,6 +64,35 @@ class AmbrosioAppDependencies: NSObject
         authService.dataManager = authDataManager
         authService.store = authStore
         authDataManager.store = authStore
+
+        // ------------------------------------------------------------------
+        // begin TaskList module
+        
+        // instantiate classes
+        let taskListInteractor: TaskListInteractor    = TaskListInteractor()
+        let taskListPresenter      = TaskListPresenter()
+        
+        // presenter <-> wireframe
+        taskListPresenter.wireframe = taskListWireframe
+        taskListWireframe.presenter = taskListPresenter
+        
+        // presenter <-> interactor
+        taskListPresenter.interactor = taskListInteractor
+        taskListInteractor.presenter = taskListPresenter
+        
+        // interactor -> services
+        taskListInteractor.apiService = apiService
+        taskListInteractor.authService = authService
+        
+        // connect wireframes
+        // *** connect more wireframes
+        
+        // configure delegate
+        // *** add delegate here if needed
+        
+        // end TaskList module
+        // ------------------------------------------------------------------
+
         // ------------------------------------------------------------------
         // begin Login module
         
@@ -86,5 +119,6 @@ class AmbrosioAppDependencies: NSObject
         
         // end Login module
         // ------------------------------------------------------------------
+
     }
 }

@@ -12,8 +12,3 @@ protocol RootModuleInterface {
     // Global events (app level) that are triggered by user actions on the device (for example, opening a link in Mobile Safari)
     func handleOpenURL(url:NSURL) -> Bool
 }
-
-protocol RootModuleDelegate {
-    //The delegate will be listening to app level events
-    func didAuthorizeApp()
-}

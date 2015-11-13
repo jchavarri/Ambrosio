@@ -18,4 +18,6 @@ protocol LoginInteractorOutputProtocol: class {
     // INTERACTOR->PRESENTER
     func didFinishLogin()
     func startExternalAuthProcessWithUrl(url:NSURL?)
+    func showError(error:String)
+    func showTaskList()
 }

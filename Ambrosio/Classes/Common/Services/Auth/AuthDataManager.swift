@@ -28,29 +28,6 @@ class AuthDataManager: AuthDataManagerProtocol {
         return redirectUri.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters)
     }
 
-    //Generic network functions
-    //TODO: requestJSON and postJSON should go into a shared manager
-    
-    func requestJSON(method: Alamofire.Method, path: String, parameters: [String : AnyObject]?, success: (data: JSON) -> Void, failure: (error: NSError) -> Void) {
-        
-        let url = apiURL + path
-        
-        Alamofire.request(method, url, parameters: parameters)
-            .responseJSON { response in
-                guard response.result.error == nil else {
-                    print(response.result.error!)
-                    failure (error: response.result.error!)
-                    return
-                }
-                // If there's no error, value is not nil
-                success(data: JSON(response.result.value!))
-        }
-    }
-    
-    func postJSON(path: String, parameters: [String : AnyObject]?, success: (data: JSON) -> Void, failure: (error: NSError) -> Void) {
-        requestJSON(.POST, path: path, parameters: parameters, success: success, failure: failure)
-    }
-    
     func getAuthorizationURL() -> NSURL? {
         if let encodedRedirectUri = AuthDataManager.encodedRedirectUri() {
             // 'response_type=token' doesn't allow to refresh later, so using code
@@ -63,7 +40,7 @@ class AuthDataManager: AuthDataManagerProtocol {
     // Auth
     
     func postAuthToken(success: (data: JSON) -> Void, failure: (error: NSError) -> Void)  {
-        if let encodedRedirectUri = AuthDataManager.encodedRedirectUri(), accessToken = dataManager?.getValidAuthToken() {
+        if let encodedRedirectUri = AuthDataManager.encodedRedirectUri(), accessToken = store?.getValidAuthToken() {
             let parameters = [
                 "client_id": Config.clientId,
                 "client_secret": Config.clientSecret,
@@ -75,7 +52,16 @@ class AuthDataManager: AuthDataManagerProtocol {
             for (parameter, value) in parameters {
                 url += parameter + "=" + value + "&"
             }
-            postJSON(url, parameters: parameters, success: success, failure: failure)
+            Alamofire.request(.POST, url, parameters: parameters)
+                .responseJSON { response in
+                    guard response.result.error == nil else {
+                        print(response.result.error!)
+                        failure (error: response.result.error!)
+                        return
+                    }
+                    // If there's no error, value is not nil
+                    success(data: JSON(response.result.value!))
+            }
         }
         else {
             failure(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: .None))
