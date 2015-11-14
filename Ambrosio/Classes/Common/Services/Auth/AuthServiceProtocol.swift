@@ -14,6 +14,7 @@ protocol AuthServiceProtocol {
     
     // Store
     func hasAccessToken() -> Bool
+    func getAccessToken() -> String?
     func hasAuthToken() -> Bool
     func setAuthToken(authToken: String, authTokenExpTime: NSTimeInterval) -> Bool;
 

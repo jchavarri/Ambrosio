@@ -11,17 +11,20 @@ import UIKit
 class LoginViewController: UIViewController, LoginViewInterface
 {
     var eventHandler: LoginModuleInterface?
-
+    @IBOutlet weak var loader: UIActivityIndicatorView?
+    
     // MARK: - View lifecycle
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        eventHandler?.updateView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
-    }
-    
-    func configureView() {
-        // Animate logo elements to go up and down
     }
     
     override func viewDidAppear(animated: Bool)
@@ -29,18 +32,25 @@ class LoginViewController: UIViewController, LoginViewInterface
         super.viewDidAppear(animated)
     }
 
+    func configureView() {
+        loader?.hidden = true
+        // Animate logo elements to go up and down
+    }
+    
     // MARK: - LoginViewInterface methods
 
     func showError(let errorMessage: String) {
         //TODO
     }
     
-    func showLoading() {
-        //TODO
+    func showLoader() {
+        loader?.hidden = false
+        loader?.startAnimating()
     }
     
-    func hideLoading() {
-        //TODO
+    func hideLoader() {
+        loader?.stopAnimating()
+        loader?.hidden = true
     }
 
     // MARK: - Button event handlers

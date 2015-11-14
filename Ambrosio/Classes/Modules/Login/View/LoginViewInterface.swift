@@ -12,7 +12,7 @@ protocol LoginViewInterface: class
 {
     // presenter -> view
     func showError(let errorMessage: String)
-    func showLoading()
-    func hideLoading()
+    func showLoader()
+    func hideLoader()
 
 }

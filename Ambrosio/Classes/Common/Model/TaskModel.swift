@@ -10,10 +10,10 @@ import Foundation
 
 public struct TaskModel {
     
-    public var id: String
-    public var name: String
+    public var id: Int
+    public var name: String?
 
-    init(id: String, name: String) {
+    init(id: Int, name: String?) {
         self.id = id
         self.name = name
     }

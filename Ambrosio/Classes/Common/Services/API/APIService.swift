@@ -33,9 +33,17 @@ class APIService {
     
     func getTasks(success: (data: [TaskModel]) -> Void, failure: (error: NSError) -> Void) {
         dataManager?.getTasks({ (data) -> Void in
-            //TODO:
-            //   success(data: userInfo)
-            print("getTasks")
+            var tasks = [TaskModel]()
+            for taskData in data.arrayValue {
+                if let taskId = taskData["id"].int {
+                    let task = TaskModel(
+                        id: taskId,
+                        name: taskData["name"].string)
+                    tasks.append(task)
+                }
+            }
+            success(data: tasks)
+            print(data)
             }, failure: failure)
     }
 }

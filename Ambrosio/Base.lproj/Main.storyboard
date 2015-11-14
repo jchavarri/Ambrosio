@@ -17,16 +17,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8E-4r-1yH">
-                                <rect key="frame" x="296" y="304" width="38" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8E-4r-1yH">
+                                <rect key="frame" x="281" y="285" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jF8-6b-Jbh"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="H98-L9-AEZ">
+                                <rect key="frame" x="290" y="398" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="0F8-DU-nsy"/>
+                                    <constraint firstAttribute="width" constant="20" id="c0e-OJ-IrI"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H98-L9-AEZ" firstAttribute="top" secondItem="s8E-4r-1yH" secondAttribute="bottom" constant="83" id="3ve-Dx-3DC"/>
+                            <constraint firstItem="s8E-4r-1yH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7LX-5o-IzG"/>
+                            <constraint firstItem="H98-L9-AEZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lfd-HF-ILt"/>
+                            <constraint firstItem="s8E-4r-1yH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q8X-Pn-i5L"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loader" destination="H98-L9-AEZ" id="Vfl-9E-zNU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

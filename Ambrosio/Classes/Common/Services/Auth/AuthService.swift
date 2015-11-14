@@ -14,6 +14,7 @@ class AuthService: AuthServiceProtocol {
     var store: AuthStoreProtocol?
     
     // Store
+    
     func hasAccessToken() -> Bool {
         if let _ = store?.getValidAccessToken() {
             return true
@@ -21,6 +22,10 @@ class AuthService: AuthServiceProtocol {
         else {
             return false
         }
+    }
+    
+    func getAccessToken() -> String? {
+        return store?.getValidAccessToken()
     }
     
     func hasAuthToken() -> Bool {

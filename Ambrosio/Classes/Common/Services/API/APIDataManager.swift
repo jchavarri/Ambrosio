@@ -31,7 +31,11 @@ class APIDataManager {
         
         let url = apiURL + path
         
-        Alamofire.request(method, url, parameters: parameters)
+        var requestParameters = parameters!
+        if let authService = authService, accessToken = authService.getAccessToken() {
+            requestParameters["access_token"] = accessToken
+        }
+        Alamofire.request(method, url, parameters: requestParameters)
             .responseJSON { response in
                 guard response.result.error == nil else {
                     print(response.result.error!)

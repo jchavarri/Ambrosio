@@ -11,7 +11,7 @@ import Foundation
 protocol LoginInteractorInputProtocol {
     // presenter -> interactor
     func startAppAuthorization()
-    func fetchInitialData()
+    func fetchInitialData(didEndFetching:()->Void)
 }
 
 protocol LoginInteractorOutputProtocol: class {

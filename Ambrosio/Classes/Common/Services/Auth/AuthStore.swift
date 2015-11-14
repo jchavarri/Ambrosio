@@ -74,7 +74,7 @@ class AuthStore: AuthStoreProtocol
             if let accessToken = authAccountDict[AuthAttribute.AccessToken.rawValue] as? String
             {
                 if let expiration = authAccountDict[AuthAttribute.AccessTokenExp.rawValue] as? NSDate {
-                    if expiration.timeIntervalSinceNow.isSignMinus {
+                    if !expiration.timeIntervalSinceNow.isSignMinus {
                         returnValue = accessToken
                     }
                 }

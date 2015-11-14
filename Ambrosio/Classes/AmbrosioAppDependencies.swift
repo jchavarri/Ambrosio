@@ -57,6 +57,7 @@ class AmbrosioAppDependencies: NSObject
         // services
         let apiService = APIService()
         let apiDataManager = APIDataManager()
+        apiDataManager.authService = authService
         apiService.dataManager = apiDataManager
         
         let authDataManager = AuthDataManager()

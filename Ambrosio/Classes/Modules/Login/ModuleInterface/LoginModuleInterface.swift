@@ -12,5 +12,6 @@ protocol LoginModuleInterface
 {
     // view -> presenter
     func didSelectLogin()
+    func updateView()
 }
 
