@@ -13,4 +13,5 @@ protocol AddAlarmModuleInterface
     // VIEW -> PRESENTER
     func cancelAddAction()
     func saveAddActionWithName(name: NSString)
+    func updateView()
 }

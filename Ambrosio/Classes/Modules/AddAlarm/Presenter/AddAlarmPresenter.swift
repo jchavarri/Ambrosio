@@ -14,6 +14,7 @@ class AddAlarmPresenter: NSObject, AddAlarmModuleInterface, AddAlarmInteractorOu
     weak var wireframe: AddAlarmWireframe?
     weak var userInterface: AddAlarmViewInterface?
     var addModuleDelegate : AddAlarmModuleDelegate?
+    var task: TaskModel?
     
     // MARK: - AddAlarmModuleInterface methods
     func cancelAddAction() {
@@ -26,9 +27,15 @@ class AddAlarmPresenter: NSObject, AddAlarmModuleInterface, AddAlarmInteractorOu
         wireframe?.dismissAddInterface()
         addModuleDelegate?.addAlarmModuleDidSaveAction()
     }
+
+    func updateView() {
+        if let taskNameString = task?.name {
+            userInterface?.updateTaskName(taskNameString)
+        }
+    }
     
-    
-    func configureUserInterfaceForPresentation(addViewUserInterface: AddAlarmViewInterface) {
+    func configureUserInterfaceForPresentation(addViewUserInterface: AddAlarmViewInterface, task: TaskModel) {
+        self.task = task
     }
     
     // MARK: - AddAlarmInteractorOutputProtocol methods

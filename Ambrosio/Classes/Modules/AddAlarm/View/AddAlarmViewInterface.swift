@@ -11,4 +11,5 @@ import Foundation
 protocol AddAlarmViewInterface: class
 {
     // PRESENTER -> VIEW
+    func updateTaskName(taskName: String)
 }

@@ -19,11 +19,9 @@ class TaskListPresenter: NSObject, TaskListModuleInterface, TaskListInteractorOu
         interactor?.findTasks()
     }
     
-    func addNewAlarm() {
-        wireframe?.presentAddInterface()
+    func addNewAlarm(task: TaskModel) {
+        wireframe?.presentAddInterface(task)
     }
-    
-    
     
     
     // MARK: - TaskListInteractorOutputProtocol methods

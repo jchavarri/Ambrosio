@@ -12,12 +12,13 @@ var AddAlarmCellIdentifier = "AddAlarmCell"
 
 class AddAlarmViewController: UIViewController, AddAlarmViewInterface {
     var eventHandler: AddAlarmModuleInterface?
+    @IBOutlet weak var taskName : UILabel?
     
     // MARK: - View lifecycle
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        eventHandler?.updateView()
     }
     
     override func viewDidLoad() {
@@ -34,6 +35,10 @@ class AddAlarmViewController: UIViewController, AddAlarmViewInterface {
     func configureView() {
     }
     
+    deinit {
+        print("DEINT")
+    }
+    
     // Actions
     @IBAction func cancel(sender: AnyObject) {
         eventHandler?.cancelAddAction()
@@ -44,7 +49,10 @@ class AddAlarmViewController: UIViewController, AddAlarmViewInterface {
         eventHandler?.saveAddActionWithName("test")
     }
     
-
+    // MARK: - AddAlarmViewInterface
+    func updateTaskName(taskNameString: String) {
+        taskName?.text = taskNameString
+    }
 
 
 

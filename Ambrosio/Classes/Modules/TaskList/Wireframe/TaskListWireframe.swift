@@ -34,8 +34,8 @@ class TaskListWireframe: NSObject
         navigationController.setViewControllers([newViewController], animated: false)
     }
     
-    func presentAddInterface() {
-        addAlarmWireframe?.presentAddInterfaceFromViewController(viewController!)
+    func presentAddInterface(task: TaskModel) {
+        addAlarmWireframe?.presentAddInterfaceFromViewController(viewController!, task: task)
     }
     
     func taskListViewControllerFromStoryboard() -> TaskListViewController {

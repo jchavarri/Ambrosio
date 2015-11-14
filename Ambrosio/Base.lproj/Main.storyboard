@@ -163,6 +163,12 @@
                                             <action selector="addAlarm:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="chO-Pl-wXA"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APD-ug-dk7">
+                                        <rect key="frame" x="0.0" y="158" width="242" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -181,6 +187,10 @@
                             <constraint firstItem="naq-1T-pPL" firstAttribute="top" secondItem="UMa-HX-XhR" secondAttribute="bottom" id="tSf-Fb-pad"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="taskName" destination="APD-ug-dk7" id="pSl-QI-Hwg"/>
+                        <outlet property="view" destination="sJd-DD-T28" id="atq-1S-JCJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRh-Wp-hwG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

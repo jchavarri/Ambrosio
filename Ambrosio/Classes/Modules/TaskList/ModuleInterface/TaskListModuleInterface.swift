@@ -11,6 +11,6 @@ import Foundation
 protocol TaskListModuleInterface
 {
     // VIEW -> PRESENTER
-    func addNewAlarm()
+    func addNewAlarm(task: TaskModel)
     func updateView()
 }

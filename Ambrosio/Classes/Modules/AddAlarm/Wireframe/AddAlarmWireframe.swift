@@ -16,16 +16,20 @@ class AddAlarmWireframe: NSObject
     var presenter: AddAlarmPresenter?
     var viewController: AddAlarmViewController?
 
-    func presentAddInterfaceFromViewController(viewController: UIViewController) {
+    func presentAddInterfaceFromViewController(viewController: UIViewController, task: TaskModel) {
         let newViewController = addViewController()
         newViewController.eventHandler = presenter
         newViewController.modalPresentationStyle = .OverCurrentContext
         
-        presenter?.configureUserInterfaceForPresentation(newViewController)
+        presenter?.configureUserInterfaceForPresentation(newViewController, task: task)
         
         viewController.presentViewController(newViewController, animated: true, completion: nil)
         
         self.viewController = newViewController
+    
+        // view <-> presenter
+        self.presenter?.userInterface = self.viewController
+        
     }
     
     func dismissAddInterface() {
