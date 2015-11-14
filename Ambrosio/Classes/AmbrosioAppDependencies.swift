@@ -67,6 +67,35 @@ class AmbrosioAppDependencies: NSObject
         authDataManager.store = authStore
 
         // ------------------------------------------------------------------
+        // begin AddAlarm module
+        
+        // instantiate classes
+        let addAlarmInteractor: AddAlarmInteractor    = AddAlarmInteractor()
+        let addAlarmPresenter: AddAlarmPresenter    = AddAlarmPresenter()
+        let addAlarmWireframe: AddAlarmWireframe   = AddAlarmWireframe()
+        
+        // presenter <-> wireframe
+        addAlarmPresenter.wireframe = addAlarmWireframe
+        addAlarmWireframe.presenter = addAlarmPresenter
+        
+        // presenter <-> interactor
+        addAlarmPresenter.interactor = addAlarmInteractor
+        addAlarmInteractor.presenter = addAlarmPresenter
+        
+        // interactor -> services
+        addAlarmInteractor.apiService = apiService
+        addAlarmInteractor.authService = authService
+        
+        // connect wireframes
+        // *** connect more wireframes
+        
+        // configure delegate
+        // *** add delegate here if needed
+        
+        // end AddAlarm module
+        // ------------------------------------------------------------------
+        
+        // ------------------------------------------------------------------
         // begin TaskList module
         
         // instantiate classes
@@ -86,7 +115,7 @@ class AmbrosioAppDependencies: NSObject
         taskListInteractor.authService = authService
         
         // connect wireframes
-        // *** connect more wireframes
+        taskListWireframe.addAlarmWireframe = addAlarmWireframe
         
         // configure delegate
         // *** add delegate here if needed

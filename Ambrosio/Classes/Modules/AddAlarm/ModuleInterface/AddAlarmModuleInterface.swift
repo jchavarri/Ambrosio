@@ -1,5 +1,5 @@
 //
-//  TaskListModuleInterface.swift
+//  AddAlarmModuleInterface.swift
 //  Ambrosio
 //
 //  Created by Javier Chvarri on 09/11/15.
@@ -8,9 +8,8 @@
 
 import Foundation
 
-protocol TaskListModuleInterface
+protocol AddAlarmModuleInterface
 {
     // VIEW -> PRESENTER
-    func addNewAlarm()
     func updateView()
 }

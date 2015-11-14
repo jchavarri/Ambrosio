@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -60,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="265" y="312"/>
+            <point key="canvasLocation" x="-83" y="312"/>
         </scene>
         <!--Task List View Controller-->
         <scene sceneID="9sj-eq-7Y9">
@@ -114,6 +115,70 @@
                 </tableView>
             </objects>
             <point key="canvasLocation" x="977" y="312"/>
+        </scene>
+        <!--Add Alarm View Controller-->
+        <scene sceneID="jfZ-TF-r6p">
+            <objects>
+                <viewController storyboardIdentifier="AddAlarmViewController" id="6BJ-v0-nCf" customClass="AddAlarmViewController" customModule="Ambrosio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k0V-kX-FFG"/>
+                        <viewControllerLayoutGuide type="bottom" id="naq-1T-pPL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sJd-DD-T28">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMa-HX-XhR">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IK9-zt-anw">
+                                <rect key="frame" x="179" y="65" width="242" height="419"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXV-oZ-0BZ">
+                                        <rect key="frame" x="152" y="195" width="41" height="30"/>
+                                        <state key="normal" title="Arrive"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68w-rK-tqp">
+                                        <rect key="frame" x="49" y="195" width="40" height="30"/>
+                                        <state key="normal" title="Leave"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqs-eK-lU3">
+                                        <rect key="frame" x="41" y="352" width="48" height="30"/>
+                                        <state key="normal" title="Cancel"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set up the alert for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCx-lr-pVG">
+                                        <rect key="frame" x="49" y="106" width="144" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGq-lY-DFF">
+                                        <rect key="frame" x="172" y="352" width="30" height="30"/>
+                                        <state key="normal" title="OK"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="242" id="rLV-jg-I7y"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="naq-1T-pPL" firstAttribute="top" secondItem="IK9-zt-anw" secondAttribute="bottom" constant="116" id="5aK-3j-F5f"/>
+                            <constraint firstItem="IK9-zt-anw" firstAttribute="centerX" secondItem="sJd-DD-T28" secondAttribute="centerX" id="9d2-3c-b0H"/>
+                            <constraint firstItem="IK9-zt-anw" firstAttribute="top" secondItem="k0V-kX-FFG" secondAttribute="bottom" constant="45" id="Lz1-HG-dcD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UMa-HX-XhR" secondAttribute="trailing" constant="-20" id="eqe-Kk-QcQ"/>
+                            <constraint firstItem="UMa-HX-XhR" firstAttribute="top" secondItem="k0V-kX-FFG" secondAttribute="bottom" constant="-20" id="ih5-ol-qPw"/>
+                            <constraint firstItem="UMa-HX-XhR" firstAttribute="leading" secondItem="sJd-DD-T28" secondAttribute="leadingMargin" constant="-20" id="sqG-Qx-Fkg"/>
+                            <constraint firstItem="naq-1T-pPL" firstAttribute="top" secondItem="UMa-HX-XhR" secondAttribute="bottom" id="tSf-Fb-pad"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dRh-Wp-hwG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1976" y="304"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NS3-sW-Bh2">

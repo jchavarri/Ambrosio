@@ -15,7 +15,8 @@ class TaskListWireframe: NSObject
 {
     var presenter: TaskListPresenter?
     var viewController: TaskListViewController?
-
+    var addAlarmWireframe : AddAlarmWireframe?
+    
     func presentSelfAsRootForNavigationController(navigationController: UINavigationController) {
         let newViewController = taskListViewControllerFromStoryboard()
         newViewController.eventHandler = presenter
@@ -26,11 +27,15 @@ class TaskListWireframe: NSObject
         self.viewController?.eventHandler = self.presenter
         
         let transition = CATransition()
-        transition.duration = 0.625
-        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.duration = 1.0
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         transition.type = kCATransitionFade
         navigationController.view.layer.addAnimation(transition, forKey: "crossFade")
         navigationController.setViewControllers([newViewController], animated: false)
+    }
+    
+    func presentAddInterface() {
+        addAlarmWireframe?.presentAddInterfaceFromViewController(viewController!)
     }
     
     func taskListViewControllerFromStoryboard() -> TaskListViewController {
