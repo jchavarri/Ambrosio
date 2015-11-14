@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TaskListPresenter: NSObject, TaskListModuleInterface, TaskListInteractorOutputProtocol
+class TaskListPresenter: NSObject, TaskListModuleInterface, TaskListInteractorOutputProtocol, AddAlarmModuleDelegate
 {
     var interactor: TaskListInteractorInputProtocol?
     weak var wireframe: TaskListWireframe?
@@ -38,5 +38,14 @@ class TaskListPresenter: NSObject, TaskListModuleInterface, TaskListInteractorOu
 
     
     // MARK: - TaskListInteractorOutputProtocol methods
+
+    // MARK: - AddAlarmModuleDelegate
+    func addAlarmModuleDidCancelAction() {
+        // No action necessary
+    }
+    
+    func addAlarmModuleDidSaveAction() {
+        updateView()
+    }
 
 }

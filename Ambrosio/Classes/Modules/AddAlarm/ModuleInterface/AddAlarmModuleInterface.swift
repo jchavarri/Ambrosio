@@ -11,5 +11,6 @@ import Foundation
 protocol AddAlarmModuleInterface
 {
     // VIEW -> PRESENTER
-    func updateView()
+    func cancelAddAction()
+    func saveAddActionWithName(name: NSString)
 }

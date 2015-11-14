@@ -10,6 +10,8 @@ import Foundation
 
 protocol AddAlarmInteractorInputProtocol {
     // PRESENTER->INTERACTOR
+    func saveNewEntryWithName(name: NSString)
+
 }
 
 protocol AddAlarmInteractorOutputProtocol: class {

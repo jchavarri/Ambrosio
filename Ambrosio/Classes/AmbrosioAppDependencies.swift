@@ -18,6 +18,7 @@ class AmbrosioAppDependencies: NSObject
     let loginPresenter      = LoginPresenter()
     
     let taskListWireframe   = TaskListWireframe()
+    let taskListPresenter      = TaskListPresenter()
     
     class func initWithWindow(window: UIWindow) -> AmbrosioAppDependencies
     {
@@ -90,7 +91,7 @@ class AmbrosioAppDependencies: NSObject
         // *** connect more wireframes
         
         // configure delegate
-        // *** add delegate here if needed
+        addAlarmPresenter.addModuleDelegate = taskListPresenter
         
         // end AddAlarm module
         // ------------------------------------------------------------------
@@ -100,7 +101,6 @@ class AmbrosioAppDependencies: NSObject
         
         // instantiate classes
         let taskListInteractor: TaskListInteractor    = TaskListInteractor()
-        let taskListPresenter      = TaskListPresenter()
         
         // presenter <-> wireframe
         taskListPresenter.wireframe = taskListWireframe

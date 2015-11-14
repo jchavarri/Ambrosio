@@ -18,7 +18,6 @@ class AddAlarmViewController: UIViewController, AddAlarmViewInterface {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        eventHandler?.updateView()
     }
     
     override func viewDidLoad() {
@@ -35,6 +34,17 @@ class AddAlarmViewController: UIViewController, AddAlarmViewInterface {
     func configureView() {
     }
     
+    // Actions
+    @IBAction func cancel(sender: AnyObject) {
+        eventHandler?.cancelAddAction()
+    }
+    
+    // Actions
+    @IBAction func addAlarm(sender: AnyObject) {
+        eventHandler?.saveAddActionWithName("test")
+    }
+    
+
 
 
 

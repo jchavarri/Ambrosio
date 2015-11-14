@@ -146,6 +146,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqs-eK-lU3">
                                         <rect key="frame" x="41" y="352" width="48" height="30"/>
                                         <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancel:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="EJc-QV-2Rj"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set up the alert for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCx-lr-pVG">
                                         <rect key="frame" x="49" y="106" width="144" height="21"/>
@@ -156,6 +159,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGq-lY-DFF">
                                         <rect key="frame" x="172" y="352" width="30" height="30"/>
                                         <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="addAlarm:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="chO-Pl-wXA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

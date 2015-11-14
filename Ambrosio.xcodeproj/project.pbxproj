@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0B44931BF7AE3A004B4F39 /* AddAlarmModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B44921BF7AE3A004B4F39 /* AddAlarmModuleDelegate.swift */; };
 		3B1D40511BF546E700BA6AEB /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D404B1BF546E700BA6AEB /* APIServiceProtocol.swift */; };
 		3B1D40531BF546E700BA6AEB /* APIDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D404D1BF546E700BA6AEB /* APIDataManager.swift */; };
 		3B1D40541BF546E700BA6AEB /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1D404F1BF546E700BA6AEB /* AuthServiceProtocol.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B0B44921BF7AE3A004B4F39 /* AddAlarmModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmModuleDelegate.swift; sourceTree = "<group>"; };
 		3B1D404B1BF546E700BA6AEB /* APIServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
 		3B1D404D1BF546E700BA6AEB /* APIDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDataManager.swift; sourceTree = "<group>"; };
 		3B1D404F1BF546E700BA6AEB /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				3B3FEE661BF7A41900840CE3 /* AddAlarmModuleInterface.swift */,
+				3B0B44921BF7AE3A004B4F39 /* AddAlarmModuleDelegate.swift */,
 			);
 			path = ModuleInterface;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				3B3B3B561BF69129002E1439 /* TaskListWireframe.swift in Sources */,
 				3B3B3B531BF69129002E1439 /* TaskListPresenter.swift in Sources */,
 				3B1D40771BF5582E00BA6AEB /* AuthDataManager.Config.swift in Sources */,
+				3B0B44931BF7AE3A004B4F39 /* AddAlarmModuleDelegate.swift in Sources */,
 				3BCB5AAD1BF1556F00B04516 /* LoginModuleInterface.swift in Sources */,
 				3B1D407D1BF5655100BA6AEB /* AuthDataManagerProtocol.swift in Sources */,
 				3B1D40531BF546E700BA6AEB /* APIDataManager.swift in Sources */,

@@ -13,10 +13,20 @@ class AddAlarmPresenter: NSObject, AddAlarmModuleInterface, AddAlarmInteractorOu
     var interactor: AddAlarmInteractorInputProtocol?
     weak var wireframe: AddAlarmWireframe?
     weak var userInterface: AddAlarmViewInterface?
-
+    var addModuleDelegate : AddAlarmModuleDelegate?
+    
     // MARK: - AddAlarmModuleInterface methods
-    func updateView() {
+    func cancelAddAction() {
+        wireframe?.dismissAddInterface()
+        addModuleDelegate?.addAlarmModuleDidCancelAction()
     }
+    
+    func saveAddActionWithName(name: NSString) {
+        interactor?.saveNewEntryWithName(name)
+        wireframe?.dismissAddInterface()
+        addModuleDelegate?.addAlarmModuleDidSaveAction()
+    }
+    
     
     func configureUserInterfaceForPresentation(addViewUserInterface: AddAlarmViewInterface) {
     }
