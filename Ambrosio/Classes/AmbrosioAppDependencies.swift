@@ -44,7 +44,7 @@ class AmbrosioAppDependencies: NSObject
         // login delegate
         loginPresenter.delegate = rootPresenter
         
-        rootWireframe.loadLaunchWireframe()
+        rootWireframe.presentLoginAsRoot()
     }
     
     func handleOpenURL(url: NSURL) -> Bool {

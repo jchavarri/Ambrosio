@@ -47,25 +47,6 @@ class RootPresenter: NSObject, RootModuleInterface, LoginModuleDelegate
         }
     }
     
-    func loadLaunchWireframe() {
-        if let authService = authService {
-            if authService.hasAccessToken() {
-                wireframe?.presentTaskListAsRoot()
-            }
-            else {
-                // Try to refresh
-                authService.postRefreshToken({ () -> Void in
-                    self.wireframe?.presentTaskListAsRoot()
-                    }, failure: { (error) -> Void in
-                        self.wireframe?.presentLoginAsRoot()
-                })
-            }
-        }
-        else {
-            wireframe?.presentLoginAsRoot()
-        }
-    }
-    
     // MARK: - RootModuleInterface methods
     func didAuthorizeWithToken(authToken: String, expirationTime: NSTimeInterval) {
         authService?.setAuthToken(authToken, authTokenExpTime: expirationTime)

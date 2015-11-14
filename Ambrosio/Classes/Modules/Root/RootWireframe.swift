@@ -22,15 +22,6 @@ class RootWireframe: NSObject
         self.window = window
     }
     
-    func loadLaunchWireframe() {
-//        presenter?.loadLaunchWireframe()
-        presentLoginAsRoot()
-    }
-    
-    deinit {
-        print("DENIGING")
-    }
-
     func presentLoginAsRoot() {
         let navigationController = navigationControllerFromWindow(window!)
         loginWireframe?.presentSelfAsRootForNavigationController(navigationController)
