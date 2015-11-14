@@ -31,21 +31,35 @@
                                     <constraint firstAttribute="width" constant="20" id="c0e-OJ-IrI"/>
                                 </constraints>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Bk-rQ-0g9">
+                                <rect key="frame" x="197" y="364" width="207" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="50z-IP-c1y"/>
+                                    <constraint firstAttribute="width" constant="207" id="xwH-04-aLW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="H98-L9-AEZ" firstAttribute="top" secondItem="s8E-4r-1yH" secondAttribute="bottom" constant="83" id="3ve-Dx-3DC"/>
                             <constraint firstItem="s8E-4r-1yH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7LX-5o-IzG"/>
+                            <constraint firstItem="1Bk-rQ-0g9" firstAttribute="top" secondItem="s8E-4r-1yH" secondAttribute="bottom" constant="49" id="83n-d0-2W3"/>
+                            <constraint firstItem="1Bk-rQ-0g9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hhV-AN-UFh"/>
                             <constraint firstItem="H98-L9-AEZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lfd-HF-ILt"/>
                             <constraint firstItem="s8E-4r-1yH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q8X-Pn-i5L"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="error" destination="1Bk-rQ-0g9" id="8n1-md-LVm"/>
                         <outlet property="loader" destination="H98-L9-AEZ" id="Vfl-9E-zNU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="265" y="312"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NS3-sW-Bh2">

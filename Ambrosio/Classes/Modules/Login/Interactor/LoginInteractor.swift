@@ -20,7 +20,7 @@ class LoginInteractor: LoginInteractorInputProtocol
             self.presenter?.didFinishLogin()
             didEndFetching()
             }, failure: { (error) -> Void in
-                self.presenter?.showError(error.description)
+                self.presenter?.showError(error)
                 didEndFetching()
         })
     }
@@ -34,7 +34,7 @@ class LoginInteractor: LoginInteractorInputProtocol
                 authService.postAuthToken({ () -> Void in
                     self.getTasks(didEndFetching)
                     }, failure: { (error) -> Void in
-                        self.presenter?.showError(error.description)
+                        self.presenter?.showError(error)
                 })
             }
             else {

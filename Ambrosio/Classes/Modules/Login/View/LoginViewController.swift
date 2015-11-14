@@ -12,6 +12,7 @@ class LoginViewController: UIViewController, LoginViewInterface
 {
     var eventHandler: LoginModuleInterface?
     @IBOutlet weak var loader: UIActivityIndicatorView?
+    @IBOutlet weak var error: UILabel?
     
     // MARK: - View lifecycle
 
@@ -34,13 +35,14 @@ class LoginViewController: UIViewController, LoginViewInterface
 
     func configureView() {
         loader?.hidden = true
+        error?.text = ""
         // Animate logo elements to go up and down
     }
     
     // MARK: - LoginViewInterface methods
 
     func showError(let errorMessage: String) {
-        //TODO
+        error?.text = errorMessage
     }
     
     func showLoader() {
@@ -56,6 +58,7 @@ class LoginViewController: UIViewController, LoginViewInterface
     // MARK: - Button event handlers
 
     @IBAction func login(sender: UIButton) {
+        error?.text = ""
         eventHandler?.didSelectLogin()
     }
 

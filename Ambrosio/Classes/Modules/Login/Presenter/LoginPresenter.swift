@@ -45,9 +45,9 @@ class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProto
         delegate?.didFinishLogin()
     }
     
-    func showError(error:String) {
+    func showError(error:NSError) {
         userInterface?.hideLoader()
-        userInterface?.showError(error)
+        userInterface?.showError(error.localizedDescription)
     }
     
     // MARK: - LoginInteractorOutputProtocol methods

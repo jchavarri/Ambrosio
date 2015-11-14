@@ -18,5 +18,5 @@ protocol LoginInteractorOutputProtocol: class {
     // interactor -> presenter
     func didFinishLogin()
     func startExternalAuthProcessWithUrl(url:NSURL?)
-    func showError(error:String)
+    func showError(error:NSError)
 }
