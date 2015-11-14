@@ -25,7 +25,7 @@ class TaskListWireframe: NSObject
         self.presenter?.userInterface = self.viewController
         self.viewController?.eventHandler = self.presenter
         
-        navigationController.viewControllers = [newViewController]
+        navigationController.setViewControllers([newViewController], animated: true)
     }
     
     func taskListViewControllerFromStoryboard() -> TaskListViewController {
