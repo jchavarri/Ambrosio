@@ -10,8 +10,10 @@ import Foundation
 
 protocol TaskListInteractorInputProtocol {
     // PRESENTER->INTERACTOR
+    func findTasks()
 }
 
 protocol TaskListInteractorOutputProtocol: class {
     // INTERACTOR->PRESENTER
+    func foundTasks(tasks: [TaskModel])
 }

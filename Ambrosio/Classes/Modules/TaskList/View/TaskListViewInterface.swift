@@ -11,5 +11,7 @@ import Foundation
 protocol TaskListViewInterface: class
 {
     // PRESENTER -> VIEW
-
+    func reloadData ()
+    func showTasks(data: [TaskModel])
+    func showNoContentMessage()
 }

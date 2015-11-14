@@ -11,4 +11,5 @@ import Foundation
 protocol TaskListModuleInterface
 {
     // VIEW -> PRESENTER
+    func updateView()
 }

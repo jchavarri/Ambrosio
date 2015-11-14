@@ -14,4 +14,13 @@ class TaskListInteractor: TaskListInteractorInputProtocol
     var apiService: APIService?
     var authService: AuthService?
     
+    func findTasks() {
+        self.apiService?.getTasks({ (data) -> Void in
+            self.presenter?.foundTasks(data)
+            }, failure: { (error) -> Void in
+                //TODO: Handle error
+                self.presenter?.foundTasks([TaskModel]())
+        })
+    }
+
 }

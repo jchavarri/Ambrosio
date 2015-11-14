@@ -15,10 +15,22 @@ class TaskListPresenter: NSObject, TaskListModuleInterface, TaskListInteractorOu
     weak var userInterface: TaskListViewInterface?
 
     // MARK: - TaskListModuleInterface methods
+    func updateView() {
+        interactor?.findTasks()
+    }
+    
     
     
     // MARK: - TaskListInteractorOutputProtocol methods
+    func foundTasks(tasks: [TaskModel]) {
+        if tasks.count == 0 {
+            userInterface?.showNoContentMessage()
+        } else {
+            userInterface?.showTasks(tasks)
+        }
+    }
     
+
     
     // MARK: - TaskListInteractorOutputProtocol methods
 
