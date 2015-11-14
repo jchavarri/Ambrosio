@@ -20,35 +20,67 @@ class APIDataManager {
     
     let apiURL = "https://redbooth.com/api/3/"
     
+    private var cachedTasks = Array<(Response<AnyObject, NSError>?)->Void>()
+    private var isRefreshing = false
     var authService: AuthServiceProtocol?
-    
+
     init() { }
     
     //Generic Network helpers
-    //TODO: This should go into a shared manager
     
-    func requestJSON(method: Alamofire.Method, path: String, parameters: [String : AnyObject]?, success: (data: JSON) -> Void, failure: (error: NSError) -> Void) {
+    private func requestJSON(method: Alamofire.Method, path: String, parameters: [String : AnyObject]?, success: (data: JSON) -> Void, failure: (error: NSError) -> Void) {
         
-        let url = apiURL + path
+        // Store the task just in case it goes wrong
+        let cachedTask: (Response<AnyObject, NSError>?)->Void = { response in
+            guard response?.result.error == nil else {
+                print(response!.result.error!)
+                failure (error: response!.result.error!)
+                return
+            }
+            self.requestJSON(method, path: path, parameters: parameters, success: success, failure: failure)
+        }
+        
+        if self.isRefreshing {
+            self.cachedTasks.append(cachedTask)
+        }
         
         var requestParameters = parameters!
         if let authService = authService, accessToken = authService.getAccessToken() {
             requestParameters["access_token"] = accessToken
         }
+        
+        let url = apiURL + path
+        
         Alamofire.request(method, url, parameters: requestParameters)
+            .validate(statusCode: 200..<300)
             .responseJSON { response in
-                guard response.result.error == nil else {
-                    print(response.result.error!)
-                    failure (error: response.result.error!)
+                switch response.result {
+                case .Success:
+                    success(data: JSON(response.result.value!))
+                case .Failure:
+                    self.cachedTasks.append(cachedTask)
+                    self.refreshToken(failure)
                     return
                 }
-                // If there's no error, value is not nil
-                success(data: JSON(response.result.value!))
         }
+        
     }
     
     func getJSON(path: String, parameters: [String : AnyObject]?, success: (data: JSON) -> Void, failure: (error: NSError) -> Void) {
         requestJSON(.GET, path: path, parameters: parameters, success: success, failure: failure)
+    }
+    
+    func refreshToken(failure: (error: NSError) -> Void) {
+        self.isRefreshing = true
+        
+        // Make the refresh call and run the following in the success closure to restart the cached tasks
+        authService?.postRefreshToken({ () -> Void in
+            let cachedTaskCopy = self.cachedTasks
+            self.cachedTasks.removeAll()
+            cachedTaskCopy.map { $0(nil) }
+            
+            self.isRefreshing = false
+            }, failure: failure)
     }
     
     // User

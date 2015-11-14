@@ -12,6 +12,7 @@ protocol AuthStoreProtocol {
 
     func getValidAuthToken() -> String?
     func getValidAccessToken() -> String?
+    func getRefreshToken() -> String?
     
     func cleanAccount() -> Bool
     

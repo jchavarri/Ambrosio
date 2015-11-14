@@ -66,18 +66,30 @@ class AuthStore: AuthStoreProtocol
     /**
      Returns a valid access token if there's any
      
-     :returns: Auth token if the app has a valid access token, .None ioc
+     :returns: Access token if the app has a valid access token, .None ioc
      */
     func getValidAccessToken() -> String? {
         var returnValue:String? = .None
         if let authAccountDict = Locksmith.loadDataForUserAccount(UserAccount.AccessAccountKey) {
             if let accessToken = authAccountDict[AuthAttribute.AccessToken.rawValue] as? String
             {
-                if let expiration = authAccountDict[AuthAttribute.AccessTokenExp.rawValue] as? NSDate {
-                    if !expiration.timeIntervalSinceNow.isSignMinus {
-                        returnValue = accessToken
-                    }
-                }
+                returnValue = accessToken
+            }
+        }
+        return returnValue
+    }
+    
+    /**
+     Returns a valid refresh token if there's any
+     
+     :returns: Refresh token if the app has a valid refresh token, .None ioc
+     */
+    func getRefreshToken() -> String? {
+        var returnValue:String? = .None
+        if let authAccountDict = Locksmith.loadDataForUserAccount(UserAccount.AccessAccountKey) {
+            if let refreshToken = authAccountDict[AuthAttribute.RefreshToken.rawValue] as? String
+            {
+                returnValue = refreshToken
             }
         }
         return returnValue

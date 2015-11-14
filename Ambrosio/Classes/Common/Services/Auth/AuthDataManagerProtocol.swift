@@ -14,5 +14,6 @@ protocol AuthDataManagerProtocol {
     func getAuthorizationURL() -> NSURL?
     
     func postAuthToken(success: (data: JSON) -> Void, failure: (error: NSError) -> Void)
+    func postRefreshToken(success: (data: JSON) -> Void, failure: (error: NSError) -> Void)
     
 }

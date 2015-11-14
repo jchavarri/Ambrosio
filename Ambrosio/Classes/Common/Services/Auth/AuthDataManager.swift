@@ -37,6 +37,20 @@ class AuthDataManager: AuthDataManagerProtocol {
         return .None
     }
     
+    // Helpers
+    private func postRequest (url: String, parameters: [String : AnyObject], success: (data: JSON) -> Void, failure: (error: NSError) -> Void)  {
+        Alamofire.request(.POST, url, parameters: parameters)
+            .responseJSON { response in
+                guard response.result.error == nil else {
+                    print(response.result.error!)
+                    failure (error: response.result.error!)
+                    return
+                }
+                // If there's no error, value is not nil
+                success(data: JSON(response.result.value!))
+            }
+    }
+    
     // Auth
     
     func postAuthToken(success: (data: JSON) -> Void, failure: (error: NSError) -> Void)  {
@@ -52,16 +66,27 @@ class AuthDataManager: AuthDataManagerProtocol {
             for (parameter, value) in parameters {
                 url += parameter + "=" + value + "&"
             }
-            Alamofire.request(.POST, url, parameters: parameters)
-                .responseJSON { response in
-                    guard response.result.error == nil else {
-                        print(response.result.error!)
-                        failure (error: response.result.error!)
-                        return
-                    }
-                    // If there's no error, value is not nil
-                    success(data: JSON(response.result.value!))
+            postRequest(url, parameters: parameters, success: success, failure: failure)
+        }
+        else {
+            failure(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: .None))
+        }
+    }
+    
+    func postRefreshToken(success: (data: JSON) -> Void, failure: (error: NSError) -> Void)  {
+        if let refreshToken = store?.getRefreshToken() {
+            let parameters = [
+                "client_id": Config.clientId,
+                "client_secret": Config.clientSecret,
+                "refresh_token": refreshToken,
+                "grant_type": "refresh_token"
+            ]
+            var url = oAuthURL + AuthPath.Token.rawValue + "?"
+            for (parameter, value) in parameters {
+                url += parameter + "=" + value + "&"
             }
+            postRequest(url, parameters: parameters, success: success, failure: failure)
+            
         }
         else {
             failure(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: .None))

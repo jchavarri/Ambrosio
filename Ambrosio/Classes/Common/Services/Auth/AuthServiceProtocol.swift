@@ -20,6 +20,7 @@ protocol AuthServiceProtocol {
 
     // Data manager
     func postAuthToken(success: () -> Void, failure: (error: NSError) -> Void)
+    func postRefreshToken(success: () -> Void, failure: (error: NSError) -> Void)
     func getAuthorizationURL() -> NSURL?
     
 }

@@ -53,7 +53,12 @@ class RootPresenter: NSObject, RootModuleInterface, LoginModuleDelegate
                 wireframe?.presentTaskListAsRoot()
             }
             else {
-                wireframe?.presentLoginAsRoot()
+                // Try to refresh
+                authService.postRefreshToken({ () -> Void in
+                    self.wireframe?.presentTaskListAsRoot()
+                    }, failure: { (error) -> Void in
+                        self.wireframe?.presentLoginAsRoot()
+                })
             }
         }
         else {

@@ -7,11 +7,26 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class AuthService: AuthServiceProtocol {
 
     var dataManager: AuthDataManagerProtocol?
     var store: AuthStoreProtocol?
+    
+    // Private helpers
+    
+    private func saveAccessToken(data: JSON) -> Bool {
+        if let accessToken = data["access_token"].string, refreshToken = data["refresh_token"].string {
+            let expirationDate = data["expires_in"].double ?? 7200
+            // Save to keychain
+            self.store?.setAccessToken(accessToken, accessTokenExpTime: expirationDate, refreshToken: refreshToken)
+            return true
+        }
+        else {
+            return false
+        }
+    }
     
     // Store
     
@@ -55,14 +70,22 @@ class AuthService: AuthServiceProtocol {
 
     func postAuthToken(success: () -> Void, failure: (error: NSError) -> Void) {
         dataManager?.postAuthToken( {(data) -> Void in
-            if let accessToken = data["access_token"].string, refreshToken = data["refresh_token"].string {
-                let expirationDate = data["expires_in"].double ?? 7200
-                // Save to keychain
-                self.store?.setAccessToken(accessToken, accessTokenExpTime: expirationDate, refreshToken: refreshToken)
+            if self.saveAccessToken(data) {
                 success()
             }
             else {
-                failure(error: NSError(domain: NSURLErrorDomain, code: 0, userInfo: [:]))
+                failure(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorUserAuthenticationRequired, userInfo: [:]))
+            }
+            }, failure: failure)
+    }
+    
+    func postRefreshToken(success: () -> Void, failure: (error: NSError) -> Void) {
+        dataManager?.postRefreshToken( {(data) -> Void in
+            if self.saveAccessToken(data) {
+                success()
+            }
+            else {
+                failure(error: NSError(domain: NSURLErrorDomain, code: NSURLErrorUserAuthenticationRequired, userInfo: [:]))
             }
             }, failure: failure)
     }
