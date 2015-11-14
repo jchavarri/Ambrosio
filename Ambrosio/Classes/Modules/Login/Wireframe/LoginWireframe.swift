@@ -11,8 +11,8 @@ import UIKit
 
 let LoginViewControllerIdentifier = "LoginViewController"
 
-class LoginWireframe: NSObject
-{
+class LoginWireframe: NSObject {
+    
     var presenter: LoginPresenter?
     var viewController: LoginViewController?
 

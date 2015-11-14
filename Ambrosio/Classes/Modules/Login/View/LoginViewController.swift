@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController, LoginViewInterface
 {
     var eventHandler: LoginModuleInterface?
-    @IBOutlet weak var loader: UIActivityIndicatorView?
+    @IBOutlet weak var redBowImage: UIImageView?
     @IBOutlet weak var error: UILabel?
     
     // MARK: - View lifecycle
@@ -34,8 +34,20 @@ class LoginViewController: UIViewController, LoginViewInterface
     }
 
     func configureView() {
-        loader?.hidden = true
+        redBowImage?.alpha = 0
         error?.text = ""
+        //Red bow animation
+        let spins: Double = 2
+        let duration: Double = 2
+        let animation = CABasicAnimation()
+        animation.keyPath = "transform.rotation.z";
+        animation.fromValue = 0;
+        animation.toValue = (2 * M_PI) * spins;
+        animation.duration = duration;
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.repeatCount = Float.infinity
+        redBowImage?.layer.addAnimation(animation, forKey: "basic")
+
         // Animate logo elements to go up and down
     }
     
@@ -46,13 +58,15 @@ class LoginViewController: UIViewController, LoginViewInterface
     }
     
     func showLoader() {
-        loader?.hidden = false
-        loader?.startAnimating()
+        UIView.animateWithDuration(0.4) { () -> Void in
+            self.redBowImage?.alpha = 1
+        }
     }
     
     func hideLoader() {
-        loader?.stopAnimating()
-        loader?.hidden = true
+        UIView.animateWithDuration(0.4) { () -> Void in
+            self.redBowImage?.alpha = 0
+        }
     }
 
     // MARK: - Button event handlers

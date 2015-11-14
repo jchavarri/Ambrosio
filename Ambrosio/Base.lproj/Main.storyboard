@@ -24,13 +24,6 @@
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jF8-6b-Jbh"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="H98-L9-AEZ">
-                                <rect key="frame" x="290" y="398" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="0F8-DU-nsy"/>
-                                    <constraint firstAttribute="width" constant="20" id="c0e-OJ-IrI"/>
-                                </constraints>
-                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Bk-rQ-0g9">
                                 <rect key="frame" x="197" y="364" width="207" height="87"/>
                                 <constraints>
@@ -41,20 +34,28 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cQk-tN-sVG">
+                                <rect key="frame" x="180" y="344" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.85493321570000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="54N-Ze-5x3"/>
+                                    <constraint firstAttribute="width" constant="240" id="bw6-b1-PA1"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="H98-L9-AEZ" firstAttribute="top" secondItem="s8E-4r-1yH" secondAttribute="bottom" constant="83" id="3ve-Dx-3DC"/>
+                            <constraint firstItem="cQk-tN-sVG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1ob-ds-j0y"/>
                             <constraint firstItem="s8E-4r-1yH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7LX-5o-IzG"/>
                             <constraint firstItem="1Bk-rQ-0g9" firstAttribute="top" secondItem="s8E-4r-1yH" secondAttribute="bottom" constant="49" id="83n-d0-2W3"/>
+                            <constraint firstItem="cQk-tN-sVG" firstAttribute="top" secondItem="s8E-4r-1yH" secondAttribute="bottom" constant="29" id="fME-G4-be0"/>
                             <constraint firstItem="1Bk-rQ-0g9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hhV-AN-UFh"/>
-                            <constraint firstItem="H98-L9-AEZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lfd-HF-ILt"/>
                             <constraint firstItem="s8E-4r-1yH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q8X-Pn-i5L"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="error" destination="1Bk-rQ-0g9" id="8n1-md-LVm"/>
-                        <outlet property="loader" destination="H98-L9-AEZ" id="Vfl-9E-zNU"/>
+                        <outlet property="redBowImage" destination="cQk-tN-sVG" id="anU-Sw-FHV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -112,12 +113,12 @@
                     </connections>
                 </tableView>
             </objects>
-            <point key="canvasLocation" x="969" y="312"/>
+            <point key="canvasLocation" x="977" y="312"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NS3-sW-Bh2">
             <objects>
-                <navigationController id="bMy-to-dxa" sceneMemberID="viewController">
+                <navigationController modalTransitionStyle="crossDissolve" id="bMy-to-dxa" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q19-nN-puO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
