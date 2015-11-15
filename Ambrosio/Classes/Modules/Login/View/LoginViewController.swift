@@ -78,16 +78,19 @@ class LoginViewController: UIViewController, LoginViewInterface
             if let redBowImage = redBowImage {
                 let layer = redBowImage.layer
                 layer.removeAllAnimations()
-                //Red bow animation
-                let duration: Double = 0.4
-                let animation = CABasicAnimation()
-                animation.keyPath = "transform.rotation.z";
-                animation.fromValue = layer.valueForKeyPath(animation.keyPath!)
-                animation.toValue = 0;
-                animation.duration = duration;
-                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-                animation.repeatCount = Float.infinity
-                layer.addAnimation(animation, forKey: "basic")
+                if let presentationLayer = layer.presentationLayer() {
+                    let duration: Double = 0.5
+                    let animation = CABasicAnimation()
+                    animation.keyPath = "transform.rotation.z";
+                    let currentValue = presentationLayer.valueForKeyPath(animation.keyPath!)
+                    //Red bow animation
+                    animation.fromValue = currentValue?.doubleValue
+                    animation.toValue = ceil(currentValue!.doubleValue / M_PI) * M_PI;
+                    animation.duration = duration;
+                    animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+                    animation.repeatCount = 0
+                    layer.addAnimation(animation, forKey: "basic")
+                }
             }
         }
         showLoginButton()
