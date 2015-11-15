@@ -18,15 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8E-4r-1yH">
-                                <rect key="frame" x="281" y="285" width="38" height="30"/>
-                                <state key="normal" title="Login"/>
-                                <connections>
-                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jF8-6b-Jbh"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Bk-rQ-0g9">
-                                <rect key="frame" x="197" y="364" width="207" height="87"/>
+                                <rect key="frame" x="197" y="463" width="207" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="87" id="50z-IP-c1y"/>
                                     <constraint firstAttribute="width" constant="207" id="xwH-04-aLW"/>
@@ -35,28 +28,57 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cQk-tN-sVG">
-                                <rect key="frame" x="180" y="344" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.85493321570000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ambrosio" translatesAutoresizingMaskIntoConstraints="NO" id="zti-u8-sJQ">
+                                <rect key="frame" x="234" y="267" width="131" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="54N-Ze-5x3"/>
-                                    <constraint firstAttribute="width" constant="240" id="bw6-b1-PA1"/>
+                                    <constraint firstAttribute="width" constant="131" id="Dar-v2-FtG"/>
+                                    <constraint firstAttribute="height" constant="34" id="hqm-Yj-gSX"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collar" translatesAutoresizingMaskIntoConstraints="NO" id="QHJ-vI-Ihu">
+                                <rect key="frame" x="262" y="206" width="76" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="76" id="1Jq-4a-Epb"/>
+                                    <constraint firstAttribute="height" constant="47" id="U3e-PE-6dy"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knot tie" translatesAutoresizingMaskIntoConstraints="NO" id="GhC-QS-LBN">
+                                <rect key="frame" x="283" y="230" width="34" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="XuU-wi-wvP"/>
+                                    <constraint firstAttribute="width" constant="34" id="ZgG-f9-rBb"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8E-4r-1yH">
+                                <rect key="frame" x="175" y="372" width="250" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="U7d-Pj-Auf"/>
+                                    <constraint firstAttribute="height" constant="56" id="g5c-hG-MCW"/>
+                                </constraints>
+                                <state key="normal" image="Login button"/>
+                                <connections>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jF8-6b-Jbh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cQk-tN-sVG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1ob-ds-j0y"/>
-                            <constraint firstItem="s8E-4r-1yH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7LX-5o-IzG"/>
-                            <constraint firstItem="1Bk-rQ-0g9" firstAttribute="top" secondItem="s8E-4r-1yH" secondAttribute="bottom" constant="49" id="83n-d0-2W3"/>
-                            <constraint firstItem="cQk-tN-sVG" firstAttribute="top" secondItem="s8E-4r-1yH" secondAttribute="bottom" constant="29" id="fME-G4-be0"/>
+                            <constraint firstItem="GhC-QS-LBN" firstAttribute="top" secondItem="QHJ-vI-Ihu" secondAttribute="bottom" constant="-23" id="H5U-y9-mDS"/>
+                            <constraint firstItem="QHJ-vI-Ihu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="186" id="I1U-du-0I1"/>
+                            <constraint firstItem="zti-u8-sJQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O9m-ko-mje"/>
+                            <constraint firstItem="QHJ-vI-Ihu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pku-fx-zp3"/>
+                            <constraint firstItem="zti-u8-sJQ" firstAttribute="top" secondItem="QHJ-vI-Ihu" secondAttribute="bottom" constant="14" id="QBB-Qs-UgU"/>
                             <constraint firstItem="1Bk-rQ-0g9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hhV-AN-UFh"/>
+                            <constraint firstItem="s8E-4r-1yH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="352" id="kuX-Bt-r1F"/>
                             <constraint firstItem="s8E-4r-1yH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q8X-Pn-i5L"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1Bk-rQ-0g9" secondAttribute="bottom" constant="50" id="w9q-bW-uRV"/>
+                            <constraint firstItem="GhC-QS-LBN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xGV-1c-fEZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="error" destination="1Bk-rQ-0g9" id="8n1-md-LVm"/>
-                        <outlet property="redBowImage" destination="cQk-tN-sVG" id="anU-Sw-FHV"/>
+                        <outlet property="loginButton" destination="s8E-4r-1yH" id="5s8-ce-Kcn"/>
+                        <outlet property="redBowImage" destination="GhC-QS-LBN" id="alG-Mm-DGR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -220,7 +242,7 @@
         <!--Navigation Controller-->
         <scene sceneID="NS3-sW-Bh2">
             <objects>
-                <navigationController modalTransitionStyle="crossDissolve" id="bMy-to-dxa" sceneMemberID="viewController">
+                <navigationController modalTransitionStyle="crossDissolve" navigationBarHidden="YES" id="bMy-to-dxa" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q19-nN-puO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -231,4 +253,10 @@
             <point key="canvasLocation" x="-925" y="762"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Login button" width="250" height="56"/>
+        <image name="ambrosio" width="131" height="34"/>
+        <image name="collar" width="76" height="47"/>
+        <image name="knot tie" width="34" height="22"/>
+    </resources>
 </document>

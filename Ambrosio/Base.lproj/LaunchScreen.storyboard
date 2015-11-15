@@ -16,8 +16,39 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collar" translatesAutoresizingMaskIntoConstraints="NO" id="EWw-qE-nHz">
+                                <rect key="frame" x="262" y="206" width="76" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="76" id="Pj7-ay-7cE"/>
+                                    <constraint firstAttribute="height" constant="47" id="mbN-xR-KdL"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ambrosio" translatesAutoresizingMaskIntoConstraints="NO" id="65K-Kg-4Iz">
+                                <rect key="frame" x="235" y="267" width="131" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Ki1-Y2-QdB"/>
+                                    <constraint firstAttribute="width" constant="131" id="wLt-Og-zWG"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knot tie" translatesAutoresizingMaskIntoConstraints="NO" id="ocn-Di-O6Y">
+                                <rect key="frame" x="283" y="230" width="34" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="BFW-vv-LOC"/>
+                                    <constraint firstAttribute="height" constant="22" id="wJe-gg-CWZ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EWw-qE-nHz" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="186" id="S1G-FO-psC"/>
+                            <constraint firstItem="ocn-Di-O6Y" firstAttribute="top" secondItem="EWw-qE-nHz" secondAttribute="bottom" constant="-23" id="ZPz-Z8-ZSc"/>
+                            <constraint firstItem="65K-Kg-4Iz" firstAttribute="top" secondItem="EWw-qE-nHz" secondAttribute="bottom" constant="14" id="hbr-Gp-Qtb"/>
+                            <constraint firstItem="EWw-qE-nHz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ick-TT-60B"/>
+                            <constraint firstItem="ocn-Di-O6Y" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="yRS-zQ-flQ"/>
+                            <constraint firstItem="65K-Kg-4Iz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zo6-sR-NGd"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25,4 +56,9 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ambrosio" width="131" height="34"/>
+        <image name="collar" width="76" height="47"/>
+        <image name="knot tie" width="34" height="22"/>
+    </resources>
 </document>

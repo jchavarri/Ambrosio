@@ -23,38 +23,41 @@ class LoginPresenter: NSObject, LoginModuleInterface, LoginInteractorOutputProto
     }
     
     func updateView() {
-        userInterface?.showLoader()
-        interactor?.fetchInitialData({ () -> Void in
-            self.userInterface?.hideLoader()
-        })
+        userInterface?.startLoadingProcess()
+        interactor?.fetchInitialData()
     }
     
     // MARK: - RootModuleDelegate methods
     
     func didAuthorizeApp() {
-        userInterface?.showLoader()
-        interactor?.fetchInitialData({ () -> Void in
-            self.userInterface?.hideLoader()
-        })
+        updateView()
     }
     
     // MARK: - LoginInteractorOutputProtocol methods
     
     func didFinishLogin() {
-        userInterface?.hideLoader()
+        userInterface?.stopLoadingProcess()
         delegate?.didFinishLogin()
     }
     
     func showError(error:NSError) {
-        userInterface?.hideLoader()
+        userInterface?.stopLoadingProcess()
         userInterface?.showError(error.localizedDescription)
+    }
+    
+    func showLoginButton() {
+        userInterface?.showLoginButton()
+    }
+    
+    func stopLoadingProcess() {
+        userInterface?.stopLoadingProcess()
     }
     
     // MARK: - LoginInteractorOutputProtocol methods
     
     func startExternalAuthProcessWithUrl(url: NSURL?) {
+        stopLoadingProcess()
         if let url = url {
-            userInterface?.hideLoader()
             wireframe?.launchExternalUrl(url)
         }
         else {

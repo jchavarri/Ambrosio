@@ -10,9 +10,11 @@ import UIKit
 
 class LoginViewController: UIViewController, LoginViewInterface
 {
+    private var isAnimatingLoader:Bool?
     var eventHandler: LoginModuleInterface?
     @IBOutlet weak var redBowImage: UIImageView?
     @IBOutlet weak var error: UILabel?
+    @IBOutlet weak var loginButton: UIButton?
     
     // MARK: - View lifecycle
 
@@ -32,23 +34,16 @@ class LoginViewController: UIViewController, LoginViewInterface
     {
         super.viewDidAppear(animated)
     }
+    
+    //Private methods
+    private func animateLayer() {
+    
+    }
 
     func configureView() {
-        redBowImage?.alpha = 0
         error?.text = ""
-        //Red bow animation
-        let spins: Double = 2
-        let duration: Double = 2
-        let animation = CABasicAnimation()
-        animation.keyPath = "transform.rotation.z";
-        animation.fromValue = 0;
-        animation.toValue = (2 * M_PI) * spins;
-        animation.duration = duration;
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.repeatCount = Float.infinity
-        redBowImage?.layer.addAnimation(animation, forKey: "basic")
-
-        // Animate logo elements to go up and down
+        isAnimatingLoader = false
+        loginButton?.alpha = 0
     }
     
     // MARK: - LoginViewInterface methods
@@ -57,15 +52,50 @@ class LoginViewController: UIViewController, LoginViewInterface
         error?.text = errorMessage
     }
     
-    func showLoader() {
+    func startLoadingProcess() {
+        if isAnimatingLoader == false {
+            isAnimatingLoader = true
+            //Red bow animation
+            let spins: Double = 4
+            let duration: Double = 2
+            let animation = CABasicAnimation()
+            animation.keyPath = "transform.rotation.z";
+            animation.fromValue = 0;
+            animation.toValue = (2 * M_PI) * spins;
+            animation.duration = duration;
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.repeatCount = Float.infinity
+            redBowImage?.layer.addAnimation(animation, forKey: "basic")
+        }
         UIView.animateWithDuration(0.4) { () -> Void in
-            self.redBowImage?.alpha = 1
+            self.loginButton?.alpha = 0
         }
     }
     
-    func hideLoader() {
+    func stopLoadingProcess() {
+        if isAnimatingLoader == true {
+            isAnimatingLoader = false
+            if let redBowImage = redBowImage {
+                let layer = redBowImage.layer
+                layer.removeAllAnimations()
+                //Red bow animation
+                let duration: Double = 0.4
+                let animation = CABasicAnimation()
+                animation.keyPath = "transform.rotation.z";
+                animation.fromValue = layer.valueForKeyPath(animation.keyPath!)
+                animation.toValue = 0;
+                animation.duration = duration;
+                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+                animation.repeatCount = Float.infinity
+                layer.addAnimation(animation, forKey: "basic")
+            }
+        }
+        showLoginButton()
+    }
+    
+    func showLoginButton() {
         UIView.animateWithDuration(0.4) { () -> Void in
-            self.redBowImage?.alpha = 0
+            self.loginButton?.alpha = 1
         }
     }
 
