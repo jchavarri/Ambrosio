@@ -33,10 +33,6 @@ class TaskListPresenter: NSObject, TaskListModuleInterface, TaskListInteractorOu
         }
     }
     
-
-    
-    // MARK: - TaskListInteractorOutputProtocol methods
-
     // MARK: - AddAlarmModuleDelegate
     func addAlarmModuleDidCancelAction() {
         // No action necessary

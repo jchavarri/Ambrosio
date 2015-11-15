@@ -21,6 +21,8 @@ class AddAlarmViewController: UIViewController, AddAlarmViewInterface {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        eventHandler?.updateView()
     }
     
     override func viewDidLoad() {

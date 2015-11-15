@@ -14,5 +14,6 @@ protocol AddAlarmModuleInterface
     func didTapCancel()
     func didTapOk()
     func didSelectWhenArriving()
-    func didSelectWhenLeaving()    
+    func didSelectWhenLeaving()
+    func updateView()
 }

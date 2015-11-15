@@ -54,7 +54,7 @@ class APIService: APIServiceProtocol {
     }
     
     func putTask(task: TaskModel, success: () -> Void, failure: (error: NSError) -> Void) {
-        // Append Ambrosio alarm metadata to the task description
+        // Append Ambrosio alarm status to the task description
         if let descriptionWrapper = descriptionWrapper {
             let wrappedTask = descriptionWrapper.wrapTaskDescription(task)
             dataManager?.putTask(wrappedTask, success: success, failure: failure)

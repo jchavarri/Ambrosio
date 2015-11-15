@@ -18,13 +18,18 @@ class AddAlarmPresenter: NSObject, AddAlarmModuleInterface, AddAlarmInteractorOu
     
     func configureUserInterfaceForPresentation(addViewUserInterface: AddAlarmViewInterface, task: TaskModel) {
         self.task = task
-        if let taskNameString = task.name {
-            userInterface?.updateTaskName(taskNameString)
-        }
-        userInterface?.setupSelectionButtons(task.alarm)
     }
     
     // MARK: - AddAlarmModuleInterface methods
+    
+    func updateView() {
+        if let task = task {
+            if let taskNameString = task.name {
+                userInterface?.updateTaskName(taskNameString)
+            }
+            userInterface?.setupSelectionButtons(task.alarm)
+        }
+    }
     
     func didTapCancel() {
         wireframe?.dismissAddInterface()
