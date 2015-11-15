@@ -16,30 +16,44 @@ class AddAlarmPresenter: NSObject, AddAlarmModuleInterface, AddAlarmInteractorOu
     var addModuleDelegate : AddAlarmModuleDelegate?
     var task: TaskModel?
     
+    func configureUserInterfaceForPresentation(addViewUserInterface: AddAlarmViewInterface, task: TaskModel) {
+        self.task = task
+        if let taskNameString = task.name {
+            userInterface?.updateTaskName(taskNameString)
+        }
+        userInterface?.setupSelectionButtons(task.alarm)
+    }
+    
     // MARK: - AddAlarmModuleInterface methods
-    func cancelAddAction() {
+    
+    func didTapCancel() {
         wireframe?.dismissAddInterface()
         addModuleDelegate?.addAlarmModuleDidCancelAction()
     }
     
-    func saveAddActionWithName(name: NSString) {
-        interactor?.saveNewEntryWithName(name)
-        wireframe?.dismissAddInterface()
-        addModuleDelegate?.addAlarmModuleDidSaveAction()
-    }
-
-    func updateView() {
-        if let taskNameString = task?.name {
-            userInterface?.updateTaskName(taskNameString)
+    func didTapOk() {
+        if let task = task {
+            interactor?.saveNewTask(task)
         }
     }
     
-    func configureUserInterfaceForPresentation(addViewUserInterface: AddAlarmViewInterface, task: TaskModel) {
-        self.task = task
+    func didSelectWhenLeaving() {
+        task?.alarm = .WhenLeaving
+    }
+    
+    func didSelectWhenArriving() {
+        task?.alarm = .WhenArriving
     }
     
     // MARK: - AddAlarmInteractorOutputProtocol methods
     
-    // MARK: - AddAlarmInteractorOutputProtocol methods
-
+    func didSaveAlarm() {
+        wireframe?.dismissAddInterface()
+        addModuleDelegate?.addAlarmModuleDidSaveAction()
+    }
+    
+    func showError(error: NSError) {
+        userInterface?.showError(error.localizedDescription)
+    }
+    
 }

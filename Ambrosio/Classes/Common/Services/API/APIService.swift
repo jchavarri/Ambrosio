@@ -9,9 +9,10 @@
 import Foundation
 import SwiftyJSON
 
-class APIService {
+class APIService: APIServiceProtocol {
     
     var dataManager: APIDataManager?
+    var descriptionWrapper: APITaskDescriptionWrapper?
     
     // User
     
@@ -36,14 +37,27 @@ class APIService {
             var tasks = [TaskModel]()
             for taskData in data.arrayValue {
                 if let taskId = taskData["id"].int {
-                    let task = TaskModel(
+                    var task = TaskModel(
                         id: taskId,
-                        name: taskData["name"].string)
+                        name: taskData["name"].string,
+                        description: taskData["description"].string,
+                        alarm: .Disabled)
+                    //Unwrap description
+                    if let descriptionWrapper = self.descriptionWrapper {
+                        task = descriptionWrapper.unwrapTaskDescription(task)
+                    }
                     tasks.append(task)
                 }
             }
             success(data: tasks)
-            print(data)
             }, failure: failure)
+    }
+    
+    func putTask(task: TaskModel, success: () -> Void, failure: (error: NSError) -> Void) {
+        // Append Ambrosio alarm metadata to the task description
+        if let descriptionWrapper = descriptionWrapper {
+            let wrappedTask = descriptionWrapper.wrapTaskDescription(task)
+            dataManager?.putTask(wrappedTask, success: success, failure: failure)
+        }
     }
 }

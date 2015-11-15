@@ -33,7 +33,6 @@ class APIDataManager {
         // Store the task just in case it goes wrong
         let cachedTask: (Response<AnyObject, NSError>?)->Void = { response in
             guard response?.result.error == nil else {
-                print(response!.result.error!)
                 failure (error: response!.result.error!)
                 return
             }
@@ -94,4 +93,18 @@ class APIDataManager {
         getJSON(Path.Tasks.rawValue, parameters: [String: String](), success: success, failure: failure)
     }
     
+    func putTask(task:TaskModel, success: () -> Void, failure: (error: NSError) -> Void) {
+        let path = Path.Tasks.rawValue + "/" + String(task.id)
+        var parameters = [String:String]()
+        if let name = task.name {
+            parameters["name"] = name
+        }
+        if let description = task.description {
+            parameters["description"] = description
+        }
+        requestJSON(.PUT, path: path, parameters: parameters, success: { (data) -> Void in
+            success()
+            }, failure: failure)
+    }
+
 }

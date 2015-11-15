@@ -58,8 +58,10 @@ class AmbrosioAppDependencies: NSObject
         // services
         let apiService = APIService()
         let apiDataManager = APIDataManager()
+        let apiDescriptionWrapper = APITaskDescriptionWrapper()
         apiDataManager.authService = authService
         apiService.dataManager = apiDataManager
+        apiService.descriptionWrapper = apiDescriptionWrapper
         
         let authDataManager = AuthDataManager()
         let authStore = AuthStore()
@@ -71,9 +73,9 @@ class AmbrosioAppDependencies: NSObject
         // begin AddAlarm module
         
         // instantiate classes
-        let addAlarmInteractor: AddAlarmInteractor    = AddAlarmInteractor()
-        let addAlarmPresenter: AddAlarmPresenter    = AddAlarmPresenter()
-        let addAlarmWireframe: AddAlarmWireframe   = AddAlarmWireframe()
+        let addAlarmInteractor: AddAlarmInteractor = AddAlarmInteractor()
+        let addAlarmPresenter: AddAlarmPresenter = AddAlarmPresenter()
+        let addAlarmWireframe: AddAlarmWireframe = AddAlarmWireframe()
         
         // presenter <-> wireframe
         addAlarmPresenter.wireframe = addAlarmWireframe

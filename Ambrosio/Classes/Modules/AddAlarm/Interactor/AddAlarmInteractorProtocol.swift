@@ -10,10 +10,11 @@ import Foundation
 
 protocol AddAlarmInteractorInputProtocol {
     // PRESENTER->INTERACTOR
-    func saveNewEntryWithName(name: NSString)
-
+    func saveNewTask(task: TaskModel)
 }
 
 protocol AddAlarmInteractorOutputProtocol: class {
     // INTERACTOR->PRESENTER
+    func didSaveAlarm()
+    func showError(error: NSError)
 }

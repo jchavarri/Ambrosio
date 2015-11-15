@@ -33,7 +33,6 @@
 		3B3B3B551BF69129002E1439 /* TaskListViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B3B4C1BF69129002E1439 /* TaskListViewInterface.swift */; };
 		3B3B3B561BF69129002E1439 /* TaskListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B3B4E1BF69129002E1439 /* TaskListWireframe.swift */; };
 		3B3B3B581BF69DF2002E1439 /* LoginModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B3B571BF69DF2002E1439 /* LoginModuleDelegate.swift */; };
-		3B3FEE6E1BF7A41900840CE3 /* AddAlarmDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE611BF7A41900840CE3 /* AddAlarmDataManager.swift */; };
 		3B3FEE6F1BF7A41900840CE3 /* AddAlarmInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE631BF7A41900840CE3 /* AddAlarmInteractor.swift */; };
 		3B3FEE701BF7A41900840CE3 /* AddAlarmInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE641BF7A41900840CE3 /* AddAlarmInteractorProtocol.swift */; };
 		3B3FEE711BF7A41900840CE3 /* AddAlarmModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE661BF7A41900840CE3 /* AddAlarmModuleInterface.swift */; };
@@ -41,6 +40,7 @@
 		3B3FEE731BF7A41900840CE3 /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE6A1BF7A41900840CE3 /* AddAlarmViewController.swift */; };
 		3B3FEE741BF7A41900840CE3 /* AddAlarmViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE6B1BF7A41900840CE3 /* AddAlarmViewInterface.swift */; };
 		3B3FEE751BF7A41900840CE3 /* AddAlarmWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE6D1BF7A41900840CE3 /* AddAlarmWireframe.swift */; };
+		3B8867041BF80CDA003CF1F9 /* APITaskDescriptionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8867031BF80CDA003CF1F9 /* APITaskDescriptionWrapper.swift */; };
 		3B96C9BC1BF15C5E00899BF5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */; };
 		3B96C9BD1BF15C5E00899BF5 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */; };
 		3B96C9BE1BF15C5E00899BF5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */; };
@@ -96,7 +96,6 @@
 		3B3B3B4C1BF69129002E1439 /* TaskListViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListViewInterface.swift; sourceTree = "<group>"; };
 		3B3B3B4E1BF69129002E1439 /* TaskListWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListWireframe.swift; sourceTree = "<group>"; };
 		3B3B3B571BF69DF2002E1439 /* LoginModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleDelegate.swift; sourceTree = "<group>"; };
-		3B3FEE611BF7A41900840CE3 /* AddAlarmDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmDataManager.swift; sourceTree = "<group>"; };
 		3B3FEE631BF7A41900840CE3 /* AddAlarmInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmInteractor.swift; sourceTree = "<group>"; };
 		3B3FEE641BF7A41900840CE3 /* AddAlarmInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmInteractorProtocol.swift; sourceTree = "<group>"; };
 		3B3FEE661BF7A41900840CE3 /* AddAlarmModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmModuleInterface.swift; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		3B3FEE6A1BF7A41900840CE3 /* AddAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		3B3FEE6B1BF7A41900840CE3 /* AddAlarmViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmViewInterface.swift; sourceTree = "<group>"; };
 		3B3FEE6D1BF7A41900840CE3 /* AddAlarmWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmWireframe.swift; sourceTree = "<group>"; };
+		3B8867031BF80CDA003CF1F9 /* APITaskDescriptionWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITaskDescriptionWrapper.swift; sourceTree = "<group>"; };
 		3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
 		3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -166,6 +166,7 @@
 				3B1D405C1BF54B8100BA6AEB /* APIService.swift */,
 				3B1D405E1BF54BC200BA6AEB /* APIDataManagerProtocol.swift */,
 				3B1D404D1BF546E700BA6AEB /* APIDataManager.swift */,
+				3B8867031BF80CDA003CF1F9 /* APITaskDescriptionWrapper.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -260,7 +261,6 @@
 		3B3FEE5F1BF7A41900840CE3 /* AddAlarm */ = {
 			isa = PBXGroup;
 			children = (
-				3B3FEE601BF7A41900840CE3 /* DataManager */,
 				3B3FEE621BF7A41900840CE3 /* Interactor */,
 				3B3FEE651BF7A41900840CE3 /* ModuleInterface */,
 				3B3FEE671BF7A41900840CE3 /* Presenter */,
@@ -268,14 +268,6 @@
 				3B3FEE6C1BF7A41900840CE3 /* Wireframe */,
 			);
 			path = AddAlarm;
-			sourceTree = "<group>";
-		};
-		3B3FEE601BF7A41900840CE3 /* DataManager */ = {
-			isa = PBXGroup;
-			children = (
-				3B3FEE611BF7A41900840CE3 /* AddAlarmDataManager.swift */,
-			);
-			path = DataManager;
 			sourceTree = "<group>";
 		};
 		3B3FEE621BF7A41900840CE3 /* Interactor */ = {
@@ -633,7 +625,6 @@
 			files = (
 				3B1D40511BF546E700BA6AEB /* APIServiceProtocol.swift in Sources */,
 				3B1D405B1BF549F000BA6AEB /* AuthStoreProtocol.swift in Sources */,
-				3B3FEE6E1BF7A41900840CE3 /* AddAlarmDataManager.swift in Sources */,
 				3B3B3B4F1BF69129002E1439 /* TaskListDataManager.swift in Sources */,
 				3B3B3B501BF69129002E1439 /* TaskListInteractor.swift in Sources */,
 				3B3FEE711BF7A41900840CE3 /* AddAlarmModuleInterface.swift in Sources */,
@@ -662,6 +653,7 @@
 				3B1D40551BF546E700BA6AEB /* AuthStore.swift in Sources */,
 				3B1D40751BF54E0A00BA6AEB /* RootWireframe.swift in Sources */,
 				3BCB5AB01BF1556F00B04516 /* LoginViewInterface.swift in Sources */,
+				3B8867041BF80CDA003CF1F9 /* APITaskDescriptionWrapper.swift in Sources */,
 				3B3B3B581BF69DF2002E1439 /* LoginModuleDelegate.swift in Sources */,
 				3B1D405F1BF54BC200BA6AEB /* APIDataManagerProtocol.swift in Sources */,
 				3B3FEE721BF7A41900840CE3 /* AddAlarmPresenter.swift in Sources */,

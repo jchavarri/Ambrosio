@@ -13,12 +13,14 @@ var AddAlarmCellIdentifier = "AddAlarmCell"
 class AddAlarmViewController: UIViewController, AddAlarmViewInterface {
     var eventHandler: AddAlarmModuleInterface?
     @IBOutlet weak var taskName : UILabel?
+    @IBOutlet weak var error : UILabel?
+    @IBOutlet weak var whenArrivingButton : UIButton?
+    @IBOutlet weak var whenLeavingButton : UIButton?
     
     // MARK: - View lifecycle
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        eventHandler?.updateView()
     }
     
     override func viewDidLoad() {
@@ -33,27 +35,48 @@ class AddAlarmViewController: UIViewController, AddAlarmViewInterface {
     }
     
     func configureView() {
-    }
-    
-    deinit {
-        print("DEINT")
+        error?.alpha = 0
     }
     
     // Actions
-    @IBAction func cancel(sender: AnyObject) {
-        eventHandler?.cancelAddAction()
+    @IBAction func didTapCancel(sender: AnyObject) {
+        eventHandler?.didTapCancel()
     }
     
-    // Actions
-    @IBAction func addAlarm(sender: AnyObject) {
-        eventHandler?.saveAddActionWithName("test")
+    @IBAction func didTapOk(sender: AnyObject) {
+        eventHandler?.didTapOk()
+    }
+    
+    @IBAction func didSelectWhenArriving(sender: AnyObject) {
+        eventHandler?.didSelectWhenArriving()
+        whenArrivingButton?.selected = true
+        whenLeavingButton?.selected = false
+    }
+    
+    @IBAction func didSelectWhenLeaving(sender: AnyObject) {
+        eventHandler?.didSelectWhenLeaving()
+        whenLeavingButton?.selected = true
+        whenArrivingButton?.selected = false
     }
     
     // MARK: - AddAlarmViewInterface
     func updateTaskName(taskNameString: String) {
         taskName?.text = taskNameString
     }
+    func setupSelectionButtons(alarmStatus: AlarmStatus) {
+        switch alarmStatus {
+        case .WhenArriving:
+            whenArrivingButton?.selected = true
+        case .WhenLeaving:
+            whenLeavingButton?.selected = true
+        default:
+            break
+        }
+    }
 
-
-
+    func showError(error: String) {
+        UIView.animateWithDuration(0.4) { () -> Void in
+            self.error?.alpha = 1
+        }
+    }
 }

@@ -16,7 +16,6 @@ class LoginInteractor: LoginInteractorInputProtocol
     
     private func getTasks(didEndFetching:()->Void) {
         self.apiService?.getTasks({ (data) -> Void in
-            print(data)
             self.presenter?.didFinishLogin()
             didEndFetching()
             }, failure: { (error) -> Void in

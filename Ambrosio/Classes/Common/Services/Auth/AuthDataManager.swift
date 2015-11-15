@@ -42,7 +42,6 @@ class AuthDataManager: AuthDataManagerProtocol {
         Alamofire.request(.POST, url, parameters: parameters)
             .responseJSON { response in
                 guard response.result.error == nil else {
-                    print(response.result.error!)
                     failure (error: response.result.error!)
                     return
                 }

@@ -21,15 +21,14 @@ class AddAlarmWireframe: NSObject
         newViewController.eventHandler = presenter
         newViewController.modalPresentationStyle = .OverCurrentContext
         
+        // view <-> presenter
+        self.presenter?.userInterface = newViewController
+
         presenter?.configureUserInterfaceForPresentation(newViewController, task: task)
         
         viewController.presentViewController(newViewController, animated: true, completion: nil)
         
         self.viewController = newViewController
-    
-        // view <-> presenter
-        self.presenter?.userInterface = self.viewController
-        
     }
     
     func dismissAddInterface() {

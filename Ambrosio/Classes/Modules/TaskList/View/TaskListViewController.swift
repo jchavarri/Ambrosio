@@ -83,7 +83,7 @@ class TaskListViewController: UITableViewController, TaskListViewInterface {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var task = dataProperty![indexPath.row]
+        let task = dataProperty![indexPath.row]
         eventHandler?.addNewAlarm(task)
     }
 }

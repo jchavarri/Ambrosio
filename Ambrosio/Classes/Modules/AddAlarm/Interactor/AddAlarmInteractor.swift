@@ -14,9 +14,12 @@ class AddAlarmInteractor: AddAlarmInteractorInputProtocol
     var apiService: APIService?
     var authService: AuthService?
     
-    func saveNewEntryWithName(name: NSString) {
-//        let newEntry = TodoItem(dueDate: dueDate, name: name as String)
-//        addDataManager?.addNewEntry(newEntry)
+    func saveNewTask(task: TaskModel) {
+        apiService?.putTask(task, success: { () -> Void in
+            self.presenter?.didSaveAlarm()
+            }, failure: { (error) -> Void in
+                self.presenter?.showError(error)
+        })
     }
 
 

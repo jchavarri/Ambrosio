@@ -12,4 +12,6 @@ protocol AddAlarmViewInterface: class
 {
     // PRESENTER -> VIEW
     func updateTaskName(taskName: String)
+    func setupSelectionButtons(alarmStatus: AlarmStatus)
+    func showError(error: String)
 }

@@ -138,16 +138,28 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXV-oZ-0BZ">
                                         <rect key="frame" x="152" y="195" width="41" height="30"/>
                                         <state key="normal" title="Arrive"/>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.85493321570000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didSelectWhenArriving:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="r4y-AZ-WLW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68w-rK-tqp">
                                         <rect key="frame" x="49" y="195" width="40" height="30"/>
                                         <state key="normal" title="Leave"/>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.85493321570000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didSelectWhenLeaving:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="ovp-SW-Mgz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqs-eK-lU3">
                                         <rect key="frame" x="41" y="352" width="48" height="30"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
-                                            <action selector="cancel:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="EJc-QV-2Rj"/>
+                                            <action selector="didTapCancel:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="gQk-8L-l1S"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set up the alert for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCx-lr-pVG">
@@ -160,7 +172,7 @@
                                         <rect key="frame" x="172" y="352" width="30" height="30"/>
                                         <state key="normal" title="OK"/>
                                         <connections>
-                                            <action selector="addAlarm:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="chO-Pl-wXA"/>
+                                            <action selector="didTapOk:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="fyg-Kw-1X8"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APD-ug-dk7">
@@ -175,6 +187,12 @@
                                     <constraint firstAttribute="width" constant="242" id="rLV-jg-I7y"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuV-gY-0yV">
+                                <rect key="frame" x="179" y="374" width="242" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -188,8 +206,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="error" destination="yuV-gY-0yV" id="QyW-1s-d9z"/>
                         <outlet property="taskName" destination="APD-ug-dk7" id="pSl-QI-Hwg"/>
                         <outlet property="view" destination="sJd-DD-T28" id="atq-1S-JCJ"/>
+                        <outlet property="whenArrivingButton" destination="rXV-oZ-0BZ" id="all-0G-W6q"/>
+                        <outlet property="whenLeavingButton" destination="68w-rK-tqp" id="9Ig-pr-fOG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRh-Wp-hwG" userLabel="First Responder" sceneMemberID="firstResponder"/>
