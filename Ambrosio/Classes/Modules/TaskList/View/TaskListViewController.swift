@@ -23,6 +23,17 @@ class TaskListViewController: UITableViewController, TaskListViewInterface {
         super.viewWillAppear(animated)
         
         eventHandler?.updateView()
+        
+        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.alpha = 0.7
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationItem.titleView = UIImageView.init(image: UIImage.init(named: "tasks navbar"));
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBarHidden = true
     }
     
     override func viewDidLoad() {
@@ -69,15 +80,16 @@ class TaskListViewController: UITableViewController, TaskListViewInterface {
         return 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> TaskListTableViewCell {
         let taskItem = dataProperty![indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(TaskListCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(TaskListCellIdentifier, forIndexPath: indexPath) as! TaskListTableViewCell
         
-        cell.textLabel?.text = taskItem.name;
+        cell.nameLabel?.text = taskItem.name?.uppercaseString;
+        cell.projectLabel?.text = taskItem.project.name
 //        cell.detailTextLabel.text = upcomingItem.dueDate;
 //        cell.imageView.image = UIImage(named: upcomingSection!.imageName)
-        cell.selectionStyle = UITableViewCellSelectionStyle.None;
+        cell.selectionStyle = UITableViewCellSelectionStyle.Gray;
         
         return cell
     }

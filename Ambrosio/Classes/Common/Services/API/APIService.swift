@@ -13,7 +13,7 @@ class APIService: APIServiceProtocol {
     
     var dataManager: APIDataManager?
     var descriptionWrapper: APITaskDescriptionWrapper?
-    
+    var memoryStore: MemoryStore?
     // User
     
     func getUserInfo(success: (data: UserInfoModel) -> Void, failure: (error: NSError) -> Void) {
@@ -36,12 +36,17 @@ class APIService: APIServiceProtocol {
         dataManager?.getTasks({ (data) -> Void in
             var tasks = [TaskModel]()
             for taskData in data.arrayValue {
-                if let taskId = taskData["id"].int {
+                print (taskData)
+                print(taskData["project_id"])
+                if let projectId = taskData["project_id"].int,
+                    project = self.memoryStore?.getProjectWithId(projectId),
+                    taskId = taskData["id"].int {
                     var task = TaskModel(
                         id: taskId,
                         name: taskData["name"].string,
                         description: taskData["description"].string,
-                        alarm: .Disabled)
+                        alarm: .Disabled,
+                        project: project)
                     //Unwrap description
                     if let descriptionWrapper = self.descriptionWrapper {
                         task = descriptionWrapper.unwrapTaskDescription(task)
@@ -50,6 +55,25 @@ class APIService: APIServiceProtocol {
                 }
             }
             success(data: tasks)
+            }, failure: failure)
+    }
+    
+    // Projects
+    
+    func getProjects(success: (data: [ProjectModel]) -> Void, failure: (error: NSError) -> Void) {
+        dataManager?.getProjects({ (data) -> Void in
+            var projects = [ProjectModel]()
+            for projectData in data.arrayValue {
+                if let projectId = projectData["id"].int {
+                    let project = ProjectModel(
+                        id: projectId,
+                        name: projectData["name"].string)
+                    projects.append(project)
+                }
+            }
+            // Update memory store
+            self.memoryStore?.projects = projects
+            success(data: projects)
             }, failure: failure)
     }
     

@@ -13,6 +13,7 @@ protocol APIServiceProtocol {
     
     func getUserInfo(success: (data: UserInfoModel) -> Void, failure: (error: NSError) -> Void)
     func getTasks(success: (data: [TaskModel]) -> Void, failure: (error: NSError) -> Void)
+    func getProjects(success: (data: [ProjectModel]) -> Void, failure: (error: NSError) -> Void)
     func putTask(task: TaskModel, success: () -> Void, failure: (error: NSError) -> Void)
 
 }

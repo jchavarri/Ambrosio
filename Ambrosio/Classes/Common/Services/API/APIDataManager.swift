@@ -14,6 +14,7 @@ enum Path: String
 {
     case Me             = "me"
     case Tasks          = "tasks"
+    case Projects          = "projects"
 }
 
 class APIDataManager {
@@ -106,5 +107,12 @@ class APIDataManager {
             success()
             }, failure: failure)
     }
+
+    // Projects
+    
+    func getProjects(success: (data: JSON) -> Void, failure: (error: NSError) -> Void) {
+        getJSON(Path.Projects.rawValue, parameters: [String: String](), success: success, failure: failure)
+    }
+    
 
 }

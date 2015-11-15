@@ -25,6 +25,8 @@ class AmbrosioAppDependencies: NSObject
     let authDataManager = AuthDataManager()
     let authStore = AuthStore()
     
+    let memoryStore = MemoryStore()
+    
     // Modules
     let rootPresenter       = RootPresenter()
     
@@ -76,14 +78,16 @@ class AmbrosioAppDependencies: NSObject
         apiDataManager.authService = authService
         apiService.dataManager = apiDataManager
         apiService.descriptionWrapper = apiDescriptionWrapper
-        
+        apiService.memoryStore = memoryStore
+
         authService.dataManager = authDataManager
         authService.store = authStore
         authDataManager.store = authStore
         
         locationService.startRangingWithDelegate(notificationService)
         notificationService.apiService = apiService
-
+        
+        
         // ------------------------------------------------------------------
         // begin AddAlarm module
         

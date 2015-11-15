@@ -13,5 +13,6 @@ protocol APIDataManagerProtocol {
  
     func getUserInfo(success: (data: JSON) -> Void, failure: (error: NSError) -> Void)
     func getTasks(success: (data: JSON) -> Void, failure: (error: NSError) -> Void)
+    func getProjects(success: (data: JSON) -> Void, failure: (error: NSError) -> Void)
     func putTask(task: TaskModel, success: () -> Void, failure: (error: NSError) -> Void)
 }

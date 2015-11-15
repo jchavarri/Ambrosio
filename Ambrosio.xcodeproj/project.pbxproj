@@ -40,6 +40,9 @@
 		3B3FEE731BF7A41900840CE3 /* AddAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE6A1BF7A41900840CE3 /* AddAlarmViewController.swift */; };
 		3B3FEE741BF7A41900840CE3 /* AddAlarmViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE6B1BF7A41900840CE3 /* AddAlarmViewInterface.swift */; };
 		3B3FEE751BF7A41900840CE3 /* AddAlarmWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE6D1BF7A41900840CE3 /* AddAlarmWireframe.swift */; };
+		3B85077A1BF8F11A00383B9A /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8507791BF8F11A00383B9A /* TaskListTableViewCell.swift */; };
+		3B85077C1BF8FA4700383B9A /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B85077B1BF8FA4700383B9A /* ProjectModel.swift */; };
+		3B85077E1BF8FAB000383B9A /* MemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B85077D1BF8FAB000383B9A /* MemoryStore.swift */; };
 		3B8867041BF80CDA003CF1F9 /* APITaskDescriptionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8867031BF80CDA003CF1F9 /* APITaskDescriptionWrapper.swift */; };
 		3B8867081BF82AD9003CF1F9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8867071BF82AD9003CF1F9 /* LocationService.swift */; };
 		3B88670D1BF82B0D003CF1F9 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88670C1BF82B0D003CF1F9 /* NotificationService.swift */; };
@@ -105,6 +108,9 @@
 		3B3FEE6A1BF7A41900840CE3 /* AddAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmViewController.swift; sourceTree = "<group>"; };
 		3B3FEE6B1BF7A41900840CE3 /* AddAlarmViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmViewInterface.swift; sourceTree = "<group>"; };
 		3B3FEE6D1BF7A41900840CE3 /* AddAlarmWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmWireframe.swift; sourceTree = "<group>"; };
+		3B8507791BF8F11A00383B9A /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
+		3B85077B1BF8FA4700383B9A /* ProjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		3B85077D1BF8FAB000383B9A /* MemoryStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryStore.swift; sourceTree = "<group>"; };
 		3B8867031BF80CDA003CF1F9 /* APITaskDescriptionWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITaskDescriptionWrapper.swift; sourceTree = "<group>"; };
 		3B8867071BF82AD9003CF1F9 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		3B88670C1BF82B0D003CF1F9 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -252,6 +258,7 @@
 			children = (
 				3B3B3B4B1BF69129002E1439 /* TaskListViewController.swift */,
 				3B3B3B4C1BF69129002E1439 /* TaskListViewInterface.swift */,
+				3B8507791BF8F11A00383B9A /* TaskListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -439,6 +446,7 @@
 			children = (
 				3B1D40601BF54CFE00BA6AEB /* UserInfoModel.swift */,
 				3B1D40621BF54D3F00BA6AEB /* TaskModel.swift */,
+				3B85077B1BF8FA4700383B9A /* ProjectModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -446,6 +454,7 @@
 		3BCB5A8E1BF1556F00B04516 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				3B85077D1BF8FAB000383B9A /* MemoryStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -652,6 +661,7 @@
 			files = (
 				3B1D40511BF546E700BA6AEB /* APIServiceProtocol.swift in Sources */,
 				3B1D405B1BF549F000BA6AEB /* AuthStoreProtocol.swift in Sources */,
+				3B85077E1BF8FAB000383B9A /* MemoryStore.swift in Sources */,
 				3B3B3B4F1BF69129002E1439 /* TaskListDataManager.swift in Sources */,
 				3B3B3B501BF69129002E1439 /* TaskListInteractor.swift in Sources */,
 				3B3FEE711BF7A41900840CE3 /* AddAlarmModuleInterface.swift in Sources */,
@@ -672,11 +682,13 @@
 				3B1D407D1BF5655100BA6AEB /* AuthDataManagerProtocol.swift in Sources */,
 				3B1D40531BF546E700BA6AEB /* APIDataManager.swift in Sources */,
 				3B3B3B521BF69129002E1439 /* TaskListModuleInterface.swift in Sources */,
+				3B85077A1BF8F11A00383B9A /* TaskListTableViewCell.swift in Sources */,
 				3B3B3B551BF69129002E1439 /* TaskListViewInterface.swift in Sources */,
 				3BCB5AA41BF1556F00B04516 /* AmbrosioAppDependencies.swift in Sources */,
 				3B3FEE701BF7A41900840CE3 /* AddAlarmInteractorProtocol.swift in Sources */,
 				3B3B3B541BF69129002E1439 /* TaskListViewController.swift in Sources */,
 				3B1D40731BF54E0A00BA6AEB /* RootModuleInterface.swift in Sources */,
+				3B85077C1BF8FA4700383B9A /* ProjectModel.swift in Sources */,
 				3BCB5AB11BF1556F00B04516 /* LoginWireframe.swift in Sources */,
 				3B1D40551BF546E700BA6AEB /* AuthStore.swift in Sources */,
 				3B1D40751BF54E0A00BA6AEB /* RootWireframe.swift in Sources */,

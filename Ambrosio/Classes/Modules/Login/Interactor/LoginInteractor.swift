@@ -14,8 +14,9 @@ class LoginInteractor: LoginInteractorInputProtocol
     var apiService: APIService?
     var authService: AuthService?
     
-    private func getTasks() {
-        self.apiService?.getTasks({ (data) -> Void in
+    private func getProjects() {
+        //We make some request to make sure we have a valid session to avoid UI glitches
+        self.apiService?.getProjects({ (data) -> Void in
             self.presenter?.didFinishLogin()
             self.presenter?.stopLoadingProcess()
             }, failure: { (error) -> Void in
@@ -27,11 +28,11 @@ class LoginInteractor: LoginInteractorInputProtocol
     func fetchInitialData() {
         if let authService = authService {
             if authService.hasAccessToken() {
-                getTasks()
+                getProjects()
             }
             else if authService.hasAuthToken() {
                 authService.postAuthToken({ () -> Void in
-                    self.getTasks()
+                    self.getProjects()
                     }, failure: { (error) -> Void in
                         self.presenter?.showError(error)
                 })

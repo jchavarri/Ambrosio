@@ -89,6 +89,7 @@
         <scene sceneID="9sj-eq-7Y9">
             <objects>
                 <viewController storyboardIdentifier="TaskListViewController" id="TbY-DR-MQV" customClass="TaskListViewController" customModule="Ambrosio" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="noContentView" destination="pk3-km-SYo" id="U3O-ah-ao7"/>
                         <outlet property="view" destination="4Kz-N3-jBv" id="aBL-ws-Sgj"/>
@@ -100,34 +101,53 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Kz-N3-jBv">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Kz-N3-jBv">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="550"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <prototypes>
-                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TaskListCell" textLabel="9Xd-Ex-Kcc" detailTextLabel="KLj-6A-9CC" style="IBUITableViewCellStyleValue1" id="Bpz-jq-HTU">
-                            <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TaskListCell" rowHeight="100" id="Bpz-jq-HTU" customClass="TaskListTableViewCell" customModule="Ambrosio">
+                            <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bpz-jq-HTU" id="ekd-ZC-BL2">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Xd-Ex-Kcc">
-                                        <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6JS-Tw-ZZN">
+                                        <rect key="frame" x="249" y="25" width="63" height="50"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0e-NJ-Dlh">
+                                        <rect key="frame" x="19" y="25" width="213" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="4cg-XO-FxV"/>
+                                            <constraint firstAttribute="width" constant="213" id="pbi-bJ-ZAJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KLj-6A-9CC">
-                                        <rect key="frame" x="263.5" y="12" width="41.5" height="19.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jl-Hx-FsZ">
+                                        <rect key="frame" x="19" y="54" width="213" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="4A2-Ng-bq7"/>
+                                            <constraint firstAttribute="width" constant="213" id="Lbd-k6-9Nw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" red="0.6705882352941176" green="0.14117647058823529" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </tableViewCellContentView>
+                            <constraints>
+                                <constraint firstItem="M0e-NJ-Dlh" firstAttribute="top" secondItem="Bpz-jq-HTU" secondAttribute="top" constant="25" id="2tt-gs-eIU"/>
+                                <constraint firstItem="M0e-NJ-Dlh" firstAttribute="leading" secondItem="Bpz-jq-HTU" secondAttribute="leading" constant="19" id="xat-Tf-byS"/>
+                            </constraints>
+                            <inset key="separatorInset" minX="19" minY="0.0" maxX="19" maxY="0.0"/>
+                            <connections>
+                                <outlet property="alarmImage" destination="6JS-Tw-ZZN" id="S3W-bp-9P8"/>
+                                <outlet property="nameLabel" destination="M0e-NJ-Dlh" id="uFQ-YS-bNu"/>
+                                <outlet property="projectLabel" destination="4jl-Hx-FsZ" id="UBM-DY-ZWK"/>
+                            </connections>
                         </tableViewCell>
                     </prototypes>
                     <connections>
@@ -246,6 +266,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q19-nN-puO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmk-bp-eIK" userLabel="First Responder" sceneMemberID="firstResponder"/>
