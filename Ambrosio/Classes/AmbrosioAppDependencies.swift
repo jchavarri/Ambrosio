@@ -13,6 +13,8 @@ class AmbrosioAppDependencies: NSObject
 {
     let rootPresenter       = RootPresenter()
     let authService         = AuthService()
+    let locationService     = LocationService()
+    
 
     let loginWireframe      = LoginWireframe()
     let loginPresenter      = LoginPresenter()
@@ -56,6 +58,7 @@ class AmbrosioAppDependencies: NSObject
     {
         // -----
         // services
+        
         let apiService = APIService()
         let apiDataManager = APIDataManager()
         let apiDescriptionWrapper = APITaskDescriptionWrapper()

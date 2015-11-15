@@ -18,10 +18,25 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.jch.Ambrosio</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ambrosio</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -36,16 +51,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLName</key>
-            <string>com.jch.Ambrosio</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>ambrosio</string>
-            </array>
-        </dict>
-    </array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>In order to allow Ambrosio to warn you about the tasks you want to be notified about, this feature needs to be activated</string>
 </dict>
 </plist>

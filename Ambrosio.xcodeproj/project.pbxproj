@@ -41,6 +41,8 @@
 		3B3FEE741BF7A41900840CE3 /* AddAlarmViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE6B1BF7A41900840CE3 /* AddAlarmViewInterface.swift */; };
 		3B3FEE751BF7A41900840CE3 /* AddAlarmWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FEE6D1BF7A41900840CE3 /* AddAlarmWireframe.swift */; };
 		3B8867041BF80CDA003CF1F9 /* APITaskDescriptionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8867031BF80CDA003CF1F9 /* APITaskDescriptionWrapper.swift */; };
+		3B8867081BF82AD9003CF1F9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8867071BF82AD9003CF1F9 /* LocationService.swift */; };
+		3B88670D1BF82B0D003CF1F9 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88670C1BF82B0D003CF1F9 /* NotificationService.swift */; };
 		3B96C9BC1BF15C5E00899BF5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */; };
 		3B96C9BD1BF15C5E00899BF5 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */; };
 		3B96C9BE1BF15C5E00899BF5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */; };
@@ -104,6 +106,8 @@
 		3B3FEE6B1BF7A41900840CE3 /* AddAlarmViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmViewInterface.swift; sourceTree = "<group>"; };
 		3B3FEE6D1BF7A41900840CE3 /* AddAlarmWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAlarmWireframe.swift; sourceTree = "<group>"; };
 		3B8867031BF80CDA003CF1F9 /* APITaskDescriptionWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITaskDescriptionWrapper.swift; sourceTree = "<group>"; };
+		3B8867071BF82AD9003CF1F9 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		3B88670C1BF82B0D003CF1F9 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
 		3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 			children = (
 				3B1D404A1BF546E700BA6AEB /* API */,
 				3B1D404E1BF546E700BA6AEB /* Auth */,
+				3B8867051BF82AC9003CF1F9 /* Location */,
+				3B88670B1BF82B0D003CF1F9 /* Notification */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -311,6 +317,22 @@
 				3B3FEE6D1BF7A41900840CE3 /* AddAlarmWireframe.swift */,
 			);
 			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		3B8867051BF82AC9003CF1F9 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				3B8867071BF82AD9003CF1F9 /* LocationService.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		3B88670B1BF82B0D003CF1F9 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				3B88670C1BF82B0D003CF1F9 /* NotificationService.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		3BA7C1891BF1706100ACC744 /* Frameworks */ = {
@@ -552,6 +574,11 @@
 				TargetAttributes = {
 					3BCB5A5F1BF1554C00B04516 = {
 						CreatedOnToolsVersion = 7.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					3BCB5A731BF1554D00B04516 = {
 						CreatedOnToolsVersion = 7.1;
@@ -629,6 +656,7 @@
 				3B3B3B501BF69129002E1439 /* TaskListInteractor.swift in Sources */,
 				3B3FEE711BF7A41900840CE3 /* AddAlarmModuleInterface.swift in Sources */,
 				3B1D40611BF54CFE00BA6AEB /* UserInfoModel.swift in Sources */,
+				3B8867081BF82AD9003CF1F9 /* LocationService.swift in Sources */,
 				3BCB5AAE1BF1556F00B04516 /* LoginPresenter.swift in Sources */,
 				3B1D40571BF547AE00BA6AEB /* AuthService.swift in Sources */,
 				3BCB5AAF1BF1556F00B04516 /* LoginViewController.swift in Sources */,
@@ -663,6 +691,7 @@
 				3B3FEE6F1BF7A41900840CE3 /* AddAlarmInteractor.swift in Sources */,
 				3B1D405D1BF54B8100BA6AEB /* APIService.swift in Sources */,
 				3BCB5AAC1BF1556F00B04516 /* LoginInteractor.swift in Sources */,
+				3B88670D1BF82B0D003CF1F9 /* NotificationService.swift in Sources */,
 				3B3FEE741BF7A41900840CE3 /* AddAlarmViewInterface.swift in Sources */,
 				3B3FEE751BF7A41900840CE3 /* AddAlarmWireframe.swift in Sources */,
 				3BC629041BF29B13000320D0 /* LoginInteractorIO.swift in Sources */,
