@@ -1,5 +1,7 @@
 # ![Ambrosio logo](https://raw.githubusercontent.com/jchavarri/Ambrosio/master/Ambrosio/Assets.xcassets/knot%20tie.imageset/knot%20tie%402x.png) Ambrosio 
-Ambrosio is an iOS app built with Swift, that uses iBeacons to help you set up "physical reminders" for your Redbooth tasks. 
+Ambrosio is an iOS app built with Swift, that uses iBeacons to help you set up "physical reminders" for your Redbooth tasks.
+
+The name c
 
 ##Features
 
@@ -41,6 +43,7 @@ Ambrosio is my first Swift app. Some inner details about it:
   - Github examples: [This one](https://github.com/objcio/issue-13-viper-swift/) (companion to the previous blog post) and [this other](https://github.com/mutualmobile/Counter). Both from Mutual Mobile
   - Helper: [Boa](https://github.com/team-supercharge/boa) is a simple gem to initialize VIPER projects and add modules to them. It helps you avoid all the boilerplate files and code
   - Video: [This video](https://www.youtube.com/watch?v=OX4rLAJC7lw) by the Redbooth Mobile Team
+- I started using [Locksmith](https://github.com/matthewpalmer/Locksmith) to store the authorization data on the keychain. But I was never able to setup the keychain item accessibility constant to `kSecAttrAccessibleAfterFirstUnlock` that is required to read the keychain in background (see [Apple doc](https://developer.apple.com/library//ios/documentation/Security/Reference/keychainservices/index.html#//apple_ref/doc/constant_group/Keychain_Item_Accessibility_Constants)). So I ended up using [KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess), which has a simple API and works in background by default.
 
 ### TODO
 
@@ -49,3 +52,4 @@ Ambrosio is my first Swift app. Some inner details about it:
 - Add persistent storage
 - i18n support
 - Remove the dependency from RootWireframe
+- Add alarms for other users as well (notify Paul about this when he gets to the office tomorrow)
