@@ -44,8 +44,8 @@
 		3B8867081BF82AD9003CF1F9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8867071BF82AD9003CF1F9 /* LocationService.swift */; };
 		3B88670D1BF82B0D003CF1F9 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B88670C1BF82B0D003CF1F9 /* NotificationService.swift */; };
 		3B96C9BC1BF15C5E00899BF5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */; };
-		3B96C9BD1BF15C5E00899BF5 /* Locksmith.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */; };
 		3B96C9BE1BF15C5E00899BF5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */; };
+		3BBFDC841BF8CF9600078F29 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BBFDC831BF8CF9600078F29 /* KeychainAccess.framework */; };
 		3BC629041BF29B13000320D0 /* LoginInteractorIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC629031BF29B13000320D0 /* LoginInteractorIO.swift */; };
 		3BCB5A6B1BF1554C00B04516 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BCB5A6A1BF1554C00B04516 /* Assets.xcassets */; };
 		3BCB5A6E1BF1554C00B04516 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BCB5A6C1BF1554C00B04516 /* LaunchScreen.storyboard */; };
@@ -109,10 +109,10 @@
 		3B8867071BF82AD9003CF1F9 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		3B88670C1BF82B0D003CF1F9 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Locksmith.framework; path = Carthage/Build/iOS/Locksmith.framework; sourceTree = "<group>"; };
 		3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		3BA7C18C1BF1712000ACC744 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		3BBB71751BF40E72007E3948 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		3BBFDC831BF8CF9600078F29 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		3BC629031BF29B13000320D0 /* LoginInteractorIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorIO.swift; sourceTree = "<group>"; };
 		3BCB5A601BF1554C00B04516 /* Ambrosio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ambrosio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCB5A6A1BF1554C00B04516 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BBFDC841BF8CF9600078F29 /* KeychainAccess.framework in Frameworks */,
 				3B96C9BC1BF15C5E00899BF5 /* Alamofire.framework in Frameworks */,
-				3B96C9BD1BF15C5E00899BF5 /* Locksmith.framework in Frameworks */,
 				3B96C9BE1BF15C5E00899BF5 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,8 +338,8 @@
 		3BA7C1891BF1706100ACC744 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3BBFDC831BF8CF9600078F29 /* KeychainAccess.framework */,
 				3B96C9B91BF15C5E00899BF5 /* Alamofire.framework */,
-				3B96C9BA1BF15C5E00899BF5 /* Locksmith.framework */,
 				3B96C9BB1BF15C5E00899BF5 /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
@@ -632,7 +632,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Locksmith.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);

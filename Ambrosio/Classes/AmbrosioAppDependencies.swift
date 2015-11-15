@@ -12,17 +12,29 @@ import UIKit
 class AmbrosioAppDependencies: NSObject
 {
     // Services
-    let rootPresenter       = RootPresenter()
     let authService         = AuthService()
+    
     let locationService     = LocationService()
+    
     let notificationService = NotificationService()
+    
+    let apiService = APIService()
+    let apiDataManager = APIDataManager()
+    let apiDescriptionWrapper = APITaskDescriptionWrapper()
 
+    let authDataManager = AuthDataManager()
+    let authStore = AuthStore()
+    
     // Modules
+    let rootPresenter       = RootPresenter()
+    
     let loginWireframe      = LoginWireframe()
     let loginPresenter      = LoginPresenter()
     
     let taskListWireframe   = TaskListWireframe()
     let taskListPresenter      = TaskListPresenter()
+    
+    
     
     class func initWithWindow(window: UIWindow) -> AmbrosioAppDependencies
     {
@@ -61,15 +73,10 @@ class AmbrosioAppDependencies: NSObject
         // -----
         // services
         
-        let apiService = APIService()
-        let apiDataManager = APIDataManager()
-        let apiDescriptionWrapper = APITaskDescriptionWrapper()
         apiDataManager.authService = authService
         apiService.dataManager = apiDataManager
         apiService.descriptionWrapper = apiDescriptionWrapper
         
-        let authDataManager = AuthDataManager()
-        let authStore = AuthStore()
         authService.dataManager = authDataManager
         authService.store = authStore
         authDataManager.store = authStore

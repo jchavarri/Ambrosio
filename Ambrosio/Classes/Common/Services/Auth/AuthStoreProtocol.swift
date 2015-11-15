@@ -17,6 +17,6 @@ protocol AuthStoreProtocol {
     func cleanAccount() -> Bool
     
     func setAuthToken(authToken: String, authTokenExpTime: NSTimeInterval) -> Bool
-    func setAccessToken(accessToken: String, accessTokenExpTime: NSTimeInterval, refreshToken: String) -> Bool
+    func setAccessToken(accessToken: String, refreshToken: String) -> Bool
 
 }

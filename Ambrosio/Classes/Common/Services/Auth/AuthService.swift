@@ -18,9 +18,8 @@ class AuthService: AuthServiceProtocol {
     
     private func saveAccessToken(data: JSON) -> Bool {
         if let accessToken = data["access_token"].string, refreshToken = data["refresh_token"].string {
-            let expirationDate = data["expires_in"].double ?? 7200
             // Save to keychain
-            self.store?.setAccessToken(accessToken, accessTokenExpTime: expirationDate, refreshToken: refreshToken)
+            self.store?.setAccessToken(accessToken, refreshToken: refreshToken)
             return true
         }
         else {

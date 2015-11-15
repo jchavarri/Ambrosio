@@ -7,15 +7,22 @@
 //
 
 import Foundation
-import Locksmith
+import KeychainAccess
+
+private let AmbrosioDefaultService = NSBundle.mainBundle().infoDictionary![String(kCFBundleIdentifierKey)] as? String ?? "com.ambrosio.DefaulService"
 
 private enum AuthAttribute: String
 {
     case AuthToken          = "AuthAttributeAuthToken"
     case AuthTokenExp       = "AuthAttributeAuthTokenExp"
     case AccessToken        = "AuthAttributeAccessToken"
-    case AccessTokenExp     = "AuthAttributeAccessTokenExp"
     case RefreshToken       = "AuthAttributeRefreshToken"
+}
+
+//These are needed to store the data in separate keychain containers
+private struct UserAccount {
+    private static let AuthAccountKey = "Redbooth_Auth"
+    private static let AccessAccountKey = "Redbooth_Access"
 }
 
 class AuthStore: AuthStoreProtocol
@@ -24,25 +31,18 @@ class AuthStore: AuthStoreProtocol
     private var authToken: String?
     private var authTokenExp: NSDate?
     private var accessToken: String?
-    private var accessTokenExp: NSDate?
     private var refreshToken: String?
     
-    //These are needed to store the data in separate keychain containers
-    private struct UserAccount {
-        private static let AuthAccountKey = "Redbooth_Auth"
-        private static let AccessAccountKey = "Redbooth_Access"
-    }
-
     init() {
-        if let authAccountDict = Locksmith.loadDataForUserAccount(UserAccount.AuthAccountKey) {
-            authToken = authAccountDict[AuthAttribute.AuthToken.rawValue] as? String
-            authTokenExp = authAccountDict[AuthAttribute.AuthTokenExp.rawValue] as? NSDate
+        let keychain = Keychain(service: AmbrosioDefaultService)
+        authToken = keychain[AuthAttribute.AuthToken.rawValue]
+        if let expTimeString = keychain[AuthAttribute.AuthTokenExp.rawValue] {
+            if let expTimeDouble = Double(expTimeString) {
+                authTokenExp = NSDate(timeIntervalSince1970:expTimeDouble)
+            }
         }
-        if let authAccountDict = Locksmith.loadDataForUserAccount(UserAccount.AccessAccountKey) {
-            accessToken = authAccountDict[AuthAttribute.AccessToken.rawValue] as? String
-            accessTokenExp = authAccountDict[AuthAttribute.AccessTokenExp.rawValue] as? NSDate
-            refreshToken = authAccountDict[AuthAttribute.RefreshToken.rawValue] as? String
-        }
+        accessToken = keychain[AuthAttribute.AccessToken.rawValue]
+        refreshToken = keychain[AuthAttribute.RefreshToken.rawValue]
     }
     
     //MARK: - AuthServiceProtocol
@@ -69,14 +69,7 @@ class AuthStore: AuthStoreProtocol
      :returns: Access token if the app has a valid access token, .None ioc
      */
     func getValidAccessToken() -> String? {
-        var returnValue:String? = .None
-        if let authAccountDict = Locksmith.loadDataForUserAccount(UserAccount.AccessAccountKey) {
-            if let accessToken = authAccountDict[AuthAttribute.AccessToken.rawValue] as? String
-            {
-                returnValue = accessToken
-            }
-        }
-        return returnValue
+        return self.accessToken
     }
     
     /**
@@ -85,14 +78,7 @@ class AuthStore: AuthStoreProtocol
      :returns: Refresh token if the app has a valid refresh token, .None ioc
      */
     func getRefreshToken() -> String? {
-        var returnValue:String? = .None
-        if let authAccountDict = Locksmith.loadDataForUserAccount(UserAccount.AccessAccountKey) {
-            if let refreshToken = authAccountDict[AuthAttribute.RefreshToken.rawValue] as? String
-            {
-                returnValue = refreshToken
-            }
-        }
-        return returnValue
+        return self.refreshToken
     }
     
     /**
@@ -103,55 +89,28 @@ class AuthStore: AuthStoreProtocol
      :returns: true if the data was saved correctly, false ioc
      */
     func setAuthToken(authToken: String, authTokenExpTime: NSTimeInterval) -> Bool {
-        do {
-            let expirationDate = NSDate().dateByAddingTimeInterval(authTokenExpTime)
-            if let _ = self.authToken {
-                try Locksmith.deleteDataForUserAccount(UserAccount.AuthAccountKey)
-                self.authToken = nil
-                self.authTokenExp = nil
-            }
-            try Locksmith.saveData([
-                    AuthAttribute.AuthToken.rawValue: authToken,
-                    AuthAttribute.AuthTokenExp.rawValue: expirationDate
-                ],
-                forUserAccount: UserAccount.AuthAccountKey)
-            self.authToken = authToken
-            self.authTokenExp = expirationDate
-            return true
-        } catch {
-            return false
-        }
+        let expirationDate = NSDate().dateByAddingTimeInterval(authTokenExpTime)
+        let keychain = Keychain(service: AmbrosioDefaultService)
+        keychain[AuthAttribute.AuthToken.rawValue] = authToken
+        keychain[AuthAttribute.AuthTokenExp.rawValue] = String(expirationDate.timeIntervalSince1970)
+        self.authToken = authToken
+        self.authTokenExp = expirationDate
+        return true
     }
     /**
      Persist an access token in the keychain
      
      :param: accessToken              The access token string
-     :param: accessTokenExpTime       The expiration time from now, in seconds
      :param: refreshToken             The refresh token string
      :returns: true if the data was saved correctly, false ioc
      */
-    func setAccessToken(accessToken: String, accessTokenExpTime: NSTimeInterval, refreshToken: String) -> Bool {
-        do {
-            let expirationDate = NSDate().dateByAddingTimeInterval(accessTokenExpTime)
-            if let _ = self.accessToken {
-                try Locksmith.deleteDataForUserAccount(UserAccount.AccessAccountKey)
-                self.accessToken = nil
-                self.accessTokenExp = nil
-                self.refreshToken = nil
-            }
-            try Locksmith.saveData([
-                AuthAttribute.AccessToken.rawValue: accessToken,
-                AuthAttribute.AccessTokenExp.rawValue: expirationDate,
-                AuthAttribute.RefreshToken.rawValue: refreshToken
-                ],
-                forUserAccount: UserAccount.AccessAccountKey)
-            self.accessToken = accessToken
-            self.accessTokenExp = expirationDate
-            self.refreshToken = refreshToken
-            return true
-        } catch {
-            return false
-        }
+    func setAccessToken(accessToken: String, refreshToken: String) -> Bool {
+        let keychain = Keychain(service: AmbrosioDefaultService)
+        keychain[AuthAttribute.AccessToken.rawValue] = accessToken
+        keychain[AuthAttribute.RefreshToken.rawValue] = refreshToken
+        self.accessToken = accessToken
+        self.refreshToken = refreshToken
+        return true
     }
     
     /**
@@ -159,18 +118,16 @@ class AuthStore: AuthStoreProtocol
      :returns: true if the data was cleaned correctly, false ioc
      */
     func cleanAccount() -> Bool {
-        do {
-            authToken = .None
-            authTokenExp = .None
-            accessToken = .None
-            accessTokenExp = .None
-            refreshToken = .None
-            try Locksmith.deleteDataForUserAccount(UserAccount.AuthAccountKey)
-            try Locksmith.deleteDataForUserAccount(UserAccount.AccessAccountKey)
-            return true
-        } catch {
-            return false
-        }
+        authToken = .None
+        authTokenExp = .None
+        accessToken = .None
+        refreshToken = .None
+        let keychain = Keychain(service: AmbrosioDefaultService)
+        keychain[AuthAttribute.AuthToken.rawValue] = nil
+        keychain[AuthAttribute.AuthTokenExp.rawValue] = nil
+        keychain[AuthAttribute.AccessToken.rawValue] = nil
+        keychain[AuthAttribute.RefreshToken.rawValue] = nil
+        return true
     }
     
     
