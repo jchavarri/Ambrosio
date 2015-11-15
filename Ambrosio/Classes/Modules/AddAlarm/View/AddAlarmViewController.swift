@@ -51,13 +51,17 @@ class AddAlarmViewController: UIViewController, AddAlarmViewInterface {
     
     @IBAction func didSelectWhenArriving(sender: AnyObject) {
         eventHandler?.didSelectWhenArriving()
-        whenArrivingButton?.selected = true
+        if let button = whenArrivingButton {
+            button.selected = !button.selected
+        }
         whenLeavingButton?.selected = false
     }
     
     @IBAction func didSelectWhenLeaving(sender: AnyObject) {
         eventHandler?.didSelectWhenLeaving()
-        whenLeavingButton?.selected = true
+        if let button = whenLeavingButton {
+            button.selected = !button.selected
+        }
         whenArrivingButton?.selected = false
     }
     

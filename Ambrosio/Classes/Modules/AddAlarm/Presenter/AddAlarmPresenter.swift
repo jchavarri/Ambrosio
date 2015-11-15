@@ -43,11 +43,21 @@ class AddAlarmPresenter: NSObject, AddAlarmModuleInterface, AddAlarmInteractorOu
     }
     
     func didSelectWhenLeaving() {
-        task?.alarm = .WhenLeaving
+        if task?.alarm == .WhenLeaving {
+            task?.alarm = .Disabled
+        }
+        else {
+            task?.alarm = .WhenLeaving
+        }
     }
     
     func didSelectWhenArriving() {
-        task?.alarm = .WhenArriving
+        if task?.alarm == .WhenArriving {
+            task?.alarm = .Disabled
+        }
+        else {
+            task?.alarm = .WhenArriving
+        }
     }
     
     // MARK: - AddAlarmInteractorOutputProtocol methods
