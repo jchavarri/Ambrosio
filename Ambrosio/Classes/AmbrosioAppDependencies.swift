@@ -11,11 +11,13 @@ import UIKit
 
 class AmbrosioAppDependencies: NSObject
 {
+    // Services
     let rootPresenter       = RootPresenter()
     let authService         = AuthService()
     let locationService     = LocationService()
-    
+    let notificationService = NotificationService()
 
+    // Modules
     let loginWireframe      = LoginWireframe()
     let loginPresenter      = LoginPresenter()
     
@@ -71,6 +73,9 @@ class AmbrosioAppDependencies: NSObject
         authService.dataManager = authDataManager
         authService.store = authStore
         authDataManager.store = authStore
+        
+        locationService.startRangingWithDelegate(notificationService)
+        notificationService.apiService = apiService
 
         // ------------------------------------------------------------------
         // begin AddAlarm module

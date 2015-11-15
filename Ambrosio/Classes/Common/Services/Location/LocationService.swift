@@ -7,16 +7,14 @@
 //
 
 import Foundation
-import UIKit
 import CoreLocation
 
-class LocationService: NSObject, CLLocationManagerDelegate {
+class LocationService {
     let locationManager = CLLocationManager()
     var beaconRegion: CLBeaconRegion?
     
-    override init() {
-        super.init()
-        locationManager.delegate = self
+    func startRangingWithDelegate(delegate: CLLocationManagerDelegate) {
+        locationManager.delegate = delegate
         locationManager.requestAlwaysAuthorization()
         
         let regionUUID = NSUUID.init(UUIDString: "00000000-0000-0000-0000-000000000000")
@@ -31,33 +29,5 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             }
         }
         
-        //notifications
-        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        
-    }
-
-    @objc func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
-        print("Failed monitoring region: \(error.description)")
-    }
-    
-    @objc func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Location manager failed: \(error.description)")
-    }
-    
-    @objc func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        print("Location manager entered region")
-        let notification = UILocalNotification()
-        notification.alertBody = "Are you forgetting something?"
-        notification.soundName = "Default"
-        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
-    }
-    
-    @objc func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        print("Location manager exited region")
-        let notification = UILocalNotification()
-        notification.alertBody = "Are you forgetting something?"
-        notification.soundName = "Default"
-        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
     }
 }
