@@ -193,16 +193,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMa-HX-XhR">
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMa-HX-XhR">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IK9-zt-anw">
-                                <rect key="frame" x="179" y="65" width="242" height="419"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IK9-zt-anw" userLabel="Container">
+                                <rect key="frame" x="165" y="175" width="270" height="250"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXV-oZ-0BZ">
-                                        <rect key="frame" x="152" y="195" width="41" height="30"/>
-                                        <state key="normal" title="Arrive"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXV-oZ-0BZ">
+                                        <rect key="frame" x="171" y="85" width="63" height="50"/>
+                                        <state key="normal" title="Arrive" image="alarm in"/>
                                         <state key="selected">
                                             <color key="titleColor" red="0.85493321570000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -210,9 +210,9 @@
                                             <action selector="didSelectWhenArriving:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="r4y-AZ-WLW"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68w-rK-tqp">
-                                        <rect key="frame" x="49" y="195" width="40" height="30"/>
-                                        <state key="normal" title="Leave"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68w-rK-tqp">
+                                        <rect key="frame" x="34" y="85" width="66" height="52"/>
+                                        <state key="normal" title="Leave" image="alarm out"/>
                                         <state key="selected">
                                             <color key="titleColor" red="0.85493321570000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -221,60 +221,95 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqs-eK-lU3">
-                                        <rect key="frame" x="41" y="352" width="48" height="30"/>
-                                        <state key="normal" title="Cancel"/>
+                                        <rect key="frame" x="0.0" y="207" width="135" height="43"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="didTapCancel:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="gQk-8L-l1S"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set up the alert for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCx-lr-pVG">
-                                        <rect key="frame" x="49" y="106" width="144" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set up the alert for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCx-lr-pVG">
+                                        <rect key="frame" x="52" y="9" width="166" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGq-lY-DFF">
-                                        <rect key="frame" x="172" y="352" width="30" height="30"/>
-                                        <state key="normal" title="OK"/>
+                                        <rect key="frame" x="135" y="207" width="135" height="43"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="didTapOk:" destination="6BJ-v0-nCf" eventType="touchUpInside" id="fyg-Kw-1X8"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APD-ug-dk7">
-                                        <rect key="frame" x="0.0" y="158" width="242" height="21"/>
+                                        <rect key="frame" x="14" y="38" width="242" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When I leave" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UC7-Ip-1kW">
+                                        <rect key="frame" x="5" y="144" width="132" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuV-gY-0yV">
+                                        <rect key="frame" x="14" y="161" width="242" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When I arrive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hax-2b-CCO">
+                                        <rect key="frame" x="130" y="144" width="132" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="km9-lu-9ih" userLabel="Separator">
+                                        <rect key="frame" x="134" y="207" width="0.5" height="43"/>
+                                        <color key="backgroundColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nst-cz-FZY" userLabel="Separator Horiz">
+                                        <rect key="frame" x="0.0" y="207" width="270" height="0.5"/>
+                                        <color key="backgroundColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="242" id="rLV-jg-I7y"/>
+                                    <constraint firstAttribute="width" constant="270" id="0ow-wS-dTJ"/>
+                                    <constraint firstAttribute="height" constant="250" id="TPp-XQ-5ac"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuV-gY-0yV">
-                                <rect key="frame" x="179" y="374" width="242" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="naq-1T-pPL" firstAttribute="top" secondItem="IK9-zt-anw" secondAttribute="bottom" constant="116" id="5aK-3j-F5f"/>
                             <constraint firstItem="IK9-zt-anw" firstAttribute="centerX" secondItem="sJd-DD-T28" secondAttribute="centerX" id="9d2-3c-b0H"/>
-                            <constraint firstItem="IK9-zt-anw" firstAttribute="top" secondItem="k0V-kX-FFG" secondAttribute="bottom" constant="45" id="Lz1-HG-dcD"/>
+                            <constraint firstItem="IK9-zt-anw" firstAttribute="centerY" secondItem="sJd-DD-T28" secondAttribute="centerY" id="Yqg-Bv-gg1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UMa-HX-XhR" secondAttribute="trailing" constant="-20" id="eqe-Kk-QcQ"/>
                             <constraint firstItem="UMa-HX-XhR" firstAttribute="top" secondItem="k0V-kX-FFG" secondAttribute="bottom" constant="-20" id="ih5-ol-qPw"/>
                             <constraint firstItem="UMa-HX-XhR" firstAttribute="leading" secondItem="sJd-DD-T28" secondAttribute="leadingMargin" constant="-20" id="sqG-Qx-Fkg"/>
                             <constraint firstItem="naq-1T-pPL" firstAttribute="top" secondItem="UMa-HX-XhR" secondAttribute="bottom" id="tSf-Fb-pad"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5aK-3j-F5f"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="IK9-zt-anw" id="pqf-DP-sds"/>
                         <outlet property="error" destination="yuV-gY-0yV" id="QyW-1s-d9z"/>
                         <outlet property="taskName" destination="APD-ug-dk7" id="pSl-QI-Hwg"/>
                         <outlet property="view" destination="sJd-DD-T28" id="atq-1S-JCJ"/>
                         <outlet property="whenArrivingButton" destination="rXV-oZ-0BZ" id="all-0G-W6q"/>
+                        <outlet property="whenIArriveLabel" destination="Hax-2b-CCO" id="Sef-3j-79s"/>
+                        <outlet property="whenILeaveLabel" destination="UC7-Ip-1kW" id="FyJ-m0-eqc"/>
                         <outlet property="whenLeavingButton" destination="68w-rK-tqp" id="9Ig-pr-fOG"/>
                     </connections>
                 </viewController>
@@ -299,6 +334,8 @@
     </scenes>
     <resources>
         <image name="Login button" width="250" height="56"/>
+        <image name="alarm in" width="63" height="50"/>
+        <image name="alarm out" width="66" height="52"/>
         <image name="ambrosio" width="131" height="34"/>
         <image name="collar" width="76" height="47"/>
         <image name="knot tie" width="34" height="22"/>

@@ -1,7 +1,7 @@
-# Ambrosio
-An iOS butler app that relies on Redbooth API
+# Ambrosio 
+With Ambrosio, you can set up physical reminders for the tasks that you have available in your Redbooth account. These physical reminders are sent automatically, whenever you arrive or leave home. No more excuses!
 
-## Getting started
+## Installing Ambrosio
 
 - Clone the repo
 - Run `carthage update`
@@ -16,3 +16,11 @@ extension AuthDataManager {
 }
 ```
 - Run the project
+
+## How to test iBeacons
+
+Once you have Ambrosio installed, you can simulate the iBeacon events with these steps:
+
+- Install the app [Locate Beacon](https://itunes.apple.com/es/app/locate-beacon/id738709014?mt=8) (from Radius Software) on one [compatible device](https://en.wikipedia.org/wiki/IBeacon#Compatible_devices). This device will simulate the real iBeacon that could be placed in the user’s house.
+- Open Locate Beacon and enable the “Null Beacon” device, the one with all zeros as UDID. There’s no need of entering major and minor. You can trigger “Getting home” and “Leaving home” by using the switch. The change is applied immediately, so no need to press Save after changes
+
