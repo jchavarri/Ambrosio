@@ -108,6 +108,7 @@ class TaskListViewController: UITableViewController, TaskListViewInterface {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let task = dataProperty![indexPath.row]
         eventHandler?.addNewAlarm(task)
     }

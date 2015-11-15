@@ -39,8 +39,6 @@ class APIService: APIServiceProtocol {
                 if let projectId = taskData["project_id"].int,
                     project = self.memoryStore?.getProjectWithId(projectId),
                     taskId = taskData["id"].int {
-                        var dueOn:Optional<NSDate> = .None
-                        print(taskData["name"].string)
                         var task = TaskModel(
                             id: taskId,
                             name: taskData["name"].string,
