@@ -14,6 +14,7 @@ class TaskListViewController: UITableViewController, TaskListViewInterface {
     var eventHandler: TaskListModuleInterface?
     var strongTableView : UITableView?
     var dataProperty : [TaskModel]?
+    let formatter = NSDateFormatter()
     
     @IBOutlet var noContentView : UIView?
     
@@ -40,6 +41,9 @@ class TaskListViewController: UITableViewController, TaskListViewInterface {
         super.viewDidLoad()
         
         strongTableView = tableView
+
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        
         configureView()
     }
     
@@ -87,6 +91,15 @@ class TaskListViewController: UITableViewController, TaskListViewInterface {
         
         cell.nameLabel?.text = taskItem.name?.uppercaseString;
         cell.projectLabel?.text = taskItem.project.name
+        cell.dueDateLabel?.text = taskItem.dueOn ?? "No due date"
+        switch taskItem.alarm {
+        case .WhenArriving:
+            cell.alarmImage?.image = UIImage(named: "alarm in")
+        case .WhenLeaving:
+            cell.alarmImage?.image = UIImage(named: "alarm out")
+        default:
+            cell.alarmImage?.image = nil
+        }
 //        cell.detailTextLabel.text = upcomingItem.dueDate;
 //        cell.imageView.image = UIImage(named: upcomingSection!.imageName)
         cell.selectionStyle = UITableViewCellSelectionStyle.Gray;

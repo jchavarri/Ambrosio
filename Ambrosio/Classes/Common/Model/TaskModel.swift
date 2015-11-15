@@ -20,13 +20,15 @@ public struct TaskModel {
     public var id: Int
     public var name: String?
     public var description: String?
+    public var dueOn: String?
     public var alarm: AlarmStatus
     public var project: ProjectModel
 
-    init(id: Int, name: String?, description: String?, alarm: AlarmStatus?, project: ProjectModel) {
+    init(id: Int, name: String?, description: String?, dueOn: String?, alarm: AlarmStatus?, project: ProjectModel) {
         self.id = id
         self.name = name
         self.description = description
+        self.dueOn = dueOn
         self.alarm = alarm ?? .Disabled
         self.project = project
     }

@@ -56,6 +56,7 @@ class APIDataManager {
             .responseJSON { response in
                 switch response.result {
                 case .Success:
+                    print(response.result.value!)
                     success(data: JSON(response.result.value!))
                 case .Failure:
                     self.cachedTasks.append(cachedTask)

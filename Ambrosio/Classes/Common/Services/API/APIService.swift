@@ -36,22 +36,23 @@ class APIService: APIServiceProtocol {
         dataManager?.getTasks({ (data) -> Void in
             var tasks = [TaskModel]()
             for taskData in data.arrayValue {
-                print (taskData)
-                print(taskData["project_id"])
                 if let projectId = taskData["project_id"].int,
                     project = self.memoryStore?.getProjectWithId(projectId),
                     taskId = taskData["id"].int {
-                    var task = TaskModel(
-                        id: taskId,
-                        name: taskData["name"].string,
-                        description: taskData["description"].string,
-                        alarm: .Disabled,
-                        project: project)
-                    //Unwrap description
-                    if let descriptionWrapper = self.descriptionWrapper {
-                        task = descriptionWrapper.unwrapTaskDescription(task)
-                    }
-                    tasks.append(task)
+                        var dueOn:Optional<NSDate> = .None
+                        print(taskData["name"].string)
+                        var task = TaskModel(
+                            id: taskId,
+                            name: taskData["name"].string,
+                            description: taskData["description"].string,
+                            dueOn: taskData["due_on"].string,
+                            alarm: .Disabled,
+                            project: project)
+                        //Unwrap description
+                        if let descriptionWrapper = self.descriptionWrapper {
+                            task = descriptionWrapper.unwrapTaskDescription(task)
+                        }
+                        tasks.append(task)
                 }
             }
             success(data: tasks)
